@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>a11y</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+<section>
+  <h1>a11y</h1>
+  <p>WCAG Level A</p>
+</section>
+
+<section>
+  <h2>What we covered last time</h2>
+  <ul>
+    <li>what is a11y?</li>
+    <li>a11y and the law</li>
+    <li>WCAG</li>
+    <li>testing tools</li>
+  </ul>
+</section>
+
+<section>
+  <h2>What we'll cover in this session</h2>
+  <ul>
+    <li>WCAG Level A in detail</li>
+  </ul>
+</section>
+
+<section>
+  <h2>WCAG Principles</h2>
+  <ul>
+    <li>content must be <a href="http://www.w3.org/WAI/intro/people-use-web/principles#perceivable" target="_blank">perceivable</a></li>
+    <li>interface elements should be <a href="http://www.w3.org/WAI/intro/people-use-web/principles#operable" target="_blank">operable</a></li>
+    <li>content and controls must be <a href="http://www.w3.org/WAI/intro/people-use-web/principles#understandable" target="_blank">understandable</a></li>
+    <li>content is <a href="http://www.w3.org/WAI/intro/people-use-web/principles#robust" target="_blank">robust</a> enough to work with current and future technologies</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Content must be perceivable</h2>
+</section>
+
+<section>
+  <h3 class="no-margin">1.1.1 Non-text content</h3>
+  <pre>
+    <code>
+      <!-- Decorative images -->
+      <img src="image.jpg" alt="" />
+
+      <!-- Informative images -->
+      <img src="phone.png" alt="Call us on" />
+      0123 456 7890
+
+      <!-- Functional images -->
+      <a href="print.html">
+        <img src="printer-icon.png" alt="Print-friendly version" />
+      </a>
+
+      <!-- Images of text -->
+      <img src="microsoft-logo.png" alt="Microsoft" />
+
+      <!-- Images of graphical data -->
+      <img src="apple-shares.jpg" alt="Apple's shares have risen steadily from $36 in 2010 to $123 in 2015." />
+
+      <!-- Bad -->
+      <img src="car.jpg" alt="An image of..." />
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h3>??? 1.1.1 Non-text content cont'd</h3>
+  <ul>
+    <li>add succinct text for audio and video</li>
+    <li>figcaption</li>
+  </ul>
+</section>
+
+<section>
+  <h2>??? 1.2.1 Audio-only and video-only</h2>
+  <ul>
+    <li>audio-only should have a full text transcript</li>
+    <li>video-only should have a full text transcript</li>
+  </ul>
+</section>
+
+<section>
+  <h2>1.2.2 Captions</h2>
+  <p>Provide a way for people who are deaf to access a video's dialogue and important sounds.</p>
+	<pre>
+		<code>
+      <video controls="controls" preload="none">
+        <source type="video/mp4" src="http://f1.caranddriving.com/videos/700/new_HyundaiI10_2014.mp4">
+        <track kind="subtitles" label="English subtitles" src="video-track-example.vtt" srclang="en" default></track>
+      </video>
+		</code>
+	</pre>
+</section>
+
+<section>
+  <h2 class="no-margin">1.2.2 Captions cont'd</h2>
+  <pre>
+    <code>
+      WEBVTT FILE
+
+      00:00:02.800 --> 00:00:06.500
+      The Hyundai i10 has, for some time now, been a benchmark 
+
+      00:00:06.500 --> 00:00:08.500
+      in the growing city car segment
+
+      00:00:08.500 --> 00:00:12.300
+      offering a clever space-efficient design with 5 doors
+
+      00:00:12.300 --> 00:00:15.600
+      where many similarly priced rivals would offer 3.
+
+      ...
+    </code>
+  </pre>
+
+  <p><a href="http://www.html5rocks.com/en/tutorials/track/basics/" target="_blank">Using the track element</a></p>
+</section>
+
+<section>
+  <h2>1.2.2 Captions cont'd</h2>
+  <video controls="controls">
+    <source type="video/mp4" src="http://f1.caranddriving.com/videos/700/new_HyundaiI10_2014.mp4">
+    <track kind="subtitles" label="English subtitles" src="video-track-example.vtt" srclang="en" default></track>
+  </video>
+</section>
+
+<section>
+  <h2>??? 1.2.3 Audio descriptions</h2>
+  <ul>
+    <li>provide full text transcript for video; or</li>
+    <li>provide videos with acompanying audio descriptions</li>
+  </ul>
+
+  <pre>
+    <code>
+      <video controls="controls">
+        <source type="video/mp4" src="http://f1.caranddriving.com/videos/700/new_HyundaiI10_2014.mp4">
+      </video>
+
+      <h2>Text Transcript</h2>
+
+      <p>The Hyundai i10 has, for some time now, been a...</p>
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h2>??? 1.3.1 Info and relationships</h2>
+  <ul>
+    <li>logical headings</li>
+  </ul>
+
+  <p><a href="https://gsnedders.html5.org/outliner/" target="_blank">HTML5 document outliner</a></p>
+</section>
+
+<section>
+  <h2>1.3.2 Meaningful sequence</h2>
+  <ul>
+    <li>content makes sense in the order it's presented</li>
+  </ul>
+</section>
+
+<section>
+  <h2>1.3.3 Sensory characteristics</h2>
+  <ul>
+  	<li>try to avoid phrases like "fill-in the form below"</li>
+    <li>don't rely solely on arrows to signify direction</li>
+  </ul>
+</section>
+
+<section>
+  <h2>??? 1.4.1 Use of colour</h2>
+  <ul>
+    <li>don't rely on colour to illustrate info</li>
+  </ul>
+</section>
+
+<section>
+  <h2>1.4.2 Audio control</h2>
+  <ul>
+    <li>try to avoid autoplaying audio</li>
+    <li>at least provide a pause button</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Interface elements should be operable</h2>
+</section>
+
+<section>
+  <h2>2.1.1 Keyboard</h2>
+  <ul>
+    <li>don't add keyboard shortcuts - they'll override screenreader shortcuts</li>
+    <li>pretty much everything must be keyboard-accessible</li>
+  </ul>
+  <p>Exceptions:</p>
+  <ul>
+    <li>drawing tools</li>
+    <li>games</li>
+  </ul>
+</section>
+
+<section>
+  <h2>2.1.2 No keyboard trap</h2>
+  <p>Users should be able to access any feature (e.g. datepicker, modal, tabs...) and move away from it using the keyboard.</p>
+</section>
+
+<section>
+  <h2>2.2.1 Timing adjustable</h2>
+  <ul>
+  	<li>avoid putting time constraints on content</li>
+  	<li>allow users to adjust time constraints up to 10x</li>
+  	<li>allow users to reduce the frequency of auto-updating content by up to 10x</li>
+  </ul>
+</section>
+
+<section>
+  <h2>2.2.2 Pause, stop, hide</h2>
+  <ul>
+    <li>avoid autoplaying scrollable content like banners</li>
+    <li>at least provide a means of pausing</li>
+    <li>probably applies to auto-updating search results</li>
+  </ul>
+</section>
+
+<section>
+  <h2>2.3.1 Three flashes or below</h2>
+  <p>WARNING: Flashing</p>
+  <a href="https://www.youtube.com/watch?v=lQxUu6YqyuE" target="_blank">Battling Seizure Robots</a>
+</section>
+
+<section>
+  <h2>2.4.1 Bypass blocks</h2>
+  <p>Make it easy for keyboard users to skip repeated content.</p>
+
+  <pre>
+    <code>
+      <!-- Must always be visible or visible on focus -->
+      <a href="#content">Skip to content</a>
+
+      <nav>
+        <ul>
+          <li><a href="/">Link 1</a></li>
+          <li><a href="/">Link 2</a></li>
+          <li><a href="/">Link 3</a></li>
+        </ul>
+      </nav>
+
+      <main id="content">
+      ...
+      </main>
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h2>2.4.2 Page title</h2>
+  <ul>
+  	<li>always set a page's title</li>
+    <li>helps screenreader users figure out where they are</li>
+    <li>also helps SEO</li>
+  </ul>
+</section>
+
+<section>
+  <h2>2.4.3 Focus order</h2>
+  <p>Focus order should make sense to keyboard users.</p>
+
+  <pre>
+    <code>
+      <!-- The default for focusable elements -->
+      <input type="text" tabindex="0" />
+
+      <!-- Altering tab order -->
+      <input type="text" tabindex="1" />
+
+      <!-- Removing from tab order -->
+      <input type="text" tabindex="-1" />
+    </code>
+  </pre>
+
+  <p>Try to avoid using tabindex by coding content in the order in which it will be displayed.</p>
+</section>
+
+<section>
+  <h2>2.4.3 Focus order</h2>
+  <pre>
+    <code>
+      <!-- The default for unfocusable elements -->
+      <span tabindex="-1"></span>
+      
+      <!-- Making the unfocusabe focusable -->
+      <span tabindex="0"></span>
+
+      <!-- Altering tab order -->
+      <span tabindex="1"></span>
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h2>2.4.4 Link purpose</h2>
+  <p>Screenreader users can access a list of all links so ensure that the purpose of all links is clear.</p>
+
+  <pre>
+    <code>
+      <!-- Bad -->
+      <a href="/">Click Here</a>
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h2>A note on the title attribute</h2>
+  <p>Only use it for:</p>
+  <ul>
+    <li>??? form fields when a label cannot be used</li>
+    <li>frame elements</li>
+    <li>abbr elements</li>
+    <li>potentially to indicate a link that opens in a new tab</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Content and controls must be understandable</h2>
+</section>
+
+<section>
+  <h2>??? 3.1.1 Language</h2>
+  <p>Setting the language of a page.</p>
+
+  <pre>
+    <code>
+      &lt;html lang="en"&gt;
+      ...
+      &lt;/html&gt;
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h2>3.2.1 On focus</h2>
+  <ul>
+    <li>links should not open upon focus</li>
+    <li>no auto-popups</li>
+    <li>focus must not automatically shift between form fields</li>
+    <li>warn users before opening a new tab/window</ii>
+  </ul>
+</section>
+
+<section>
+  <h2>3.2.2 On input</h2>
+  <ul>
+    <li>don't auto-submit forms</li>
+    <li>don't switch context w/o warning</li>
+  </ul>
+</section>
+
+<section>
+  <h2>??? 3.3.1 Error identification</h2>
+  <ul>
+    <li>list form errors at the top of the form</li>
+    <li>also show errors near the relevant fields</li>
+    <li>highlight errors with colour and symbols</li>
+    <li>link to each field from the summary (advisory)</li>
+  </ul>
+</section>
+
+<section>
+  <h2>3.3.2 Labels or instructions</h2>
+  <p>Critical in giving context to screenreader users.</p>
+  <pre>
+    <code>
+      <!-- "text blank" = Bad -->
+      <input name="date" type="date" placeholder="Date" />
+
+      <!-- "text blank" = Bad -->
+      <label>Date</label>
+      <input name="date" type="date" />
+
+      <!-- "Date Date text" = Not Great -->
+      <label>
+        Date
+        <input name="date" type="date" />
+      </label>
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h2 class="no-margin">3.3.2 Labels or instructions</h2>
+  <pre>
+    <code>
+      <!-- "Date Date text" = Not Great -->
+      <label for="thedate">
+        Date
+        <input id="thedate" name="date" type="date" />
+      </label>
+
+      <!-- "Date text" = Good -->
+      <label for="thedate">Date</label>
+      <input id="thedate" name="date" type="date" />
+
+      <!-- "Date dd/mm/yyyy text" = Better -->
+      <label for="thedate">Date</label>
+      <span id="dateInfo">dd/mm/yyyy</span>
+      <input id="thedate" name="date" type="date" aria-describedby="dateInfo" />
+
+      <!-- "Date dd/mm/yyyy required text" = Even Better -->
+      <label for="thedate">Date</label>
+      <span id="dateInfo">dd/mm/yyyy</span>
+      <input id="thedate" name="date" type="date" required="required" aria-describedby="dateInfo" />
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h2>A note on fieldset and legend</h2>
+  <ul>
+    <li>use fieldset to group related fields</li>
+    <li>use legend to label grouped form fields
+  </ul>
+  <pre>
+    <code>
+      <fieldset>
+        <legend>Home Address</legend>
+
+        <!-- "Line 1 Home Address text" -->
+        <label for="addr1">Line 1</label>
+        <input type="text" id="addr1" name="address1" />
+
+        <!-- "Line 2 Home Address text" -->
+        <label for="addr2">Line 2</label>
+        <input type="text" id="addr2" name="address2" />
+      </fieldset>
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h2>Content is robust enough to work with current and future technologies</h2>
+</section>
+
+<section>
+  <h2>4.1.1 Parsing</h2>
+  <ul>
+    <li>start and end tags</li>
+    <li>correct tag nesting</li>
+    <li>no duplicate attributes</li>
+  </ul>
+
+  <p><a href="https://validator.w3.org/" target="_blank">W3C Markup Validator</a></p>
+</section>
+
+<section>
+  <h2>4.1.2 Name, role, value</h2>
+  <ul>
+    <li>make use of standard interface components</li>
+    <li>use labels to give context to form fields</li>
+    <li>expose the role of custom components with ARIA</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Resources</h2>
+  <p><a href="http://www.w3.org/WAI/tutorials/images/" target="_blank">WAI Image Concepts</a></p>
+  <p><a href="http://www.w3.org/TR/WCAG20-TECHS/" target="_blank">Techniques for WCAG 2.0</a></p>
+  <p><a href="http://www.w3.org/TR/WCAG20-TECHS/general.html" target="_blank">General Techniques for WCAG 2.0</p>
+</section>
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+          { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+//          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { 
+//     [].forEach.call( document.querySelectorAll( '.highlight' ), function( v, i) {
+//         hljs.highlightBlock(v);
+//     });
+// } },
+
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
+
