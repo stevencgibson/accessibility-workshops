@@ -537,6 +537,44 @@
 </section>
 
 <section>
+  <h2>A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h2>
+  <p>Use them for groups of radios or checks:</p>
+  <pre>
+    <code>
+      <fieldset>
+        <legend>Deliver To</legend>
+
+        <!-- "Home Address deliver to radio button" -->
+        <input type="radio" id="home" name="delivery" value="home" />
+        <label for="home">Home Address</label>
+
+        <!-- "Work Address deliver to radio button" -->
+        <input type="radio" id="work" name="delivery" value="work" />
+        <label for="work">Work Address</label>
+      </fieldset>
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h2>A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h2>
+  <p>...but not for single checkboxes:</p>
+  <pre>
+    <code>
+      <!-- "Add me to your mailing list unchecked checkbox" -->
+      <input type="checkbox" id="mailinglist" name="subscribe" value="yes" />
+      <label for="mailinglist">Add me to your mailing list</label>
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h2>A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h2>
+  <p>Setting <span class="attr">display:none</span> will cause screenreaders to ignore the legend. Instead, use:</p>
+  <p class="attr">.sr-readable {<br/>&nbsp;&nbsp;clip: rect(0, 0, 0, 0);<br/>&nbsp;&nbsp;position: absolute;<br/>}</p>
+</section>
+
+<section>
   <h2>Content is robust enough to work with current and future technologies</h2>
 </section>
 
