@@ -403,13 +403,21 @@
 
 <section>
   <h2>A note on the <span class="attr">title</span> attribute</h2>
-  <p>Only use it for:</p>
+  <p>Useful for:</p>
   <ul>
-    <li>??? form fields when <span class="tag">label</span> cannot be used</li>
     <li><span class="tag">frame</span> elements</li>
-    <li><span class="tag">abbr</span> elements</li>
-    <li>potentially to indicate a link that opens in a new tab</li>
+    <li>form fields when <span class="tag">label</span> cannot be used e.g. in tables</li>
   </ul>
+</section>
+
+<section>
+  <h2>A note on the <span class="attr">title</span> attribute</h2>
+  <p>Fairly meh for:</p>
+  <ul>
+    <li>links</li>
+    <li><span class="tag">abbr</span> elements (poor browser support, no touch support)</li>
+  </ul>
+  <p>Basically, don't use <span class="attr">title</span> for vital content.</p>
 </section>
 
 <section>
