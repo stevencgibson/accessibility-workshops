@@ -468,47 +468,88 @@
 <section>
   <h2>3.3.2 Labels or instructions</h2>
   <p>Critical in giving context to screenreader users.</p>
+
   <pre>
     <code>
-      <!-- "text blank" = Bad -->
-      <input name="date" type="date" placeholder="Date" />
+      <!-- VO with FF "text blank" = Bad -->
+      <!-- VO with Canary "edit text blank" = Bad -->
+      <input name="date" type="text" />
 
-      <!-- "text blank" = Bad -->
+      <!-- VO with FF "text blank" = Bad -->
+      <!-- VO with Canary "Date edit text" = Good -->
+      <input name="date" type="text" placeholder="Date" />
+
+      <!-- VO with FF "01/01/2015 text" = Bad -->
+      <!-- VO with Canary "01/01/2015 contents selected edit text" = No -->
+      <input name="date" type="text" placeholder="Date" value="01/01/2015" />
+
+      <!-- VO with FF "text blank" = Bad -->
+      <!-- VO with Canary "edit text blank" = Bad -->
       <label>Date</label>
-      <input name="date" type="date" />
-
-      <!-- "Date Date text" = Not Great -->
-      <label>
-        Date
-        <input name="date" type="date" />
-      </label>
+      <input name="date" type="text" />
     </code>
   </pre>
 </section>
 
 <section>
-  <h2 class="no-margin">3.3.2 Labels or instructions</h2>
+  <h2>3.3.2 Labels or instructions cont'd</h2>
+
   <pre>
     <code>
-      <!-- "Date Date text" = Not Great -->
-      <label for="thedate">
+      <!-- VO with FF "Date Date text" = Not Great -->
+      <!-- VO with Canary "Date edit text" = Good -->
+      <label>
         Date
-        <input id="thedate" name="date" type="date" />
+        <input name="date" type="text" />
       </label>
 
-      <!-- "Date text" = Good -->
-      <label for="thedate">Date</label>
-      <input id="thedate" name="date" type="date" />
+      <!-- VO with FF "Date Date text" = Not Great -->
+      <!-- VO with Canary "Date edit text" = Good -->
+      <label for="thedate">
+        Date
+        <input id="thedate" name="date" type="text" />
+      </label>
 
-      <!-- "Date dd/mm/yyyy text" = Better -->
+      <!-- VO with FF "Date text" = Good -->
+      <!-- VO with Canary "Date edit text" = Good -->
+      <label for="thedate">Date</label>
+      <input id="thedate" name="date" type="text" />
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h2>3.3.2 Labels or instructions cont'd</h2>
+  <pre>
+    <code>
+      <!-- VO with FF "Date text" = Good, but not better -->
+      <!-- VO with Canary "Date edit text" = Good, but not better -->
+      <label for="thedate">Date</label>
+      <span>dd/mm/yyyy</span>
+      <input id="thedate" name="date" type="text" />
+
+      <!-- VO with FF "Date dd/mm/yyyy text" = Better -->
+      <!-- VO with Canary "Date dd/mm/yyyy text" = Better -->
+      <label for="thedate">Date <span>dd/mm/yyyy</span></label>
+      <input id="thedate" name="date" type="text" />
+
+      <!-- VO with FF "Date dd/mm/yyyy text" = Better -->
+      <!-- VO with Canary "Date edit text" = A step back -->
       <label for="thedate">Date</label>
       <span id="dateInfo">dd/mm/yyyy</span>
-      <input id="thedate" name="date" type="date" aria-describedby="dateInfo" />
+      <input id="thedate" name="date" type="text" aria-describedby="dateInfo" />
+    </code>
+  </pre>
+</section>
 
-      <!-- "Date dd/mm/yyyy required text" = Even Better -->
-      <label for="thedate">Date</label>
-      <span id="dateInfo">dd/mm/yyyy</span>
-      <input id="thedate" name="date" type="date" required="required" aria-describedby="dateInfo" />
+<section>
+  <h2>3.3.2 Labels or instructions cont'd</h2>
+  <pre>
+    <code>
+      <!-- VO with Canary "Date dd/mm/yyyy required text" - Cool -->
+      <!-- VO with Canary "Date dd/mm/yyyy required invalid data edit text" - Cool -->
+      <label for="thedate">Date <span>dd/mm/yyyy</span></label>
+      <input id="thedate" name="date" type="text" required="required" />
     </code>
   </pre>
 </section>
@@ -578,7 +619,7 @@
         clip: rect(0, 0, 0, 0);
         position: absolute!important;
       }
-      
+
       <fieldset>
         <legend class="sr-readable">Deliver To</legend>
 
