@@ -569,9 +569,28 @@
 </section>
 
 <section>
-  <h2>A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h2>
+  <h2 class="no-margin">A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h2>
   <p>Setting <span class="attr">display:none</span> will cause screenreaders to ignore the legend. Instead, use:</p>
-  <p class="attr">.sr-readable {<br/>&nbsp;&nbsp;clip: rect(0, 0, 0, 0);<br/>&nbsp;&nbsp;position: absolute;<br/>}</p>
+  
+  <pre>
+    <code>
+      .sr-readable {
+        clip: rect(0, 0, 0, 0);
+        position: absolute!important;
+      }
+      
+      <fieldset>
+        <legend class="sr-readable">Deliver To</legend>
+
+        <!-- "Home Address deliver to radio button" -->
+        <input type="radio" id="home" name="delivery" value="home" />
+        <label for="home">Home Address</label>
+        ...
+      </fieldset>
+    </code>
+  </pre>
+
+  <p><a href="https://developer.yahoo.com/blogs/ydn/clip-hidden-content-better-accessibility-53456.html" target="_blank">Clip your hidden content for better accessibility</a></p>
 </section>
 
 <section>
