@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+    .menu-item {
+      float: left;
+      list-style-type: none;
+      width: 150px;
+    }
+
+    .menu-sub {
+      display: none;
+    }
+
+    .menu-item:hover .menu-sub {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="menu-item">
+      <a href="/a">Section A</a>
+
+      <ul class="menu-sub">
+        <li><a href="/a1">Section A1</a></li>
+        <li><a href="/a2">Section A2</a></li>
+        <li><a href="/a3">Section A3</a></li>
+      </ul>
+    </li>
+
+    <li class="menu-item">
+      <a href="/b">Section B</a>
+
+      <ul class="menu-sub">
+        <li><a href="/b1">Section B1</a></li>
+        <li><a href="/b2">Section B2</a></li>
+        <li><a href="/b3">Section B3</a></li>
+      </ul>
+    </li>
+  </ul>
+</body>
+</html>

@@ -91,27 +91,18 @@
 
   <pre>
     <code>
-        <ul>
-          <li class="menu-item">
-            <a href="/">Section A</a>
+      <ul>
+        <li class="menu-item">
+          <a href="/a">Section A</a>
 
-            <ul class="menu-sub">
-              <li><a class="menu-sub-link" href="/">Section A1</a></li>
-              <li><a class="menu-sub-link" href="/">Section A2</a></li>
-              <li><a class="menu-sub-link" href="/">Section A3</a></li>
-            </ul>
-          </li>
-
-          <li class="menu-item">
-            <a href="/">Section B</a>
-
-            <ul class="menu-sub">
-              <li><a class="menu-sub-link" href="/">Section B1</a></li>
-              <li><a class="menu-sub-link" href="/">Section B2</a></li>
-              <li><a class="menu-sub-link" href="/">Section B3</a></li>
-            </ul>
-          </li>
-        </ul>
+          <ul class="menu-sub">
+            <li><a href="/a1">Section A1</a></li>
+            <li><a href="/a2">Section A2</a></li>
+            <li><a href="/a3">Section A3</a></li>
+          </ul>
+        </li>
+        ...
+      </ul>
     </code>
   </pre>
 </section>
@@ -131,10 +122,10 @@
     </code>
   </pre>
 
-  <p><a href="/demos/demo-1/index.html" target="_blank">Demo</a></p>
+  <p><a href="demos/demo-1/index.html" target="_blank">Demo</a></p>
 </section>
 
-<section>
+<!-- <section>
   <h2 class="no-margin">Example markup</h2>
 
   <pre>
@@ -164,12 +155,12 @@
       </nav>
     </code>
   </pre>
-</section>
+</section> -->
 
 <section>
-  <p>...but keyboard users can't tab to the sub menu links.</p>
+  <h2>:( can't tab to the sub menu links</h2>
 
-  <p>Let's try:</p>
+  <p>Let's try clipping instead of hiding:</p>
 
   <pre>
     <code>
@@ -184,36 +175,226 @@
     </code>
   </pre>
 
-  <p><a href="/demos/demo-2/index.html" target="_blank">Demo</a></p>
+  <p><a href="demos/demo-2/index.html" target="_blank">Demo</a></p>
 </section>
 
 <section>
-  <p>...but keyboard users can't see the sub menu links.</p>
+  <h2>:( can't <strong>see</strong> the sub links on focus</h2>
+
+  <!-- <p>Not all keyboard users have problems with their sight.</p> -->
+
+  <p>Let's try adding a focus state:</p>
+
+  <pre>
+    <code>
+      /* Flag a menu-sub having a link receiving focus */
+      .menu-sub:has(a:focus) {
+        position: static;
+      }
+    </code>
+  </pre>
+
+  <p><a href="demos/demo-3/index.html" target="_blank">Demo</a></p>
+</section>
+
+<section>
+  <h2 class="no-margin">:( nope!</h2>
+
+  <pre>
+    <code>
+      /* Flag menu-item having a menu-sub - supported */
+      .menu-item:has(.menu-sub) a {
+        color: green;
+      }
+
+      /* Flag menu-item having link receiving focus - no pseudo support */
+      .menu-item:has(a:focus) {
+        background: green;
+        color: white;
+      }
+    </code>
+  </pre>
+
+  <ul>
+    <li><span class="attr">:has()</span> isn't yet supported w/o a polyfill</li>
+    <li>even w/ a polyfill, support is patchy</li>
+    <li>legacy IE support will never happen</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Back to the drawing board</h2>
+
+  <p>Let's try anchors:</p>
+
+  <pre>
+    <code>
+      <ul>
+        <li class="menu-item">
+          <a href="/a">Section A</a>
+
+          <a class="menu-sub-trigger" href="#section-a-sub-menu">More</a>
+          
+          <ul id="section-a-sub-menu" class="menu-sub">
+            <li><a href="/a1">Section A1</a></li>
+            <li><a href="/a2">Section A2</a></li>
+            <li><a href="/a3">Section A3</a></li>
+          </ul>
+        </li>
+        ...
+      </ul>
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h2>CSS for the triggers</h2>
+
+  <pre>
+    <code>
+      .menu-sub-trigger {
+        clip: rect(1px, 1px, 1px, 1px);
+        position: absolute;
+      }
+
+      .menu-sub-trigger:focus {
+        position: static;
+      }
+
+      /* Not supported in &lt;IE9 */
+      :target {
+        position: static;
+      }
+    </code>
+  </pre>
+
+  <p><a href="demos/demo-4/index.html" target="_blank">Demo</a></p>
+</section>
+
+<section>
+  <h2>:( losing position on the page</h2>
+
+  <p>Let's try preventing a redirect:</p>
+
+  <pre>
+    <code>
+      var triggers = document.querySelectorAll('.menu-sub-trigger');
+
+      Array.prototype.forEach.call(triggers, function(trigger) {
+        trigger.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          var subMenu = trigger.nextElementSibling;
+
+          if (subMenu.classList.contains('menu-sub-open')) {
+            return subMenu.classList.remove('menu-sub-open');
+          }
+
+          return subMenu.classList.add('menu-sub-open');
+        });
+      });
+    </code>
+  </pre>
+
+  <p><a href="demos/demo-5/index.html" target="_blank">Demo</a></p>
+</section>
+
+<section>
+  <h2>:( sub-menu doesn't close</h2>
 
   <p>Let's try:</p>
 
   <pre>
     <code>
-      .menu-sub {
-        clip: rect(1px, 1px, 1px, 1px);
-        position: absolute;
-      }
+      <ul>
+        <li class="menu-item">
+          <a href="/a" class="js-menu-link">Section A</a>
 
-      .menu-item:hover .menu-sub {
-        position: static;
-      }
-
-      // This isn't actually possible - but would be cool
-      .menu-sub-link:focus < .menu-sub {
-        position: static;
-      }
+          <a class="menu-sub-trigger" href="#section-a-sub-menu">More</a>
+          
+          <ul id="section-a-sub-menu" class="menu-sub">
+            <li><a href="/a1">Section A1</a></li>
+            <li><a href="/a2">Section A2</a></li>
+            <li><a href="/a3">Section A3</a></li>
+          </ul>
+        </li>
+        ...
+      </ul>
     </code>
   </pre>
+</section>
+
+<section>
+  <p>...with:</p>
+
+  <pre>
+    <code>
+      var menuLinks = document.querySelectorAll('.js-menu-link');
+
+      Array.prototype.forEach.call(menuLinks, function(menuLink) {
+        menuLink.addEventListener('focus', function() {
+          var openSubMenu = document.querySelector('.menu-sub-open');
+          
+          if (openSubMenu) {
+            return openSubMenu.classList.remove('menu-sub-open');
+          }
+        });
+      });
+
+      ...
+    </code>
+  </pre>
+
+  <p><a href="demos/demo-6/index.html" target="_blank">Demo</a></p>
+</section>
+
+<section>
+  <h2>:( can tab thru the hidden links</h2>
+
+  <p>Let's try:</p>
+
+  <pre>
+    <code>
+      /* Hiding & showing */
+      .menu-sub { display: none; }
+      .menu-item:hover .menu-sub { display: block; }
+      .menu-sub-open { display: block; }
+
+      /* Instead of clipping */
+      .menu-sub { clip: rect(1px, 1px, 1px, 1px); position: absolute; }
+      .menu-item:hover .menu-sub { position: static; }
+      .menu-sub-open { position: static; }
+    </code>
+  </pre>
+
+  <p><a href="demos/demo-7/index.html" target="_blank">Demo</a></p>
+</section>
+
+<section>
+  <h2>Caveats</h2>
+  <ul>
+    <li>isn't a mobile-friendly solution (yet)</li>
+    <li>
+      need fallback for JS being disabled
+      <ul>
+        <li>show all links all the time; or</li>
+        <li>show sub-menu links when the user clicks through to a top-level section</li>
+      </ul>
+    </li>
+    <li>
+      older IE's aren't great with hover states on non-links
+      <ul>
+        <li>treat them as if JS is disabled</li>
+      </ul>
+    </li>
+  </ul>
 </section>
 
 <section>
   <h2>Resources</h2>
+
   <p><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA" target="_blank">MDN ARIA</a></p>
+  <p><a href="https://drafts.csswg.org/selectors-4" target="_blank">CSS Level 4 Selectors</a></p>
 </section>
       </div>
 
