@@ -565,11 +565,13 @@
       <fieldset>
         <legend>Home Address</legend>
 
-        <!-- "Line 1 Home Address text" -->
+        <!-- VO with FF "Line 1 Home Address Home Address text" -->
+        <!-- VO with Canary "Line 1 Home Address text" -->
         <label for="addr1">Line 1</label>
         <input type="text" id="addr1" name="address1" />
 
-        <!-- "Line 2 Home Address text" -->
+        <!-- VO with FF "Line 2 Home Address Home Address text" -->
+        <!-- VO with Canary  "Line 2 Home Address text" -->
         <label for="addr2">Line 2</label>
         <input type="text" id="addr2" name="address2" />
       </fieldset>
@@ -582,17 +584,19 @@
   <p>Use them for groups of radios or checks:</p>
   <pre>
     <code>
-      <fieldset>
-        <legend>Deliver To</legend>
+    <fieldset>
+      <legend>Deliver To</legend>
 
-        <!-- "Home Address deliver to radio button" -->
-        <input type="radio" id="home" name="delivery" value="home" />
-        <label for="home">Home Address</label>
+      <!-- VO with FF "Home Address deliver to deliver to radio button" -->
+      <!-- VO with Canary "Home Address deliver to radio button" -->
+      <input type="radio" id="home" name="delivery" value="home" />
+      <label for="home">Home Address</label>
 
-        <!-- "Work Address deliver to radio button" -->
-        <input type="radio" id="work" name="delivery" value="work" />
-        <label for="work">Work Address</label>
-      </fieldset>
+      <!-- VO with FF "Work Address deliver to deliver to radio button" -->
+      <!-- VO with Canary "Work Address deliver to radio button" -->
+      <input type="radio" id="work" name="delivery" value="work" />
+      <label for="work">Work Address</label>
+    </fieldset>
     </code>
   </pre>
 </section>
@@ -602,9 +606,10 @@
   <p>...but not for single checkboxes:</p>
   <pre>
     <code>
-      <!-- "Add me to your mailing list unchecked checkbox" -->
-      <input type="checkbox" id="mailinglist" name="subscribe" value="yes" />
-      <label for="mailinglist">Add me to your mailing list</label>
+    <!-- VO with FF "Add me to your mailing list unchecked checkbox" -->
+    <!-- VO with Canary "Add me to your mailing list unchecked checkbox" -->
+    <input type="checkbox" id="mailinglist" name="subscribe" value="yes" />
+    <label for="mailinglist">Add me to your mailing list</label>
     </code>
   </pre>
 </section>
@@ -615,19 +620,19 @@
   
   <pre>
     <code>
-      .sr-readable {
-        clip: rect(0, 0, 0, 0);
-        position: absolute!important;
-      }
+    .sr-readable {
+      clip: rect(0, 0, 0, 0);
+      position: absolute!important;
+    }
 
-      <fieldset>
-        <legend class="sr-readable">Deliver To</legend>
+    <fieldset>
+      <legend class="sr-readable">Deliver To</legend>
 
-        <!-- "Home Address deliver to radio button" -->
-        <input type="radio" id="home" name="delivery" value="home" />
-        <label for="home">Home Address</label>
-        ...
-      </fieldset>
+      <!-- VO with FF "Home Address deliver to deliver to radio button" -->
+      <!-- VO with Canary "Home Address deliver to radio button" -->
+      <input type="radio" id="home" name="delivery" value="home" />
+      <label for="home">Home Address</label>
+    </fieldset>
     </code>
   </pre>
 
