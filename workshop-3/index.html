@@ -532,22 +532,18 @@
   <h2>3.3.2 Labels or instructions cont'd</h2>
   <pre>
     <code>
-      <!-- VO with FF "Date text" = Good, but not better -->
-      <!-- VO with Canary "Date edit text" = Good, but not better -->
-      <label for="thedate">Date</label>
-      <span>dd/mm/yyyy</span>
-      <input id="thedate" name="date" type="text" />
+    <!-- VO with FF "Date text" = Good, but not better -->
+    <!-- VO with Canary "Date edit text" = Good, but not better -->
+    <label for="thedate">Date</label>
+    <span>dd/mm/yyyy</span>
+    <input id="thedate" name="date" type="text" />
 
-      <!-- VO with FF "Date dd/mm/yyyy text" = Better -->
-      <!-- VO with Canary "Date dd/mm/yyyy text" = Better -->
-      <label for="thedate">Date <span>dd/mm/yyyy</span></label>
-      <input id="thedate" name="date" type="text" />
 
-      <!-- VO with FF "Date dd/mm/yyyy text" = Better -->
-      <!-- VO with Canary "Date edit text" = A step back -->
-      <label for="thedate">Date</label>
-      <span id="dateInfo">dd/mm/yyyy</span>
-      <input id="thedate" name="date" type="text" aria-describedby="dateInfo" />
+    <!-- VO with FF "Date dd/mm/yyyy text" = Better -->
+    <!-- VO with Canary "Date edit text" = Good, but not better -->
+    <label for="thedate">Date</label>
+    <span id="dateInfo">dd/mm/yyyy</span>
+    <input id="thedate" name="date" type="text" aria-describedby="dateInfo" />
     </code>
   </pre>
 </section>
@@ -556,9 +552,21 @@
   <h2>3.3.2 Labels or instructions cont'd</h2>
   <pre>
     <code>
+      <!-- VO with FF "Date dd/mm/yyyy text" = Good -->
+      <!-- VO with Canary "Date dd/mm/yyyy edit text" = Better -->
+      <label for="thedate">
+        Date
+        <span>dd/mm/yyyy</span>
+      </label>
+      <input id="thedate" name="date" type="text" />
+
+
       <!-- VO with FF "Date dd/mm/yyyy required text" - Cool -->
-      <!-- VO with Canary "Date dd/mm/yyyy required invalid data edit text" - Cool -->
-      <label for="thedate">Date <span>dd/mm/yyyy</span></label>
+      <!-- VO with Canary "Date dd/mm/yyyy required invalid data edit text" - Hmm -->
+      <label for="thedate">
+        Date
+        <span>dd/mm/yyyy</span>
+      </label>
       <input id="thedate" name="date" type="text" required="required" />
     </code>
   </pre>
