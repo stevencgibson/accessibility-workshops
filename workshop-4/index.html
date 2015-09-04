@@ -60,7 +60,7 @@
 </section>
 
 <section>
-  <h2 class="no-margin">Example markup</h2>
+  <h3>Example markup</h3>
 
   <pre>
     <code>
@@ -81,7 +81,7 @@
 </section>
 
 <section>
-  <h2>Example CSS</h2>
+  <h3>Example CSS</h3>
 
   <pre>
     <code>
@@ -99,7 +99,7 @@
 </section>
 
 <section>
-  <h2>:( can't tab to the sub menu links</h2>
+  <h3>:( can't tab to the sub menu links</h3>
 
   <p>Let's try clipping instead of hiding:</p>
 
@@ -120,7 +120,7 @@
 </section>
 
 <section>
-  <h2>:( can't <strong>see</strong> the sub links on focus</h2>
+  <h3>:( can't <strong>see</strong> the sub links on focus</h3>
 
   <p>Let's try adding a focus state:</p>
 
@@ -137,7 +137,7 @@
 </section>
 
 <section>
-  <h2 class="no-margin">:( nope!</h2>
+  <h3 class="no-margin">:( nope!</h3>
 
   <pre>
     <code>
@@ -162,7 +162,7 @@
 </section>
 
 <section>
-  <h2>Back to the drawing board</h2>
+  <h3>Back to the drawing board</h3>
 
   <p>Let's try anchors:</p>
 
@@ -187,7 +187,7 @@
 </section>
 
 <section>
-  <h2>CSS for the triggers</h2>
+  <h3>CSS for the triggers</h3>
 
   <pre>
     <code>
@@ -211,7 +211,7 @@
 </section>
 
 <section>
-  <h2>:( losing position on the page</h2>
+  <h3>:( losing position on the page</h3>
 
   <p>Let's try preventing a redirect:</p>
 
@@ -239,7 +239,7 @@
 </section>
 
 <section>
-  <h2>:( sub-menu doesn't close</h2>
+  <h3>:( sub-menu doesn't close</h3>
 
   <p>Let's try:</p>
 
@@ -288,18 +288,22 @@
 </section>
 
 <section>
-  <h2>:( can tab thru the hidden links</h2>
+  <h3>:( can tab thru the hidden links</h3>
 
-  <p>Let's try:</p>
-
+  <h4 class="no-margin">Instead of hiding</h4>
   <pre>
     <code>
-      /* Hiding & showing */
       .menu-sub { display: none; }
       .menu-item:hover .menu-sub { display: block; }
       .menu-sub-open { display: block; }
+    </code>
+  </pre>
 
-      /* Instead of clipping */
+  <br/>
+
+  <h4 class="no-margin">Let's try clipping</h4>
+  <pre>
+    <code>
       .menu-sub { clip: rect(1px, 1px, 1px, 1px); position: absolute; }
       .menu-item:hover .menu-sub { position: static; }
       .menu-sub-open { position: static; }
@@ -310,7 +314,7 @@
 </section>
 
 <section>
-  <h2>Caveats</h2>
+  <h3>Caveats</h3>
   <ul>
     <li>isn't a mobile-friendly solution (yet)</li>
     <li>
