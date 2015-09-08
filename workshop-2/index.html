@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>a11y</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>a11y</h1>
+        </section>
+
+        <section>
+          <h2>What we covered last time</h2>
+          <ul>
+            <li><strong>brief</strong> overview of disability types</li>
+            <li>problems encountered by keyboard navigators</li>
+            <li>problems encountered by screenreader users</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>What we'll cover in this session</h2>
+          <ul>
+            <li>what is a11y?</li>
+            <li>a11y and the law</li>
+            <li>testing tools</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>What is a11y?</h3>
+          <p>a<span class="dim">ccessibilit</span>y</p>
+        </section>
+
+        <section>
+          <h3>Why is it important?</h3>
+          <ul>
+            <li>everyone has the right to use the web</li>
+            <li>everyone is a potential customer</li>
+            <li><a href="https://support.google.com/webmasters/answer/35769" target="_blank">can improve SEO</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>a11y and the law</h2>
+        </section>
+
+        <section>
+          <h3>Equality Act 2010 (UK)</h3>
+          <ul>
+            <li>replaced the Disability Discrimination Act</li>
+            <li>does <strong>not</strong> explicitly mention the web</li>
+          </ul>
+
+          <blockquote>"a person (a “service-provider”) concerned with the provision of a service to the public or a section of the public (for payment or not) must not discriminate against a person requiring the service by not providing the person with the service."</blockquote>
+        </section>
+
+        <section>
+          <h3>Section 508 (US)</h3>
+          <ul>
+            <li>signed into law in 1998</li>
+            <li>covers software and hardware</li>
+            <li><strong>but</strong> only applies to Federal agencies</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Americans with Disabilities Act (US)</h3>
+          <ul>
+            <li>signed into law in 1990</li>
+            <li>requires employers, state and local governments to offer reasonable services or tools to ensure that people are not discriminated against on the basis of disability</li>
+            <li>cited in <strong>a11y</strong> cases against AOL and Target</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Web Content Accessibility Guidelines (WCAG)</h3>
+          <ul>
+            <li>authored by W3C</li>
+            <li>v1.0 became a recommendation in 1999</li>
+            <li>v2.0 became a recommendation in 2008</li>
+            <li>used in US, Australian and Canadian law relating to govt. services</li>
+            <li>three levels of conformance - A, AA, AAA</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>WCAG</h3>
+          <h4>Level A (covers basic issues)</h4>
+          <ul>
+            <li>text alternatives to non-text content</li>
+            <li>content is coded in a logical order</li>
+            <li>"skip to content" links</li>
+            <li>no autoplay on videos, banners etc...</li>
+            <li>keyboard-accessible (with exceptions)</li>
+            <li>descriptive link text</li>
+            <li>and <a href="https://www.wuhcag.com/wcag-checklist/" target="_blank">more...</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>WCAG</h3>
+          <h4>Level AA (covers critical issues)</h4>
+          <ul>
+            <li>audio descriptions for video</li>
+            <li>no images of text</li>
+            <li>text can be resized to 200% without loss of function</li>
+            <li>clear keyboard focus</li>
+            <li>consistent navigation</li>
+            <li>fore/background contrast ratio of at least <a href="http://www.w3.org/TR/WCAG20-TECHS/G17.html" target="_blank">4.5:1</a></li>
+            <li>and <a href="https://www.wuhcag.com/wcag-checklist/" target="_blank">more...</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>WCAG</h3>
+          <h4>Level AAA</h4>
+          <ul>
+            <li>sign language translations for video</li>
+            <li>text alternatives to video</li>
+            <li>fore/background contrast ratio of at least 7:1</li>
+            <li>explain abbreviations</li>
+            <li>keyboard-accessible (w/o exception)</li>
+            <li>and <a href="https://www.wuhcag.com/wcag-checklist/" target="_blank">more...</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>What's the deal with alt text?</h3>
+        </section>
+
+        <section>
+          <h3>Informative images</h3>
+          <dl class="branch">
+            <dt><img src="http://cdn.arnoldclark.com/assets/images/map-marker.png" /></dt>
+            <dd>Stirling Citroen</dd>
+          </dl>
+
+          <pre>
+            <code>
+              <dl>
+                <dt><img src="location.png" alt="Branch" /></dt>
+                <dd>Stirling Citroen</dd>
+              </dl>
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Decorative images</h3>
+          <img src="http://vcache.arnoldclark.com/imageserver/AWRVNNB8M0-AUS5/350/f/" width="400" />
+
+          <pre>
+            <code>
+              <img src="car.jpg" alt="" />
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Functional images</h3>
+          <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-printer-outline-128.png" width="80" />
+
+          <pre>
+            <code>
+              <a href="/print">
+                <img src="print.png" alt="Printer-friendly version" />
+              </a>
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Images of text</h3>
+          <img src="http://catchquotes.com/wp-content/uploads/2014/12/401-Blades-of-Glory-quotes.gif" width="600" />
+
+          <pre>
+            <code>
+              <img src="ferrell.gif" alt="I'm gonna get you, get you drunk. Get you drunk off my lady hump. My hump, my hump, my lovely lady hump." />
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Complex images</h3>
+          <img src="https://d28wbuch0jlv7v.cloudfront.net/images/infografik/normal/chartoftheday_1761_Connected_device_shipment_forecast_n.jpg" width="500" />
+
+          <pre>
+            <code>
+              <img src="chart.jpg" alt="Android's market share has risen from 49% in 2014 to 59% in 2015, outstripping the growth of it's main competitors Windows and Mac." />
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>DO NOT</h3>
+          <pre>
+            <code>
+              <img src="car.jpg" alt="An image of..." />
+            </code>
+          </pre>
+          <p>Screenreaders will flag when there's an image so this will create duplicate content.</p>
+        </section>
+
+        <section>
+          <h3>How do I test for a11y?</h3>
+          <h4>Testing live sites</h4>
+          <ul>
+            <li><a href="http://wave.webaim.org/" target="_blank">Wave</a></li>
+            <li><a href="https://tenon.io/" target="_blank">Tenon</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>How do I test for a11y?</h3>
+          <h4>Testing during development</h4>
+          <ul>
+            <li><a href="https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh?hl=en-US" target="_blank">Wave Toolbar</a> (Chrome)</li>
+            <li><a href="https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb?hl=en" target="_blank"> Accessibility Dev Tools</a> (Chrome)</li>
+            <li>Screenreaders (VoiceOver, <a href="https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en" target="_blank">Chromevox</a>, <a href="http://www.nvaccess.org/download/" target="_blank">NVDA</a>...)</li>
+            <li><a href="https://github.com/Khan/tota11y" target="_blank">tota11y</a></li>
+            <!-- <li><a href="https://github.com/at-import/sass-a11y" target="_blank">SASS a11y</a></li> -->
+            <li><a href="https://github.com/addyosmani/a11y" target="_blank">a11y</a> (CLI, <a href="https://github.com/lucalanca/grunt-a11y" target="_blank">Grunt</a>)</li>
+            <li>Tenon API (<a href="https://github.com/egauci/grunt-tenon-client" target="_blank">Grunt</a> and <a href="https://github.com/egauci/gulp-tenon-client" target="_blank">Gulp</a> plugins - <a href="https://tenon.io/pricing.php" target="_blank">key required</a>)</li>
+            <li>pa11y and <a href="https://github.com/nature/pa11y-dashboard" target="_blank">pa11y dashboard</a></li>
+            <!-- <li><a href="https://gsnedders.html5.org/outliner/" target="_blank">HTML5 Outliner</a></li> -->
+          </ul>
+        </section>
+
+        <section>
+          <h3>How do I test for a11y?</h3>
+          <h4>Testing during design</h4>
+          <ul>
+            <li><a href="https://github.com/getflourish/Sketch-Color-Contrast-Analyser" target="_blank">Sketch Color Contrast Analyser</a></li>
+<!--            <li>descriptive link text</li>
+            <li><a href="http://24ways.org/2007/css-for-accessibilit" target="_blank">line height of 1.2 to 1.6 times the font size</a></li>
+            <li>uppercase text is harder to read</li> -->
+          </ul>
+        </section>
+        
+        <section>
+          <h3>How do I test for a11y?</h3>
+          <h4>User testing</h4>
+          <ul>
+            <li>blind screen-reader users</li>
+            <li>screen magnification users</li>
+            <li>deaf users</li>
+            <li>keyboard-only users</li>
+            <li>Dyslexic users</li>
+            <li>Aspergers or autistc users</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="http://a11yproject.com/resources.html" target="_blank">a11y project</a></li>
+            <li><a href="http://www.w3.org/TR/WCAG20/" target="_blank">WCAG 2.0</a></li>
+          </ul>
+        </section>
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+          { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+//          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { 
+//     [].forEach.call( document.querySelectorAll( '.highlight' ), function( v, i) {
+//         hljs.highlightBlock(v);
+//     });
+// } },
+
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>

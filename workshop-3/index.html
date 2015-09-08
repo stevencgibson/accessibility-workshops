@@ -77,67 +77,117 @@
 </section>
 
 <section>
-  <h3 class="no-margin">1.1.1 Non-text content</h3>
+  <h3>1.1.1 Non-text content</h3>
+  <h4 class="no-margin">Decorative images</h4>
   <pre>
-    <code>
-      <!-- Decorative images -->
-      <img src="image.jpg" alt="" />
+  <code>
+  <!-- VO/FF skips the image -->
+  <!-- VO/Canary skips the image -->
+  <!-- VO/Safari skips the image -->
+  <img src="image.jpg" alt="" />
+  </code>
+  </pre>
+  
+  <br/>
 
-      <!-- Informative images -->
-      <img src="phone.png" alt="Call us on" />
-      0123 456 7890
-
-      <!-- Functional images -->
-      <a href="print.html">
-        <img src="printer-icon.png" alt="Print-friendly version" />
-      </a>
-
-      <!-- Images of text -->
-      <img src="microsoft-logo.png" alt="Microsoft" />
-
-      <!-- Images of graphical data -->
-      <img src="apple-shares.jpg" alt="Apple's shares have risen steadily from $36 in 2010 to $123 in 2015." />
-    </code>
+  <h4 class="no-margin">Informative images</h4>
+  <pre>
+  <code>
+  <!-- VO/FF "Call us on image 0123 456 7890" -->
+  <!-- VO/Canary "Call us on image 0123 456 7890" -->
+  <!-- VO/Safari "Call us on image 0123 456 7890" -->
+  <img src="phone.png" alt="Call us on" /> 0123 456 7890
+  </code>
   </pre>
 </section>
 
 <section>
-  <h3 class="no-margin">1.1.1 Non-text content cont'd</h3>
+  <h3>1.1.1 Non-text content cont'd</h3>
+  <h4 class="no-margin">Functional images</h4>
   <pre>
-    <code>
-      <!-- Showing a caption with an image *untested* -->
-      <figure>
-        <img src="apple-shares.jpg" alt="" />
-        <figcaption>Apple's shares have risen steadily from $36 in 2010 to $123 in 2015.</figcaption>
-      </figure>
+  <code>
+  <!-- VO/FF "link image Print-friendly version" -->
+  <!-- VO/Canary "link image Print-friendly version" -->
+  <!-- VO/Safari "link image Print-friendly version" -->
+  <a href="print.html">
+    <img src="printer-icon.png" alt="Print-friendly version" />
+  </a>
+  </code>
+  </pre>
 
-      <!-- Bad practice -->
-      <img src="car.jpg" alt="An image of..." />
-    </code>
+  <br/>
+  
+  <h4 class="no-margin">Images of text</h4>
+  <pre>
+  <code>
+  <!-- VO/FF "Microsoft image" -->
+  <!-- VO/Canary "Microsoft image" -->
+  <!-- VO/Safari "Microsoft image" -->
+  <img src="microsoft-logo.png" alt="Microsoft" />
+  </code>
   </pre>
 </section>
 
 <section>
-  <h2 class="no-margin">1.2.1 Prerecorded audio and video</h2>
+  <h3>1.1.1 Non-text content cont'd</h3>
+  <h4 class="no-margin">Images of graphical data</h4>
+  <pre>
+  <code>
+  <!-- VO/FF "Apple's shares have risen steadily from $36 in 2010 to $123 in 2015. image" -->
+  <!-- VO/Canary "Apple's shares have risen steadily from $36 in 2010 to $123 in 2015. image" -->
+  <!-- VO/Safari "Apple's shares have risen steadily from $36 in 2010 to $123 in 2015. image" -->
+  <img src="apple-shares.jpg" alt="Apple's shares have risen steadily from $36 in 2010 to $123 in 2015." />
+  </code>
+  </pre>
+  
+  <h4 class="no-margin">??? Showing a caption with an image</h4>
+  <pre>
+  <code>
+  <figure>
+    <img src="apple-shares.jpg" alt="" />
+    <figcaption>Apple's shares have risen steadily from $36 in 2010 to $123 in 2015.</figcaption>
+  </figure>
+  </code>
+  </pre>
+</section>
+
+<section>
+  <h3>1.1.1 Non-text content cont'd</h3>
+  <p>Do not:</p>
+  <pre>
+  <code>
+  <!-- VO/FF "An image of... image" - Not great -->
+  <!-- VO/Canary "An image of... image" - Not great -->
+  <!-- VO/Safari "An image of... image" - Not great -->
+  <img src="car.jpg" alt="An image of..." />
+  </code>
+  </pre>
+
+  <p><a href="http://www.w3.org/WAI/tutorials/images/" target="_blank">WAI Image Concepts</a></p>
+</section>
+
+<section>
+  <h3>1.2.1 Prerecorded media</h3>
+  <h4 class="no-margin">Video-only</h4>
   <pre>
     <code>
-      <!-- Prerecorded video-only -->
-      <video>
-        <source type="video/mp4" src="changing-a-tyre.mp4">
-      </video>
+      <video><source type="video/mp4" src="changing-a-tyre.mp4"></video>
       <h2>How to change a tyre</h2>
       <ol>
         <li>Find a safe spot to pull over.</li>
-        <li>Turn on your hazard lights.</li>
         ...
       </ol>
+    </code>
+  </pre>
 
-      <!-- Prerecorded audio-only -->
+
+  <h4 class="no-margin">Audio-only</h4>
+  <pre>
+    <code>
       <audio src="changing-a-tyre.mp3"></audio>
       <h2>How to change a tyre</h2>
       <ol>
         <li>Find a safe spot to pull over.</li>
-        <li>Turn on your hazard lights.</li>
         ...
       </ol>
     </code>
@@ -145,20 +195,20 @@
 </section>
 
 <section>
-  <h2>1.2.2 Captions</h2>
+  <h3>1.2.2 Captions</h3>
   <p>Provide a way for people who are deaf to access a video's dialogue and important sounds.</p>
-	<pre>
-		<code>
+  <pre>
+    <code>
       <video>
         <source type="video/mp4" src="new_HyundaiI10_2014.mp4">
         <track kind="subtitles" label="English subtitles" src="video-track-example.vtt" srclang="en"></track>
       </video>
-		</code>
-	</pre>
+    </code>
+  </pre>
 </section>
 
 <section>
-  <h2 class="no-margin">1.2.2 Captions cont'd</h2>
+  <h3 class="no-margin">1.2.2 Captions cont'd</h3>
   <pre>
     <code>
       // video-track-example.vtt
@@ -184,7 +234,7 @@
 </section>
 
 <section>
-  <h2>1.2.2 Captions cont'd</h2>
+  <h3>1.2.2 Captions cont'd</h3>
   <video controls="controls">
     <source type="video/mp4" src="http://f1.caranddriving.com/videos/700/new_HyundaiI10_2014.mp4">
     <track kind="subtitles" label="English subtitles" src="video-track-example.vtt" srclang="en" default></track>
@@ -192,7 +242,7 @@
 </section>
 
 <section>
-  <h2>A note on automating captions</h2>
+  <h3>A note on automating captions</h3>
   <p>Services like YouTube can auto-generate captions but they <a href="https://www.youtube.com/watch?v=0YOs6CkZSHQ" target="_blank">struggle with Scottish accents</a>.</p>
 </section>
 
@@ -201,7 +251,7 @@
 </section>
 
 <section>
-  <h2>1.2.3 Audio descriptions</h2>
+  <h3>1.2.3 Audio descriptions</h3>
   <ul>
     <li>provide full text transcript for video; or</li>
     <li>provide videos with acompanying audio</li>
@@ -209,7 +259,7 @@
 </section>
 
 <section>
-  <h2>1.3.1 Info and relationships</h2>
+  <h3>1.3.1 Info and relationships</h3>
   <ul>
     <li>logical headings (<a href="https://gsnedders.html5.org/outliner/" target="_blank">HTML5 document outliner</a>)</li>
     <li>associate labels with form fields</li>
@@ -219,7 +269,7 @@
 </section>
 
 <section>
-  <h2>1.3.2 Meaningful sequence</h2>
+  <h3>1.3.2 Meaningful sequence</h3>
   <ul>
     <li>content makes sense in the order it's presented</li>
     <li>content is coded in the order it's to be presented</li>
@@ -227,15 +277,15 @@
 </section>
 
 <section>
-  <h2>1.3.3 Sensory characteristics</h2>
+  <h3>1.3.3 Sensory characteristics</h3>
   <ul>
-  	<li>try to avoid phrases like "fill-in the form below"</li>
+    <li>try to avoid phrases like "fill-in the form below"</li>
     <li>don't rely solely on arrows to signify direction</li>
   </ul>
 </section>
 
 <section>
-  <h2>1.4.1 Use of colour</h2>
+  <h3>1.4.1 Use of colour</h3>
   <p>Don't rely solely on colour to illustrate information.</p>
   <ul>
     <li>
@@ -255,7 +305,7 @@
 </section>
 
 <section>
-  <h2>A note on colourblindness</h2>
+  <h3>A note on colourblindness</h3>
   <ul>
     <li>deuteranopia (green-blind) <!--affects 1:12 men, 1:200 woman--></li>
     <li>deuteranomaly (green-weak)</li>
@@ -267,7 +317,7 @@
 </section>
 
 <section>
-  <h2>1.4.2 Audio control</h2>
+  <h3>1.4.2 Audio control</h3>
   <ul>
     <li>try to avoid autoplaying audio; or</li>
     <li>at least provide a pause button</li>
@@ -279,7 +329,7 @@
 </section>
 
 <section>
-  <h2>2.1.1 Keyboard</h2>
+  <h3>2.1.1 Keyboard</h3>
   <ul>
     <li>don't add keyboard shortcuts - they'll override screenreader shortcuts</li>
     <li>pretty much everything must be keyboard-accessible</li>
@@ -292,21 +342,21 @@
 </section>
 
 <section>
-  <h2>2.1.2 No keyboard trap</h2>
+  <h3>2.1.2 No keyboard trap</h3>
   <p>Users should be able to access any feature (e.g. datepicker, modal, tabs...) and move away from it using the keyboard.</p>
 </section>
 
 <section>
-  <h2>2.2.1 Timing adjustable</h2>
+  <h3>2.2.1 Timing adjustable</h3>
   <ul>
-  	<li>avoid putting time constraints on content</li>
-  	<li>allow users to adjust time constraints up to 10x</li>
-  	<li>allow users to reduce the frequency of auto-updating content by up to 10x</li>
+    <li>avoid putting time constraints on content</li>
+    <li>allow users to adjust time constraints up to 10x</li>
+    <li>allow users to reduce the frequency of auto-updating content by up to 10x</li>
   </ul>
 </section>
 
 <section>
-  <h2>2.2.2 Pause, stop, hide</h2>
+  <h3>2.2.2 Pause, stop, hide</h3>
   <ul>
     <li>avoid autoplaying scrollable content like banners</li>
     <li>at least provide a means of pausing</li>
@@ -315,94 +365,94 @@
 </section>
 
 <section>
-  <h2>2.3.1 Three flashes or below</h2>
+  <h3>2.3.1 Three flashes or below</h3>
   <p>WARNING: Flashing</p>
   <a href="https://www.youtube.com/watch?v=lQxUu6YqyuE" target="_blank">Battling Seizure Robots</a>
 </section>
 
 <section>
-  <h2>2.4.1 Bypass blocks</h2>
+  <h3>2.4.1 Bypass blocks</h3>
   <p>Make it easy for keyboard users to skip repeated content.</p>
 
   <pre>
-    <code>
-      <!-- Must always be visible or visible on focus -->
-      <a href="#content">Skip to content</a>
+  <code>
+  <!-- Must always be visible or visible on focus -->
+  <a href="#content">Skip to content</a>
 
-      <nav>
-        <ul>
-          <li><a href="/">Link 1</a></li>
-          <li><a href="/">Link 2</a></li>
-          <li><a href="/">Link 3</a></li>
-        </ul>
-      </nav>
+  <nav>
+    <ul>
+      <li><a href="/">Link 1</a></li>
+      <li><a href="/">Link 2</a></li>
+      <li><a href="/">Link 3</a></li>
+    </ul>
+  </nav>
 
-      <main id="content">
-      ...
-      </main>
-    </code>
+  <main id="content">
+  ...
+  </main>
+  </code>
   </pre>
 </section>
 
 <section>
-  <h2>2.4.2 Page title</h2>
+  <h3>2.4.2 Page title</h3>
   <ul>
-  	<li>always set a page's title</li>
+    <li>always set a page's title</li>
     <li>helps screenreader users figure out where they are</li>
     <li>also helps SEO</li>
   </ul>
 </section>
 
 <section>
-  <h2>2.4.3 Focus order</h2>
+  <h3>2.4.3 Focus order</h3>
   <p>Focus order should make sense to keyboard users.</p>
 
   <pre>
-    <code>
-      <!-- The default for focusable elements -->
-      <input type="text" tabindex="0" />
+  <code>
+  <!-- The default for focusable elements -->
+  <input type="text" tabindex="0" />
 
-      <!-- Altering tab order -->
-      <input type="text" tabindex="1" />
+  <!-- Altering tab order -->
+  <input type="text" tabindex="1" />
 
-      <!-- Removing from tab order -->
-      <input type="text" tabindex="-1" />
-    </code>
+  <!-- Removing from tab order -->
+  <input type="text" tabindex="-1" />
+  </code>
   </pre>
 
   <p>Try to avoid using <span class="attr">tabindex</span> by coding content in the order in which it will be displayed.</p>
 </section>
 
 <section>
-  <h2>2.4.3 Focus order cont'd</h2>
+  <h3>2.4.3 Focus order cont'd</h3>
   <pre>
-    <code>
-      <!-- The default for unfocusable elements -->
-      <span tabindex="-1"></span>
-      
-      <!-- Making the unfocusabe focusable -->
-      <span tabindex="0"></span>
+  <code>
+  <!-- The default for unfocusable elements -->
+  <span tabindex="-1"></span>
+  
+  <!-- Making the unfocusabe focusable -->
+  <span tabindex="0"></span>
 
-      <!-- Altering tab order -->
-      <span tabindex="1"></span>
-    </code>
+  <!-- Altering tab order -->
+  <span tabindex="1"></span>
+  </code>
   </pre>
 </section>
 
 <section>
-  <h2>2.4.4 Link purpose</h2>
+  <h3>2.4.4 Link purpose</h3>
   <p>Screenreader users can access a list of all links so ensure that the purpose of all links is clear.</p>
 
   <pre>
-    <code>
-      <!-- Bad -->
-      <a href="/">Click Here</a>
-    </code>
+  <code>
+  <!-- Bad -->
+  <a href="/">Click Here</a>
+  </code>
   </pre>
 </section>
 
 <section>
-  <h2>A note on the <span class="attr">title</span> attribute</h2>
+  <h3>A note on the <span class="attr">title</span> attribute</h3>
   <p>Useful for:</p>
   <ul>
     <li><span class="tag">frame</span> elements</li>
@@ -411,7 +461,7 @@
 </section>
 
 <section>
-  <h2>A note on the <span class="attr">title</span> attribute</h2>
+  <h3>A note on the <span class="attr">title</span> attribute</h3>
   <p>Fairly meh for:</p>
   <ul>
     <li>links</li>
@@ -425,20 +475,69 @@
 </section>
 
 <section>
-  <h2>??? 3.1.1 Language</h2>
-  <p>Setting the language of a page.</p>
+  <h3>3.1.1 Language</h3>
 
-  <pre>
-    <code>
-      &lt;html lang="en"&gt;
-      ...
-      &lt;/html&gt;
-    </code>
-  </pre>
+  <p>Setting the language of a document:</p>
+  <ul>
+    <li>allows screenreaders to adjust accent and pronunciation</li>
+    <li>triggers Google Translate in Chrome</li>
+  </ul>
 </section>
 
 <section>
-  <h2>3.2.1 On focus</h2>
+  <h3>3.1.1 Language cont'd</h3>
+
+  <h4 class="no-margin">Setting the language of a page</h4>
+  <pre>
+  <code>
+  &lt;html lang="en"&gt;
+  ...
+  &lt;/html&gt;
+  </code>
+  </pre>
+
+  <br/>
+
+  <h4 class="no-margin">Setting the language of specific content</h4>
+  <pre>
+  <code>
+  &lt;html lang="en"&gt;
+  ...   
+  <p lang="ja">&#12371;&#12435;&#12395;&#12385;&#12399;! &#12371;&#12398;&#12367;&#12427;&#12414;&#12399;&#12356;&#12367;&#12425;&#12391;&#12377;&#12363;?</p>
+  ...
+  &lt;/html&gt;
+  </code>
+  </pre>
+  <p lang="ja">&#12371;&#12435;&#12395;&#12385;&#12399;! &#12371;&#12398;&#12367;&#12427;&#12414;&#12399;&#12356;&#12367;&#12425;&#12391;&#12377;&#12363;?</p>
+</section>
+
+<section>
+  <h3>3.1.1 Language cont'd</h3>
+
+  <h4 class="no-margin">Specifying language variants</h4>
+  <pre>
+  <code>
+  <p lang="en"></p>
+  <p lang="en-GB"></p>
+  <p lang="en-US"></p>
+  <p lang="es"></p>
+  <p lang="es-ES"></p>
+  <p lang="es-MX"></p>
+  <p lang="zh"></p>
+  <p lang="zh-YUE"></p>
+  </code>
+  </pre>
+
+  <ul>
+    <li>makes no difference with VO and FF/Canary/Safari</li>
+    <li>need to test with JAWS/NVDA and IE</li>
+  </ul>
+
+  <p><a href="http://accessibility.psu.edu/foreignlanguages/langtaghtml/" target="_blank">More about setting language</a></p>
+</section>
+
+<section>
+  <h3>3.2.1 On focus</h3>
   <ul>
     <li>links should not open upon focus</li>
     <li>no auto-popups</li>
@@ -448,7 +547,7 @@
 </section>
 
 <section>
-  <h2>3.2.2 On input</h2>
+  <h3>3.2.2 On input</h3>
   <ul>
     <li>don't auto-submit forms</li>
     <li>don't switch context w/o warning</li>
@@ -456,16 +555,16 @@
 </section>
 
 <section>
-  <h2>3.3.1 Error identification</h2>
+  <h3>3.3.1 Error identification</h3>
   <ul>
-    <li>show errors near the each field</li>
+    <li>show errors near each field</li>
     <li>list errors in a summary at the top of the form (advisory)</li>
     <li>link to each field from the summary (advisory)</li>
   </ul>
 </section>
 
 <section>
-  <h2>3.3.1 Error identification cont'd</h2>
+  <h3>3.3.1 Error identification cont'd</h3>
   <ul>
     <li>highlight errors with colour and symbols (advisory)</li>
     <li>update the page title (advisory)</li>
@@ -476,182 +575,236 @@
 </section>
 
 <section>
-  <h2>3.3.2 Labels or instructions</h2>
+  <h3>3.3.2 Labels or instructions</h3>
   <p>Critical in giving context to screenreader users.</p>
 
   <pre>
-    <code>
-      <!-- VO with FF "text blank" = Bad -->
-      <!-- VO with Canary "edit text blank" = Bad -->
-      <input name="date" type="text" />
+  <code>
+  <!-- VO/FF "text blank" = Bad -->
+  <!-- VO/Canary "edit text blank" = Bad -->
+  <!-- VO/Safari "edit text blank" = Bad -->
+  <input name="date" type="text" />
 
-      <!-- VO with FF "text blank" = Bad -->
-      <!-- VO with Canary "Date edit text" = Good -->
-      <input name="date" type="text" placeholder="Date" />
 
-      <!-- VO with FF "01/01/2015 text" = Bad -->
-      <!-- VO with Canary "01/01/2015 contents selected edit text" = No -->
-      <input name="date" type="text" placeholder="Date" value="01/01/2015" />
+  <!-- VO/FF "text blank" = Bad -->
+  <!-- VO/Canary "Date edit text" = Good -->
+  <!-- VO/Safari "Date edit text" = Good -->
+  <input name="date" type="text" placeholder="Date" />
 
-      <!-- VO with FF "text blank" = Bad -->
-      <!-- VO with Canary "edit text blank" = Bad -->
-      <label>Date</label>
-      <input name="date" type="text" />
-    </code>
+
+  <!-- VO/FF "text blank" = Bad -->
+  <!-- VO/Canary "edit text blank" = Bad -->
+  <!-- VO/Safari "edit text blank" = Bad -->
+  <label>Date</label>
+  <input name="date" type="text" />
+  </code>
   </pre>
 </section>
 
 <section>
-  <h2>3.3.2 Labels or instructions cont'd</h2>
+  <h3>3.3.2 Labels or instructions cont'd</h3>
 
   <pre>
-    <code>
-      <!-- VO with FF "Date Date text" = Not Great -->
-      <!-- VO with Canary "Date edit text" = Good -->
-      <label>
-        Date
-        <input name="date" type="text" />
-      </label>
+  <code>
+  <!-- VO/FF "Date Date text" = Hmm -->
+  <!-- VO/Canary "Date edit text" = Good -->
+  <!-- VO/Safari "Date edit text" = Good -->
+  <label>
+    Date
+    <input name="date" type="text" />
+  </label>
 
-      <!-- VO with FF "Date Date text" = Not Great -->
-      <!-- VO with Canary "Date edit text" = Good -->
-      <label for="thedate">
-        Date
-        <input id="thedate" name="date" type="text" />
-      </label>
 
-      <!-- VO with FF "Date text" = Good -->
-      <!-- VO with Canary "Date edit text" = Good -->
-      <label for="thedate">Date</label>
-      <input id="thedate" name="date" type="text" />
-    </code>
-  </pre>
-</section>
-
-<section>
-  <h2>3.3.2 Labels or instructions cont'd</h2>
-  <pre>
-    <code>
-    <!-- VO with FF "Date text" = Good, but not better -->
-    <!-- VO with Canary "Date edit text" = Good, but not better -->
-    <label for="thedate">Date</label>
-    <span>dd/mm/yyyy</span>
+  <!-- VO/FF "Date Date text" = Hmm -->
+  <!-- VO/Canary "Date edit text" = Good -->
+  <!-- VO/Safari "Date edit text" = Good -->
+  <label for="thedate">
+    Date
     <input id="thedate" name="date" type="text" />
-
-
-    <!-- VO with FF "Date dd/mm/yyyy text" = Better -->
-    <!-- VO with Canary "Date edit text" = Good, but not better -->
-    <label for="thedate">Date</label>
-    <span id="dateInfo">dd/mm/yyyy</span>
-    <input id="thedate" name="date" type="text" aria-describedby="dateInfo" />
-    </code>
+  </label>
+  </code>
   </pre>
 </section>
 
 <section>
-  <h2>3.3.2 Labels or instructions cont'd</h2>
+  <h3>3.3.2 Labels or instructions cont'd</h3>
   <pre>
-    <code>
-      <!-- VO with FF "Date dd/mm/yyyy text" = Good -->
-      <!-- VO with Canary "Date dd/mm/yyyy edit text" = Better -->
-      <label for="thedate">
-        Date
-        <span>dd/mm/yyyy</span>
-      </label>
-      <input id="thedate" name="date" type="text" />
-
-
-      <!-- VO with FF "Date dd/mm/yyyy required text" - Cool -->
-      <!-- VO with Canary "Date dd/mm/yyyy required invalid data edit text" - Hmm -->
-      <label for="thedate">
-        Date
-        <span>dd/mm/yyyy</span>
-      </label>
-      <input id="thedate" name="date" type="text" required="required" />
-    </code>
+  <code>
+  <!-- VO/FF "Date text" = Good -->
+  <!-- VO/Canary "Date edit text" = Good -->
+  <!-- VO/Safari "Date edit text" = Good -->
+  <label for="thedate">Date</label>
+  <input id="thedate" name="date" type="text" />
+  </code>
   </pre>
 </section>
 
 <section>
-  <h2>A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h2>
+  <h3>3.3.2 Labels or instructions cont'd</h3>
+  <h4 class="no-margin">What's the expected date format?</h4>
+  <pre>
+  <code>
+  <!-- VO/FF "Date text" = No improvement -->
+  <!-- VO/Canary "Date edit text" = No improvement -->
+  <!-- VO/Safari "Date edit text" = No improvement -->
+  <label for="thedate">Date</label>
+  <span>dd/mm/yyyy</span>
+  <input id="thedate" name="date" type="text" />
+
+
+  <!-- VO/FF "Date dd/mm/yyyy text" = Great -->
+  <!-- VO/Canary "Date edit text" = No improvement -->
+  <!-- VO/Safari "Date edit text" = No improvement -->
+  <label for="thedate">Date</label>
+  <span id="dateInfo">dd/mm/yyyy</span>
+  <input id="thedate" name="date" type="text" aria-describedby="dateInfo" />
+  </code>
+  </pre>
+</section>
+
+<section>
+  <h3>3.3.2 Labels or instructions cont'd</h3>
+  <pre>
+  <code>
+  <!-- VO/FF "Date dd/mm/yyyy text" = Great -->
+  <!-- VO/Canary "Date dd/mm/yyyy edit text" = Great -->
+  <!-- VO/Safari "Date dd/mm/yyyy edit text" = Great -->
+  <label for="thedate">
+    Date
+    <span>dd/mm/yyyy</span>
+  </label>
+  <input id="thedate" name="date" type="text" />
+  </code>
+  </pre>
+</section>
+
+<section>
+  <h3>3.3.2 Labels or instructions cont'd</h3>
+  <h4 class="no-margin">Is the field required?</h4>
+  <pre>
+  <code>
+  <!-- VO/FF "Date dd/mm/yyyy required text" = Great -->
+  <!-- VO/Canary "Date dd/mm/yyyy required invalid data edit text" = Hmm -->
+  <!-- VO/Safari "Date dd/mm/yyyy required edit text" = Great -->
+  <label for="thedate">
+    Date
+    <span>dd/mm/yyyy</span>
+  </label>
+  <input id="thedate" name="date" type="text" required="required" />
+
+
+  <!-- VO/FF "Date dd/mm/yyyy required text" = Great -->
+  <!-- VO/Canary "Date dd/mm/yyyy required edit text" = Great -->
+  <!-- VO/Safari "Date dd/mm/yyyy required edit text" = Great -->
+  <label for="thedate">
+    Date
+    <span>dd/mm/yyyy</span>
+  </label>
+  <input id="thedate" name="date" type="text" aria-required="true" />
+  </code>
+  </pre>
+</section>
+
+<section>
+  <h3>3.3.2 Labels or instructions cont'd</h3>
+  <h4 class="no-margin">What about when the field has been completed?</h4>
+  <pre>
+  <code>
+  <!-- VO/FF "01/01/2015 contents selected Date dd/mm/yyyy required text" = Okay -->
+  <!-- VO/Canary "01/01/2015 contents selected Date dd/mm/yyyy required edit text" = Okay -->
+  <!-- VO/Safari "01/01/2015 contents selected Date dd/mm/yyyy required edit text" = Okay -->
+  <label for="thedate">
+    Date
+    <span>dd/mm/yyyy</span>
+  </label>
+  <input id="thedate" name="date" type="text" aria-required="true" value="01/01/2015" />
+  </code>
+  </pre>
+</section>
+
+<section>
+  <h3 class="no-margin">A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h3>
   <ul>
     <li>use <span class="tag">fieldset</span> to group related fields</li>
     <li>use <span class="tag">legend</span> to label grouped form fields
   </ul>
   <pre>
-    <code>
-      <fieldset>
-        <legend>Home Address</legend>
+  <code>
+  <fieldset>
+    <legend>Home Address</legend>
 
-        <!-- VO with FF "Line 1 Home Address Home Address text" -->
-        <!-- VO with Canary "Line 1 Home Address text" -->
-        <label for="addr1">Line 1</label>
-        <input type="text" id="addr1" name="address1" />
+    <!-- VO/FF "Line 1 Home Address Home Address text" - Hmm -->
+    <!-- VO/Canary "Line 1 Home Address text" - Good -->
+    <!-- VO/Safari "Line 1 edit text" - Bad -->
+    <label for="addr1">Line 1</label>
+    <input type="text" id="addr1" name="address1" />
 
-        <!-- VO with FF "Line 2 Home Address Home Address text" -->
-        <!-- VO with Canary  "Line 2 Home Address text" -->
-        <label for="addr2">Line 2</label>
-        <input type="text" id="addr2" name="address2" />
-      </fieldset>
-    </code>
+    <!-- VO/FF "Line 2 Home Address Home Address text" - Hmm -->
+    <!-- VO/Canary "Line 2 Home Address text" - Good -->
+    <!-- VO/Safari "Line 2 edit text" - Bad -->
+    <label for="addr2">Line 2</label>
+    <input type="text" id="addr2" name="address2" />
+  </fieldset>
+  </code>
   </pre>
 </section>
 
 <section>
-  <h2>A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h2>
+  <h3>A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h3>
   <p>Use them for groups of radios or checks:</p>
   <pre>
-    <code>
-    <fieldset>
-      <legend>Deliver To</legend>
+  <code>
+  <fieldset>
+    <legend>Deliver To</legend>
 
-      <!-- VO with FF "Home Address deliver to deliver to radio button" -->
-      <!-- VO with Canary "Home Address deliver to radio button" -->
-      <input type="radio" id="home" name="delivery" value="home" />
-      <label for="home">Home Address</label>
+    <!-- VO/FF "Home Address delivery to delivery to radio button" - Hmm -->
+    <!-- VO/Canary "Home Address deliver to selected radio button" - Good -->
+    <!-- VO/Safari "Work Address selected radio button, 2 of 2" - Hmm -->
+    <input type="radio" id="home" name="delivery" value="home" />
+    <label for="home">Home Address</label>
 
-      <!-- VO with FF "Work Address deliver to deliver to radio button" -->
-      <!-- VO with Canary "Work Address deliver to radio button" -->
-      <input type="radio" id="work" name="delivery" value="work" />
-      <label for="work">Work Address</label>
-    </fieldset>
-    </code>
+    <!-- VO/FF "Work Address delivery to delivery to radio button" - Hmm -->
+    <!-- VO/Canary "Work Address deliver to selected radio button" - Good -->
+    <!-- VO/Safari "Work Address selected radio button, 2 of 2" - Hmm -->
+    <input type="radio" id="work" name="delivery" value="work" />
+    <label for="work">Work Address</label>
+  </fieldset>
+  </code>
   </pre>
 </section>
 
 <section>
-  <h2>A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h2>
+  <h3>A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h3>
   <p>...but not for single checkboxes:</p>
   <pre>
-    <code>
-    <!-- VO with FF "Add me to your mailing list unchecked checkbox" -->
-    <!-- VO with Canary "Add me to your mailing list unchecked checkbox" -->
-    <input type="checkbox" id="mailinglist" name="subscribe" value="yes" />
-    <label for="mailinglist">Add me to your mailing list</label>
-    </code>
+  <code>
+  <!-- VO/FF "Add me to your mailing list unchecked checkbox" - Good -->
+  <!-- VO/Canary "Add me to your mailing list unchecked checkbox" - Good -->
+  <!-- VO/Safari "Add me to your mailing list unchecked checkbox" - Good -->
+  <input type="checkbox" id="mailinglist" name="subscribe" value="yes" />
+  <label for="mailinglist">Add me to your mailing list</label>
+  </code>
   </pre>
 </section>
 
 <section>
-  <h2 class="no-margin">A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h2>
+  <h3 class="no-margin">A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h3>
   <p>Setting <span class="attr">display:none</span> will cause screenreaders to ignore the legend. Instead, use:</p>
   
   <pre>
-    <code>
-    .sr-readable {
-      clip: rect(0, 0, 0, 0);
-      position: absolute!important;
-    }
+  <code>
+  .sr-readable {
+    clip: rect(0, 0, 0, 0);
+    position: absolute!important;
+  }
 
-    <fieldset>
-      <legend class="sr-readable">Deliver To</legend>
+  <fieldset>
+    <legend class="sr-readable">Deliver To</legend>
 
-      <!-- VO with FF "Home Address deliver to deliver to radio button" -->
-      <!-- VO with Canary "Home Address deliver to radio button" -->
-      <input type="radio" id="home" name="delivery" value="home" />
-      <label for="home">Home Address</label>
-    </fieldset>
-    </code>
+    <input type="radio" id="home" name="delivery" value="home" />
+    <label for="home">Home Address</label>
+  </fieldset>
+  </code>
   </pre>
 
   <p><a href="https://developer.yahoo.com/blogs/ydn/clip-hidden-content-better-accessibility-53456.html" target="_blank">Clip your hidden content for better accessibility</a></p>
@@ -662,7 +815,7 @@
 </section>
 
 <section>
-  <h2>4.1.1 Parsing</h2>
+  <h3>4.1.1 Parsing</h3>
   <ul>
     <li>start and end tags</li>
     <li>correct tag nesting</li>
@@ -673,7 +826,7 @@
 </section>
 
 <section>
-  <h2>4.1.2 Name, role, value</h2>
+  <h3>4.1.2 Name, role, value</h3>
   <ul>
     <li>make use of standard interface components</li>
     <li>use labels to give context to form fields</li>
@@ -683,7 +836,6 @@
 
 <section>
   <h2>Resources</h2>
-  <p><a href="http://www.w3.org/WAI/tutorials/images/" target="_blank">WAI Image Concepts</a></p>
   <p><a href="http://www.w3.org/TR/WCAG20-TECHS/" target="_blank">Techniques for WCAG 2.0</a></p>
   <p><a href="http://www.w3.org/TR/WCAG20-TECHS/general.html" target="_blank">General Techniques for WCAG 2.0</p>
 </section>
