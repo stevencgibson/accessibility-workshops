@@ -314,6 +314,70 @@
 </section>
 
 <section>
+  <h3>I have the power</h3>
+</section>
+
+<section>
+  <h3>Not so fast, He-man</h3>
+</section>
+
+<section>
+  <h3>You haven't checked with a screenreader</h3>
+</section>
+
+<section>
+  <h3>Fuck</h3>
+  <p><a href="demos/demo-7/index.html" target="_blank">Demo</a></p>
+</section>
+
+<section>
+  <h3>:( the <strong>More</strong> link isn't announced</h3>
+  <p>Let's try:</p>
+  <pre>
+    <code>
+      .menu-sub-trigger {
+        clip: rect(1px, 1px, 1px, 1px);
+        position: absolute;
+        right: 10px;
+        top: 0;
+      }
+
+      .menu-sub-trigger:focus {
+        clip: auto;
+      }
+    </code>
+  </pre>
+  <p><a href="demos/demo-8/index.html" target="_blank">Demo</a></p>
+</section>
+
+<section>
+  <h3>:( no idea what <strong>More</strong> means</h3>
+  <p>Let's try:</p>
+  <pre>
+    <code>
+      <a class="menu-sub-trigger" href="#section-a-sub-menu" aria-expanded="false">More</a>
+    </code>
+  </pre>
+  <p><a href="demos/demo-9/index.html" target="_blank">Demo</a></p>
+</section>
+
+<section>
+  <h3>How can we distinguish a menu from a list?</h3>
+  <pre>
+    <code>
+      <ul role="menu">
+        ...
+        <ul role="menu" id="section-a-sub-menu" class="menu-sub">
+          ...
+        </ul>
+        ...
+      </ul>
+    </code>
+  </pre>
+  <p><a href="demos/demo-9/index.html" target="_blank">Demo</a></p>
+</section>
+
+<section>
   <h3>Caveats</h3>
   <ul>
     <li>isn't a mobile-friendly solution (yet)</li>

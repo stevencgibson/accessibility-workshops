@@ -35,13 +35,13 @@
   </style>
 </head>
 <body>
-  <ul>
+  <ul role="menu">
     <li class="menu-item">
       <a href="/a" class="js-menu-link">Section A</a>
 
-      <a class="menu-sub-trigger" href="#section-a-sub-menu">More</a>
+      <a class="menu-sub-trigger" href="#section-a-sub-menu" aria-expanded="false">More</a>
       
-      <ul id="section-a-sub-menu" class="menu-sub">
+      <ul role="menu" id="section-a-sub-menu" class="menu-sub">
         <li><a href="/a1">Section A1</a></li>
         <li><a href="/a2">Section A2</a></li>
         <li><a href="/a3">Section A3</a></li>
@@ -51,7 +51,7 @@
     <li class="menu-item">
       <a href="/b" class="js-menu-link">Section B</a>
 
-      <a class="menu-sub-trigger" href="#section-b-sub-menu">More</a>
+      <a class="menu-sub-trigger" href="#section-b-sub-menu" aria-expanded="false">More</a>
           
       <ul id="section-b-sub-menu" class="menu-sub">
         <li><a href="/b1">Section B1</a></li>
@@ -72,9 +72,14 @@
     Array.prototype.forEach.call(menuLinks, function(menuLink) {
       menuLink.addEventListener('focus', function() {
         var openSubMenu = document.querySelector('.menu-sub-open');
-        
+        var openTrigger = document.querySelector('[aria-expanded="true"]');
+
         if (openSubMenu) {
-          return openSubMenu.classList.remove('menu-sub-open');
+          openSubMenu.classList.remove('menu-sub-open');
+        }
+
+        if (openTrigger) {
+          openTrigger.setAttribute('aria-expanded', false);
         }
       });
     });
@@ -86,10 +91,12 @@
         var subMenu = trigger.nextElementSibling;
 
         if (subMenu.classList.contains('menu-sub-open')) {
-          return subMenu.classList.remove('menu-sub-open');
+          subMenu.classList.remove('menu-sub-open');
+          trigger.setAttribute('aria-expanded', false);
+        } else {
+          subMenu.classList.add('menu-sub-open');
+          trigger.setAttribute('aria-expanded', true);
         }
-
-        return subMenu.classList.add('menu-sub-open');
       });
     });
   </script>
