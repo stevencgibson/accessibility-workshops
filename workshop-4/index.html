@@ -320,9 +320,31 @@
 
 <section>
   <h3>:( the <strong>More</strong> link isn't announced</h3>
-  <p>Let's try:</p>
+  <p>Issue switching from absolute to static position:</p>
   <pre>
     <code>
+      .menu-sub-trigger {
+        clip: rect(1px, 1px, 1px, 1px);
+        position: absolute;
+      }
+
+      .menu-sub-trigger:focus {
+        position: static;
+      }
+    </code>
+  </pre>
+</section>
+
+<section>
+  <h3>:( the <strong>More</strong> link isn't announced</h3>
+  <p>Let's try adjusting clip on focus:</p>
+  <pre>
+    <code>
+      .menu-item {
+        ...
+        position: relative;
+      }
+
       .menu-sub-trigger {
         clip: rect(1px, 1px, 1px, 1px);
         position: absolute;
