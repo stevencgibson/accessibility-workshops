@@ -20,6 +20,10 @@ img {
   border: none!important;
 }
 
+a {
+  text-decoration: underline!important;
+}
+
 pre {
   box-shadow: none!important;
   margin: 0!important;
