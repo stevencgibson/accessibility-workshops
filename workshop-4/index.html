@@ -361,18 +361,58 @@
 </section>
 
 <section>
-  <h3>:( no idea what <strong>More</strong> means</h3>
-  <p>Let's try:</p>
+  <h3>:( what is the <strong>More</strong> link?</h3>
+  <p>Use ARIA to provide some context:</p>
   <pre>
     <code>
       <a class="menu-sub-trigger" href="#section-a-sub-menu" aria-expanded="false">More</a>
     </code>
   </pre>
+  <p><a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-expanded" target="_blank">More about <span class="tag">aria-expanded</span></a></p>
+</section>
+
+<section>
+  <h3>:( what is the <strong>More</strong> link?</h3>
+  <p>...and some JS to toggle the <span class="tag">aria-expanded</span> value:</p>
+  <pre>
+  <code>
+    Array.prototype.forEach.call(triggers, function(trigger) {
+      trigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        var subMenu = trigger.nextElementSibling;
+
+        if (subMenu.classList.contains('menu-sub-open')) {
+          subMenu.classList.remove('menu-sub-open');
+          trigger.setAttribute('aria-expanded', false);
+        } else {
+          subMenu.classList.add('menu-sub-open');
+          trigger.setAttribute('aria-expanded', true);
+        }
+      });
+    });
+  </code>
+  </pre>
   <p><a href="demos/demo-9/index.html" target="_blank">Demo</a></p>
 </section>
 
 <section>
-  <h3>How can we distinguish a menu from a list?</h3>
+  <h3>:( what is the <strong>More</strong> link?</h3>
+  <pre>
+    <code>
+      <a class="menu-sub-trigger" href="#section-a-sub-menu" aria-expanded="false" aria-controls="section-a-sub-menu">More</a>
+
+      <ul id="section-a-sub-menu" class="menu-sub">
+      ...
+      </ul>
+    </code>
+  </pre>
+  <p><a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-controls" target="_blank">More about <span class="tag">aria-controls</span></a></p>
+  <p><a href="demos/demo-10/index.html" target="_blank">Demo</a></p>
+</section>
+
+<section>
+  <h3>How to distinguish a menu from a list?</h3>
   <pre>
     <code>
       <ul role="menu">
@@ -411,6 +451,7 @@
   <h2>Resources</h2>
 
   <p><a href="https://drafts.csswg.org/selectors-4" target="_blank">CSS Level 4 Selectors</a></p>
+  <p><a href="https://craighospital.org/" target="_blank">Craig Hospital</a>
 </section>
       </div>
 
