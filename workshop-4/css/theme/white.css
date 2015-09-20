@@ -42,6 +42,15 @@ code {
   /*text-indent: -200px;*/
 }
 
+.attr {
+  font-family: monospace!important;
+}
+
+.tag {
+  font-family: monospace!important;
+  text-transform: uppercase;
+}
+
 .no-margin {
   margin: 0!important;
 }
