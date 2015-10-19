@@ -264,7 +264,7 @@ body {
 
 .reveal .slides {
   position: absolute;
-  width: 100%;
+  width: 1200px!important;
   height: 100%;
   top: 0;
   right: 0;
