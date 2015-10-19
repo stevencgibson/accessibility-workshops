@@ -729,6 +729,23 @@
 </section>
 
 <section>
+  <h3>3.3.2 Labels or instructions cont'd</h3>
+  <h4 class="no-margin">Is the user-entered value valid?</h4>
+  <pre>
+  <code>
+  <!-- VO/FF "abc Date dd/mm/yyyy required text" = Not great -->
+  <!-- VO/Canary "abc Date dd/mm/yyyy required invalid data edit text" = Okay -->
+  <!-- VO/Safari "abc Date dd/mm/yyyy required invalid data edit text" = Okay -->
+  <label for="thedate">
+    Date
+    <span>dd/mm/yyyy</span>
+  </label>
+  <input id="thedate" name="date" type="text" aria-required="true" aria-invalid="true" value="abc" />
+  </code>
+  </pre>
+</section>
+
+<section>
   <h3 class="no-margin">A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h3>
   <ul>
     <li>use <span class="tag">fieldset</span> to group related fields</li>
