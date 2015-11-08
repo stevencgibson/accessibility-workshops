@@ -16,9 +16,10 @@
 
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/white.css" id="theme">
+    <link rel="stylesheet" href="css/theme/custom.css">
 
     <!-- Code syntax highlighting -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
 
     <!-- Printing and PDF exports -->
     <script>
@@ -42,7 +43,6 @@
       <div class="slides">
 <section>
   <h1>a11y</h1>
-  <p>ARIA</p>
 </section>
 
 <section>
@@ -62,7 +62,7 @@
 
 <section>
   <h3>What is ARIA?</h3>
-  <p>Accessibly Rich Interet Applications</p>
+  <p>Accessibly Rich Internet Applications</p>
 </section>
 
 <section>
@@ -79,49 +79,42 @@
 <section>
   <h3>Let's look at buttons</h3>
   <pre>
-  <code>
-  <!-- VO & Canary "Enquire button" - perfect -->
-  <button>Enquire</button>
-  </code>
+  // VO & Canary "Enquire button" - perfect
+
+  &lt;button&gt;Enquire&lt;/button&gt;
   </pre>
 </section>
 
 <section>
   <h3>An alternative to using <span class="tag">button</span></h3>
-  <p class="no-margin">Some horrendous markup:</p>
+  <h4>Some horrendous markup</h4>
   <pre>
-  <code>
-  <span>Enquire</span>
-  </code>
-  <br/>
+  &lt;span&gt;Enquire&lt;/span&gt;
   </pre>
-  <p class="no-margin">Some horrendous JS:</p>
+  <p></p>
+  <h4>Some horrendous JS</h4>
   <pre>
-  <code>
   document.querySelector('span').addEventListener('click', function() {
     document.querySelector('form').submit();
   });
-  </code>
   </pre>
 </section>
 
 <section>
   <h3>:( can't tab to the "<span class="tag">button</span>"</h3>
   <pre>
-  <code>
-  <!-- VO & Canary "Enquire" - okay -->
-  <span tabindex="0">Enquire</span>
-  </code>
+  // VO & Canary "Enquire" - okay
+
+  &lt;span <strong class="code__highlight">tabindex="0"</strong>&gt;Enquire&lt;/span&gt;
   </pre>
 </section>
 
 <section>
   <h3>:( what does it do?</h3>
   <pre>
-  <code>
-  <!-- VO & Canary "Enquire button" - perfect -->
-  <span tabindex="0" role="button">Enquire</span>
-  </code>
+  // VO & Canary "Enquire button" - perfect
+
+  &lt;span tabindex="0" <strong class="code__highlight">role="button"</strong>&gt;Enquire&lt;/span&gt;
   </pre>
 </section>
 
@@ -192,78 +185,70 @@
   <h3>applying <span class="tag">role</span> to an accordion</h3>
   <p>Basic markup:</p>
   <pre>
-  <code>
-  <div>
-    <h2>Heading 1</h2>
-    <div class="accordion-panel">Panel 1</div>
+  &lt;div&gt;
+    &lt;h2&gt;Heading 1&lt;/h2&gt;
+    &lt;div class="accordion-panel"&gt;Panel 1&lt;/div&gt;
 
-    <h2>Heading 2</h2>
-    <div class="accordion-panel">Panel 2</div>
+    &lt;h2&gt;Heading 2&lt;/h2&gt;
+    &lt;div class="accordion-panel"&gt;Panel 2&lt;/div&gt;
 
-    <h2>Heading 3</h2>
-    <div class="accordion-panel">Panel 3</div>
-  </div>
-  </code>
+    &lt;h2&gt;Heading 3&lt;/h2&gt;
+    &lt;div class="accordion-panel"&gt;Panel 3&lt;/div&gt;
+  &lt;/div&gt;
   </pre>
   <p><a href="demos/demo-1/index.html" target="_blank">Demo</a></p>
 </section>
 
 <section>
-  <h3>applying <span class="tag">role</span> to an accordion cont'd</h3>
+  <h3>applying <span class="tag">role</span> to an accordion</h3>
   <p>Defining an accordion:</p>
   <pre>
-  <code>
-  <div role="tablist">
-    <h2>Heading 1</h2>
-    <div class="accordion-panel">Panel 1</div>
+  &lt;div <strong class="code__highlight">role="tablist"</strong>&gt;
+    &lt;h2&gt;Heading 1&lt;/h2&gt;
+    &lt;div class="accordion-panel"&gt;Panel 1&lt;/div&gt;
 
-    <h2>Heading 2</h2>
-    <div class="accordion-panel">Panel 2</div>
+    &lt;h2&gt;Heading 2&lt;/h2&gt;
+    &lt;div class="accordion-panel"&gt;Panel 2&lt;/div&gt;
 
-    <h2>Heading 3</h2>
-    <div class="accordion-panel">Panel 3</div>
-  </div>
-  </code>
+    &lt;h2&gt;Heading 3&lt;/h2&gt;
+    &lt;div class="accordion-panel"&gt;Panel 3&lt;/div&gt;
+  &lt;/div&gt;
   </pre>
   <p><a href="demos/demo-2/index.html" target="_blank">Demo</a></p>
 </section>
 
 <section>
-  <h3>applying <span class="tag">role</span> to an accordion cont'd</h3>
+  <h3>applying <span class="tag">role</span> to an accordion</h3>
   <p>Defining a panel:</p>
   <pre>
-  <code>
-  <div role="tablist">
-    <h2 role="tab">Heading 1</h2>
-    <div class="accordion-panel">Panel 1</div>
+  &lt;div role="tablist"&gt;
+    &lt;h2 <strong class="code__highlight">role="tab"</strong>&gt;Heading 1&lt;/h2&gt;
+    &lt;div class="accordion-panel"&gt;Panel 1&lt;/div&gt;
 
-    <h2 role="tab">Heading 2</h2>
-    <div class="accordion-panel">Panel 2</div>
+    &lt;h2 <strong class="code__highlight">role="tab"</strong>&gt;Heading 2&lt;/h2&gt;
+    &lt;div class="accordion-panel"&gt;Panel 2&lt;/div&gt;
 
-    <h2 role="tab">Heading 3</h2>
-    <div class="accordion-panel">Panel 3</div>
-  </div>
-  </code>
+    &lt;h2 <strong class="code__highlight">role="tab"</strong>&gt;Heading 3&lt;/h2&gt;
+    &lt;div class="accordion-panel"&gt;Panel 3&lt;/div&gt;
+  &lt;/div&gt;
   </pre>
   <p><a href="demos/demo-3/index.html" target="_blank">Demo</a></p>
 </section>
 
 <section>
-  <h3>applying <span class="tag">role</span> to an accordion cont'd</h3>
+  <h3>applying <span class="tag">role</span> to an accordion</h3>
   <p>Defining the content:</p>
   <pre>
-  <code>
-  <div role="tablist">
-    <h2 role="tab">Heading 1</h2>
-    <div role="tabpanel" class="accordion-panel">Panel 1</div>
+  &lt;div role="tablist"&gt;
+    &lt;h2 role="tab"&gt;Heading 1&lt;/h2&gt;
+    &lt;div <strong class="code__highlight">role="tabpanel"</strong> class="accordion-panel"&gt;Panel 1&lt;/div&gt;
 
-    <h2 role="tab">Heading 2</h2>
-    <div role="tabpanel" class="accordion-panel">Panel 2</div>
+    &lt;h2 role="tab"&gt;Heading 2&lt;/h2&gt;
+    &lt;div <strong class="code__highlight">role="tabpanel"</strong> class="accordion-panel"&gt;Panel 2&lt;/div&gt;
 
-    <h2 role="tab">Heading 3</h2>
-    <div role="tabpanel" class="accordion-panel">Panel 3</div>
-  </div>
-  </code>
+    &lt;h2 role="tab"&gt;Heading 3&lt;/h2&gt;
+    &lt;div <strong class="code__highlight">role="tabpanel"</strong> class="accordion-panel"&gt;Panel 3&lt;/div&gt;
+  &lt;/div&gt;
   </pre>
   <p><a href="demos/demo-4/index.html" target="_blank">Demo</a></p>
 </section>
@@ -283,38 +268,34 @@
   <h3>applying state to an accordion</h3>
   <p>Announcing the expanded status:</p>
   <pre>
-  <code>
-  <div role="tablist">
-    <h2 role="tab" aria-expanded="false">Heading 1</h2>
-    <div role="tabpanel" class="accordion-panel">Panel 1</div>
+  &lt;div role="tablist"&gt;
+    &lt;h2 role="tab" <strong class="code__highlight">aria-expanded="false"</strong>&gt;Heading 1&lt;/h2&gt;
+    &lt;div role="tabpanel" class="accordion-panel"&gt;Panel 1&lt;/div&gt;
 
-    <h2 role="tab" aria-expanded="false">Heading 2</h2>
-    <div role="tabpanel" class="accordion-panel">Panel 2</div>
+    &lt;h2 role="tab" <strong class="code__highlight">aria-expanded="false"</strong>&gt;Heading 2&lt;/h2&gt;
+    &lt;div role="tabpanel" class="accordion-panel"&gt;Panel 2&lt;/div&gt;
 
-    <h2 role="tab" aria-expanded="false">Heading 3</h2>
-    <div role="tabpanel" class="accordion-panel">Panel 3</div>
-  </div>
-  </code>
+    &lt;h2 role="tab" <strong class="code__highlight">aria-expanded="false"</strong>&gt;Heading 3&lt;/h2&gt;
+    &lt;div role="tabpanel" class="accordion-panel"&gt;Panel 3&lt;/div&gt;
+  &lt;/div&gt;
   </pre>
   <p><a href="demos/demo-5/index.html" target="_blank">Demo</a></p>
 </section>
 
 <section>
-  <h3>applying state to an accordion cont'd</h3>
+  <h3>applying state to an accordion</h3>
   <p>Giving focus to the triggers:</p>
   <pre>
-  <code>
-  <div role="tablist">
-    <h2 role="tab" aria-expanded="false" tabindex="0">Heading 1</h2>
-    <div role="tabpanel" class="accordion-panel">Panel 1</div>
+  &lt;div role="tablist"&gt;
+    &lt;h2 role="tab" aria-expanded="false" <strong class="code__highlight">tabindex="0"</strong>&gt;Heading 1&lt;/h2&gt;
+    &lt;div role="tabpanel" class="accordion-panel"&gt;Panel 1&lt;/div&gt;
 
-    <h2 role="tab" aria-expanded="false" tabindex="0">Heading 2</h2>
-    <div role="tabpanel" class="accordion-panel">Panel 2</div>
+    &lt;h2 role="tab" aria-expanded="false" <strong class="code__highlight">tabindex="0"</strong>&gt;Heading 2&lt;/h2&gt;
+    &lt;div role="tabpanel" class="accordion-panel"&gt;Panel 2&lt;/div&gt;
 
-    <h2 role="tab" aria-expanded="false" tabindex="0">Heading 3</h2>
-    <div role="tabpanel" class="accordion-panel">Panel 3</div>
-  </div>
-  </code>
+    &lt;h2 role="tab" aria-expanded="false" <strong class="code__highlight">tabindex="0"</strong>&gt;Heading 3&lt;/h2&gt;
+    &lt;div role="tabpanel" class="accordion-panel"&gt;Panel 3&lt;/div&gt;
+  &lt;/div&gt;
   </pre>
   <p><a href="demos/demo-6/index.html" target="_blank">Demo</a></p>
 </section>
@@ -357,24 +338,11 @@
         progress: true,
         history: true,
         center: true,
-
-        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        transition: 'none', // none/fade/slide/convex/concave/zoom
 
         // Optional reveal.js plugins
         dependencies: [
-          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-
-          { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-//          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { 
-//     [].forEach.call( document.querySelectorAll( '.highlight' ), function( v, i) {
-//         hljs.highlightBlock(v);
-//     });
-// } },
-
-          { src: 'plugin/zoom-js/zoom.js', async: true },
-          { src: 'plugin/notes/notes.js', async: true }
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } }
         ]
       });
 

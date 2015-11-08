@@ -16,9 +16,10 @@
 
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/white.css" id="theme">
+    <link rel="stylesheet" href="css/theme/custom.css">
 
     <!-- Code syntax highlighting -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
 
     <!-- Printing and PDF exports -->
     <script>
@@ -42,7 +43,6 @@
       <div class="slides">
 <section>
   <h1>a11y</h1>
-  <p>Navigation</p>
 </section>
 
 <section>
@@ -60,23 +60,80 @@
 </section>
 
 <section>
+  <h2>But first, a note on dsylexia</h2>
+</section>
+
+<section>
+  <h3>1 in 10-20 are dsylexic</h3>
+  <p>Source: <a href="http://www.nhs.uk/conditions/Dyslexia/Pages/Introduction.aspx" target="_blank">NHS</a></p>
+</section>
+
+<section>
+  <h3>Having dyslexia <em>can</em> mean...</h3>
+  <ul>
+    <li>understanding a word on one page and not understanding the same word on a different page</li>
+    <li>confusion between trail/trial, form/from, could/cold</li>
+    <li>confusion between who/how, lots/lost, saw/was</li>
+    <li>confusion between b/d, p/q, b/p, n/u, m/w</li>
+  </ul>
+  <p><a href="http://webaim.org/simulations/dyslexia-sim.html" target="_blank">Dyslexia Simulator</a></p>
+</section>
+
+<section>
+  <h3>Dsylexia and web design</h3>
+  <ul>
+    <li>gaps in justified text can cause distraction</li>
+    <li>high colour contrast causes a blur effect</li>
+    <li>serif fonts obscure the shapes of letters</li>
+    <li>long blocks of copy are hard to parse</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Dsylexia and web design</h3>
+  <ul>
+    <li>
+      <h4>Fonts</h4>
+      <p>Dyslexie and <a href="http://opendyslexic.org/try-it/" target="_blank">OpenDyslexia</a> are designed to make parsing copy less difficult.</p>
+      <p>Make use of heavier line thickness to anchor the bottoms of letters.</p>
+      <p>Users download a browser extension to override a site's fonts.</p>
+      <p>No conclusive proof that they work, though.</p>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h3>Dsylexia and web development</h3>
+  <ul>
+    <li>using Dyslexie or OpenDyslexia breaks icon fonts</li>
+  </ul>
+  <h4>Alternatives:</h4>
+  <ul>
+    <li><a href="https://css-tricks.com/svg-sprites-use-better-icon-fonts/" target="_blank">SVG Sprites</a></li>
+    <li><a href="https://css-tricks.com/svg-use-external-source/" target="_blank">SVG use with External Source</a></li>
+  </ul>
+</section>
+
+<section>
+  <h2>Building accessible navigation</h2>
+</section>
+
+<section>
   <h3>Example markup</h3>
 
   <pre>
-    <code>
-      <ul>
-        <li class="menu-item">
-          <a href="/a">Section A</a>
+  &lt;ul&gt;
+    &lt;li class="menu-item"&gt;
+      &lt;a href="/a">Section A&lt;/a&gt;
 
-          <ul class="menu-sub">
-            <li><a href="/a1">Section A1</a></li>
-            <li><a href="/a2">Section A2</a></li>
-            <li><a href="/a3">Section A3</a></li>
-          </ul>
-        </li>
-        ...
-      </ul>
-    </code>
+      &lt;ul class="menu-sub"&gt;
+        &lt;li&gt;&lt;a href="/a1"&gt;Section A1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/a2"&gt;Section A2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/a3"&gt;Section A3&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    ...
+  </ul>
   </pre>
 </section>
 
@@ -84,15 +141,13 @@
   <h3>Example CSS</h3>
 
   <pre>
-    <code>
-      .menu-sub {
-        display: none;
-      }
+  .menu-sub {
+    display: none;
+  }
 
-      .menu-item:hover .menu-sub {
-        display: block;
-      }
-    </code>
+  .menu-item:hover .menu-sub {
+    display: block;
+  }
   </pre>
 
   <p><a href="demos/demo-1/index.html" target="_blank">Demo</a></p>
@@ -101,19 +156,19 @@
 <section>
   <h3>:( can't tab to the sub menu links</h3>
 
-  <p>Let's try clipping instead of hiding:</p>
+  <p>Let's try clipping instead of hiding.</p>
 
   <pre>
-    <code>
-      .menu-sub {
-        clip: rect(1px, 1px, 1px, 1px);
-        position: absolute;
-      }
+  .menu-sub {
+    <del>display: none</del>
+    <strong class="code__highlight">clip: rect(1px, 1px, 1px, 1px);
+    position: absolute;</strong>
+  }
 
-      .menu-item:hover .menu-sub {
-        position: static;
-      }
-    </code>
+  .menu-item:hover .menu-sub {
+    <del>display: block;</del>
+    <strong class="code__highlight">position: static;</strong>
+  }
   </pre>
 
   <p><a href="demos/demo-2/index.html" target="_blank">Demo</a></p>
@@ -122,36 +177,35 @@
 <section>
   <h3>:( can't <strong>see</strong> the sub links on focus</h3>
 
-  <p>Let's try adding a focus state:</p>
+  <p>Let's try adding a focus state.</p>
 
   <pre>
-    <code>
-      /* Flag a menu-sub having a link receiving focus */
-      .menu-sub:has(a:focus) {
-        position: static;
-      }
-    </code>
+  // Target a menu-sub having a link receiving focus
+
+  .menu-sub:has(a:focus) {
+    position: static;
+  }
   </pre>
 
   <p><a href="demos/demo-3/index.html" target="_blank">Demo</a></p>
 </section>
 
 <section>
-  <h3 class="no-margin">:( nope!</h3>
+  <h3>:( nope!</h3>
 
   <pre>
-    <code>
-      /* Flag menu-item having a menu-sub - supported */
-      .menu-item:has(.menu-sub) a {
-        color: green;
-      }
+  // Target menu-item having a menu-sub - supported
 
-      /* Flag menu-item having link receiving focus - no pseudo support */
-      .menu-item:has(a:focus) {
-        background: green;
-        color: white;
-      }
-    </code>
+  .menu-item:has(.menu-sub) a {
+    color: green;
+  }
+
+
+  // Target menu-sub having link receiving focus - no pseudo support
+
+  .menu-sub:has(a:focus) {
+    position: static;
+  }
   </pre>
 
   <ul>
@@ -164,25 +218,23 @@
 <section>
   <h3>Back to the drawing board</h3>
 
-  <p>Let's try anchors:</p>
+  <p>Let's try anchors.</p>
 
   <pre>
-    <code>
-      <ul>
-        <li class="menu-item">
-          <a href="/a">Section A</a>
+  &lt;ul&gt;
+    &lt;li class="menu-item"&gt;
+      &lt;a href="/a"&gt;Section A&lt;/a&gt;
 
-          <a class="menu-sub-trigger" href="#section-a-sub-menu">More</a>
-          
-          <ul id="section-a-sub-menu" class="menu-sub">
-            <li><a href="/a1">Section A1</a></li>
-            <li><a href="/a2">Section A2</a></li>
-            <li><a href="/a3">Section A3</a></li>
-          </ul>
-        </li>
-        ...
-      </ul>
-    </code>
+      <strong class="code__highlight">&lt;a class="menu-sub-trigger" href="#section-a-sub-menu">More&lt;/a&gt;</strong>
+      
+      &lt;ul <strong class="code__highlight">id="section-a-sub-menu"</strong> class="menu-sub"&gt;
+        &lt;li&gt;&lt;a href="/a1"&gt;Section A1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/a2"&gt;Section A2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/a3"&gt;Section A3&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    ...
+  </ul>
   </pre>
 </section>
 
@@ -190,21 +242,19 @@
   <h3>CSS for the triggers</h3>
 
   <pre>
-    <code>
-      .menu-sub-trigger {
-        clip: rect(1px, 1px, 1px, 1px);
-        position: absolute;
-      }
+  .menu-sub-trigger {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute;
+  }
 
-      .menu-sub-trigger:focus {
-        position: static;
-      }
+  .menu-sub-trigger:focus {
+    position: static;
+  }
 
-      /* Not supported in &lt;IE9 */
-      :target {
-        position: static;
-      }
-    </code>
+  // Not supported in &lt;IE9
+  <strong class="code__highlight">:target {
+    position: static;
+  }</strong>
   </pre>
 
   <p><a href="demos/demo-4/index.html" target="_blank">Demo</a></p>
@@ -213,26 +263,24 @@
 <section>
   <h3>:( losing position on the page</h3>
 
-  <p>Let's try preventing a redirect:</p>
+  <p>Let's try preventing a redirect.</p>
 
   <pre>
-    <code>
-      var triggers = document.querySelectorAll('.menu-sub-trigger');
+  var triggers = document.querySelectorAll('.menu-sub-trigger');
 
-      Array.prototype.forEach.call(triggers, function(trigger) {
-        trigger.addEventListener('click', function(e) {
-          e.preventDefault();
-          
-          var subMenu = trigger.nextElementSibling;
+  Array.prototype.forEach.call(triggers, function(trigger) {
+    trigger.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      var subMenu = trigger.nextElementSibling;
 
-          if (subMenu.classList.contains('menu-sub-open')) {
-            return subMenu.classList.remove('menu-sub-open');
-          }
+      if (subMenu.classList.contains('menu-sub-open')) {
+        return subMenu.classList.remove('menu-sub-open');
+      }
 
-          return subMenu.classList.add('menu-sub-open');
-        });
-      });
-    </code>
+      return subMenu.classList.add('menu-sub-open');
+    });
+  });
   </pre>
 
   <p><a href="demos/demo-5/index.html" target="_blank">Demo</a></p>
@@ -241,25 +289,21 @@
 <section>
   <h3>:( sub-menu doesn't close</h3>
 
-  <p>Let's try:</p>
-
   <pre>
-    <code>
-      <ul>
-        <li class="menu-item">
-          <a href="/a" class="js-menu-link">Section A</a>
+  &lt;ul&gt;
+    &lt;li class="menu-item"&gt;
+      &lt;a href="/a" <strong class="code__highlight">class="js-menu-link"</strong>&gt;Section A&lt;/a&gt;
 
-          <a class="menu-sub-trigger" href="#section-a-sub-menu">More</a>
-          
-          <ul id="section-a-sub-menu" class="menu-sub">
-            <li><a href="/a1">Section A1</a></li>
-            <li><a href="/a2">Section A2</a></li>
-            <li><a href="/a3">Section A3</a></li>
-          </ul>
-        </li>
-        ...
-      </ul>
-    </code>
+      &lt;a class="menu-sub-trigger" href="#section-a-sub-menu"&gt;More&lt;/a&gt;
+      
+      &lt;ul id="section-a-sub-menu" class="menu-sub"&gt;
+        &lt;li&gt;&lt;a href="/a1"&gt;Section A1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/a2"&gt;Section A2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/a3"&gt;Section A3&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    ...
+  &lt;/ul&gt;
   </pre>
 </section>
 
@@ -267,21 +311,19 @@
   <p>...with:</p>
 
   <pre>
-    <code>
-      var menuLinks = document.querySelectorAll('.js-menu-link');
+  var menuLinks = document.querySelectorAll('.js-menu-link');
 
-      Array.prototype.forEach.call(menuLinks, function(menuLink) {
-        menuLink.addEventListener('focus', function() {
-          var openSubMenu = document.querySelector('.menu-sub-open');
-          
-          if (openSubMenu) {
-            return openSubMenu.classList.remove('menu-sub-open');
-          }
-        });
-      });
+  Array.prototype.forEach.call(menuLinks, function(menuLink) {
+    menuLink.addEventListener('focus', function() {
+      var openSubMenu = document.querySelector('.menu-sub-open');
+      
+      if (openSubMenu) {
+        return openSubMenu.classList.remove('menu-sub-open');
+      }
+    });
+  });
 
-      ...
-    </code>
+  ...
   </pre>
 
   <p><a href="demos/demo-6/index.html" target="_blank">Demo</a></p>
@@ -290,24 +332,23 @@
 <section>
   <h3>:( can tab thru the hidden links</h3>
 
-  <h4 class="no-margin">Instead of hiding</h4>
+  <p>Instead of hiding, let's try clipping.</p>
   <pre>
-    <code>
-      .menu-sub { display: none; }
-      .menu-item:hover .menu-sub { display: block; }
-      .menu-sub-open { display: block; }
-    </code>
-  </pre>
+  .menu-sub {
+    <del>display: none;</del>
+    <strong class="code__highlight">clip: rect(1px, 1px, 1px, 1px);
+    position: absolute;</strong>
+  }
 
-  <br/>
+  .menu-item:hover .menu-sub {
+    <del>display: block;</del>
+    <strong class="code__highlight">position: static;</strong>
+  }
 
-  <h4 class="no-margin">Let's try clipping</h4>
-  <pre>
-    <code>
-      .menu-sub { clip: rect(1px, 1px, 1px, 1px); position: absolute; }
-      .menu-item:hover .menu-sub { position: static; }
-      .menu-sub-open { position: static; }
-    </code>
+  .menu-sub-open {
+    <del>display: block;</del>
+    <strong class="code__highlight">???position: static;</strong>
+  }
   </pre>
 
   <p><a href="demos/demo-7/index.html" target="_blank">Demo</a></p>
@@ -320,78 +361,70 @@
 
 <section>
   <h3>:( the <strong>More</strong> link isn't announced</h3>
-  <p>Issue switching from absolute to static position:</p>
+  <p>Issue switching from absolute to static position.</p>
   <pre>
-    <code>
-      .menu-sub-trigger {
-        clip: rect(1px, 1px, 1px, 1px);
-        position: absolute;
-      }
+  .menu-sub-trigger {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute;
+  }
 
-      .menu-sub-trigger:focus {
-        position: static;
-      }
-    </code>
+  .menu-sub-trigger:focus {
+    position: static;
+  }
   </pre>
 </section>
 
 <section>
   <h3>:( the <strong>More</strong> link isn't announced</h3>
-  <p>Let's try adjusting clip on focus:</p>
+  <p>Let's try adjusting clip on focus.</p>
   <pre>
-    <code>
-      .menu-item {
-        ...
-        position: relative;
-      }
+  .menu-item {
+    ...
+    position: relative;
+  }
 
-      .menu-sub-trigger {
-        clip: rect(1px, 1px, 1px, 1px);
-        position: absolute;
-        right: 10px;
-        top: 0;
-      }
+  .menu-sub-trigger {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute;
+    right: 10px;
+    top: 0;
+  }
 
-      .menu-sub-trigger:focus {
-        clip: auto;
-      }
-    </code>
+  .menu-sub-trigger:focus {
+    clip: auto;
+  }
   </pre>
   <p><a href="demos/demo-8/index.html" target="_blank">Demo</a></p>
 </section>
 
 <section>
   <h3>:( what is the <strong>More</strong> link?</h3>
-  <p>Use ARIA to provide some context:</p>
+  <p>Use ARIA to provide some context.</p>
   <pre>
-    <code>
-      <a class="menu-sub-trigger" href="#section-a-sub-menu" aria-expanded="false">More</a>
-    </code>
+  &lt;a class="menu-sub-trigger" href="#section-a-sub-menu" <strong class="code__highlight">aria-expanded="false"</strong>&gt;More&lt;/a&gt;
   </pre>
   <p><a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-expanded" target="_blank">More about <span class="tag">aria-expanded</span></a></p>
 </section>
 
 <section>
   <h3>:( what is the <strong>More</strong> link?</h3>
-  <p>...and some JS to toggle the <span class="tag">aria-expanded</span> value:</p>
+  <p>...and some JS to toggle the <span class="tag">aria-expanded</span> value.</p>
   <pre>
-  <code>
-    Array.prototype.forEach.call(triggers, function(trigger) {
-      trigger.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        var subMenu = trigger.nextElementSibling;
+  Array.prototype.forEach.call(triggers, function(trigger) {
+    trigger.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      var subMenu = trigger.nextElementSibling;
 
-        if (subMenu.classList.contains('menu-sub-open')) {
-          subMenu.classList.remove('menu-sub-open');
-          trigger.setAttribute('aria-expanded', false);
-        } else {
-          subMenu.classList.add('menu-sub-open');
-          trigger.setAttribute('aria-expanded', true);
-        }
-      });
+      if (subMenu.classList.contains('menu-sub-open')) {
+        subMenu.classList.remove('menu-sub-open');
+        trigger.setAttribute('aria-expanded', false);
+      } else {
+        subMenu.classList.add('menu-sub-open');
+        trigger.setAttribute('aria-expanded', true);
+      }
     });
-  </code>
+  });
   </pre>
   <p><a href="demos/demo-9/index.html" target="_blank">Demo</a></p>
 </section>
@@ -399,13 +432,11 @@
 <section>
   <h3>:( what is the <strong>More</strong> link?</h3>
   <pre>
-    <code>
-      <a class="menu-sub-trigger" href="#section-a-sub-menu" aria-expanded="false" aria-controls="section-a-sub-menu">More</a>
+  &lt;a class="menu-sub-trigger" href="#section-a-sub-menu" aria-expanded="false" aria-controls="section-a-sub-menu"&gt;More&lt;/a&gt;
 
-      <ul id="section-a-sub-menu" class="menu-sub">
-      ...
-      </ul>
-    </code>
+  &lt;ul id="section-a-sub-menu" class="menu-sub"&gt;
+  ...
+  &lt;/ul&gt;
   </pre>
   <p><a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-controls" target="_blank">More about <span class="tag">aria-controls</span></a></p>
   <p><a href="demos/demo-10/index.html" target="_blank">Demo</a></p>
@@ -414,15 +445,13 @@
 <section>
   <h3>How to distinguish a menu from a list?</h3>
   <pre>
-    <code>
-      <ul role="menu">
-        ...
-        <ul role="menu">
-          ...
-        </ul>
-        ...
-      </ul>
-    </code>
+  &lt;ul <strong class="code__highlight">role="menu"</strong>&gt;
+    ...
+    &lt;ul <strong class="code__highlight">role="menu"</strong>&gt;
+      ...
+    &lt;/ul&gt;
+    ...
+  &lt;/ul&gt;
   </pre>
   <p><a href="demos/demo-10/index.html" target="_blank">Demo</a></p>
 </section>
@@ -469,24 +498,11 @@
         progress: true,
         history: true,
         center: true,
-
-        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        transition: 'none', // none/fade/slide/convex/concave/zoom
 
         // Optional reveal.js plugins
         dependencies: [
-          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-
-          { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-//          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { 
-//     [].forEach.call( document.querySelectorAll( '.highlight' ), function( v, i) {
-//         hljs.highlightBlock(v);
-//     });
-// } },
-
-          { src: 'plugin/zoom-js/zoom.js', async: true },
-          { src: 'plugin/notes/notes.js', async: true }
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } }
         ]
       });
 
@@ -494,4 +510,3 @@
 
   </body>
 </html>
-
