@@ -174,3 +174,20 @@ body {
   font-family: monospace!important;
   font-weight: 400!important;
 }
+
+.colour {
+  color: #fff;
+  padding: 15px 28px!important;
+}
+
+.red {
+  background: #e53935;
+}
+
+.green {
+  background: #43A047;
+}
+
+.blue {
+  background: #1e88e5;
+}
