@@ -94,7 +94,7 @@
   <span class="comment comment__success">VO/Canary skips the image</span>
   <span class="comment comment__success">VO/Safari skips the image</span>
   <pre>
-  &lt;img src="image.jpg" <strong class="code__highlight">alt=""</strong> /&gt;
+  &lt;img src="car.jpg" <strong class="code__highlight">alt=""</strong> /&gt;
   </pre>
 </section>
 
@@ -269,7 +269,7 @@
     <li>logical headings (<a href="https://gsnedders.html5.org/outliner/" target="_blank">HTML5 document outliner</a>)</li>
     <li>associate labels with form fields</li>
     <li>use tables for data</li>
-    <li>use <span class="tag">optgroup</span> to group <span class="tag">SELECT</span> options</li>
+    <li>use <span class="tag">optgroup</span> to group <span class="tag">select</span> options, where it makes sense</li>
   </ul>
 </section>
 
@@ -437,7 +437,7 @@
   // Altering tab order
   &lt;span <strong class="code__highlight">tabindex="1"</strong>>&lt;/span&gt;
   </pre>
-  <p>Try to avoid using <span class="attr">tabindex</span> by coding content in the order in which it will be displayed.</p>
+  <p>Try to avoid using <span class="tag">tabindex</span> by coding content in the order in which it will be displayed.</p>
 </section>
 
 <section>
@@ -450,7 +450,10 @@
 </section>
 
 <section>
-  <h3>A note on the <span class="attr">title</span> attribute</h3>
+  <h3>A note on the <span class="tag">title</span> attribute</h3>
+  <pre>
+  &lt;a href="/products" <strong class="code__highlight">title="Products"</strong>&gt;Products&lt;/a&gt;
+  </pre>
   <p>It's f****** useless.</p>
   <ul>
     <li>poor browser support</li>
@@ -468,7 +471,13 @@
 
   <p>Setting the language of a document:</p>
   <ul>
-    <li>allows screenreaders to adjust accent and pronunciation</li>
+    <li>
+      allows screenreaders to adjust accent and pronunciation
+      <ul>
+        <li>makes no difference with VO and FF/Canary/Safari</li>
+        <li>need to test with JAWS/NVDA and IE</li>
+      </ul>
+    </li>
     <li>triggers Google Translate in Chrome</li>
   </ul>
 </section>
@@ -509,11 +518,6 @@
   &lt;p <strong class="code__highlight">lang="es-ES"</strong>&gt;&lt;/p&gt;
   &lt;p <strong class="code__highlight">lang="es-MX"</strong>&gt;&lt;/p&gt;
   </pre>
-
-  <ul>
-    <li>makes no difference with VO and FF/Canary/Safari</li>
-    <li>need to test with JAWS/NVDA and IE</li>
-  </ul>
 
   <p><a href="http://accessibility.psu.edu/foreignlanguages/langtaghtml/" target="_blank">More about setting language</a></p>
 </section>
@@ -559,7 +563,7 @@
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
   <p>Critical in giving context to screenreader users.</p>
-
+  <h4>Without a <span class="tag">label</span></h4>
   <span class="comment comment__fail">VO/FF "text blank"</span>
   <span class="comment comment__fail">VO/Canary "edit text blank"</span>
   <span class="comment comment__fail">VO/Safari "edit text blank"</span>
@@ -570,6 +574,7 @@
 
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
+  <h4><span class="tag">title</span> attribute</h4>
   <span class="comment comment__fail">VO/FF "text blank"</span>
   <span class="comment comment__success">VO/Canary "Date edit text"</span>
   <span class="comment comment__success">VO/Safari "Date edit text"</span>
@@ -580,6 +585,7 @@
 
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
+  <h4><span class="tag">placeholder</span> attribute</h4>
   <span class="comment comment__fail">VO/FF "text blank"</span>
   <span class="comment comment__success">VO/Canary "Date edit text"</span>
   <span class="comment comment__success">VO/Safari "Date edit text"</span>
@@ -590,6 +596,7 @@
 
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
+  <h4>With a <span class="tag">label</span></h4>
   <span class="comment comment__fail">VO/FF "text blank"</span>
   <span class="comment comment__fail">VO/Canary "edit text blank"</span>
   <span class="comment comment__fail">VO/Safari "edit text blank"</span>
@@ -601,6 +608,7 @@
 
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
+  <h4>Implict <span class="tag">label</span></h4>
   <span class="comment comment__meh">VO/FF "Date Date text"</span>
   <span class="comment comment__success">VO/Canary "Date edit text"</span>
   <span class="comment comment__success">VO/Safari "Date edit text"</span>
@@ -614,6 +622,7 @@
 
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
+  <h4>Implicit/explicit hybrid <span class="tag">label</span></h4>
   <span class="comment comment__meh">VO/FF "Date Date text"</span>
   <span class="comment comment__success">VO/Canary "Date edit text"</span>
   <span class="comment comment__success">VO/Safari "Date edit text"</span>
@@ -627,6 +636,7 @@
 
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
+  <h4>Explicit <span class="tag">label</span></h4>
   <span class="comment comment__success">VO/FF "Date text"</span>
   <span class="comment comment__success">VO/Canary "Date edit text"</span>
   <span class="comment comment__success">VO/Safari "Date edit text"</span>
@@ -651,6 +661,7 @@
 
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
+  <h4>What's the expected date format?</h4>
   <span class="comment comment__success">VO/FF "Date dd/mm/yyyy text"</span>
   <span class="comment comment__fail">VO/Canary "Date edit text"</span>
   <span class="comment comment__fail">VO/Safari "Date edit text"</span>
@@ -664,6 +675,7 @@
 
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
+  <h4>What's the expected date format?</h4>
   <span class="comment comment__success">VO/FF "Date dd/mm/yyyy text"</span>
   <span class="comment comment__success">VO/Canary "Date dd/mm/yyyy edit text"</span>
   <span class="comment comment__success">VO/Safari "Date dd/mm/yyyy edit text"</span>
@@ -805,7 +817,7 @@
 
 <section>
   <h3>A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h3>
-  <p>Setting <span class="attr">display:none</span> will cause screenreaders to ignore the legend.</p>
+  <p>Setting <span class="tag">display:none</span> will cause screenreaders to ignore the legend.</p>
   
   <pre>
   <strong class="code__highlight">.sr-readable {
