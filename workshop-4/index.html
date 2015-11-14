@@ -91,15 +91,11 @@
 
 <section>
   <h3>Dsylexia and web design</h3>
-  <ul>
-    <li>
-      <h4>Fonts</h4>
-      <p>Dyslexie and <a href="http://opendyslexic.org/try-it/" target="_blank">OpenDyslexia</a> are designed to make parsing copy less difficult.</p>
-      <p>Make use of heavier line thickness to anchor the bottoms of letters.</p>
-      <p>Users download a browser extension to override a site's fonts.</p>
-      <p>No conclusive proof that they work, though.</p>
-    </li>
-  </ul>
+  <h4>Fonts</h4>
+  <p>Dyslexie and <a href="http://opendyslexic.org/try-it/" target="_blank">OpenDyslexia</a> are designed to make parsing copy less difficult.</p>
+  <p>Make use of heavier line thickness to anchor the bottoms of letters.</p>
+  <p>Users download a browser extension to override a site's fonts.</p>
+  <p>No conclusive proof that they work, though.</p>
 </section>
 
 <section>
@@ -115,7 +111,7 @@
 </section>
 
 <section>
-  <h2>Building accessible navigation</h2>
+  <h2>Building accessible<small>(ish)</small> navigation</h2>
 </section>
 
 <section>
@@ -133,6 +129,7 @@
       &lt;/ul&gt;
     &lt;/li&gt;
     ...
+  &lt;/ul&gt;
   </ul>
   </pre>
 </section>
@@ -141,6 +138,12 @@
   <h3>Example CSS</h3>
 
   <pre>
+  .menu-item {
+    float: left;
+    list-style-type: none;
+    width: 150px;
+  }
+
   .menu-sub {
     display: none;
   }
@@ -160,14 +163,14 @@
 
   <pre>
   .menu-sub {
-    <del>display: none</del>
-    <strong class="code__highlight">clip: rect(1px, 1px, 1px, 1px);
-    position: absolute;</strong>
+    <del>display: none;</del>
+    <strong class="code__highlight code__addition">clip: rect(1px, 1px, 1px, 1px);</strong>
+    <strong class="code__highlight code__addition">position: absolute;</strong>
   }
 
   .menu-item:hover .menu-sub {
     <del>display: block;</del>
-    <strong class="code__highlight">position: static;</strong>
+    <strong class="code__highlight code__addition">position: static;</strong>
   }
   </pre>
 
@@ -194,20 +197,18 @@
   <h3>:( nope!</h3>
 
   <pre>
-  // Target menu-item having a menu-sub - supported
-
+  // Supported
   .menu-item:has(.menu-sub) a {
     color: green;
   }
 
 
-  // Target menu-sub having link receiving focus - no pseudo support
-
+  // No pseudo-selector support
   .menu-sub:has(a:focus) {
     position: static;
   }
   </pre>
-
+  <br/>
   <ul>
     <li><span class="attr">:has()</span> isn't yet supported w/o a polyfill</li>
     <li>even w/ a polyfill, support is patchy</li>
@@ -234,7 +235,7 @@
       &lt;/ul&gt;
     &lt;/li&gt;
     ...
-  </ul>
+  &lt;/ul&gt;
   </pre>
 </section>
 
@@ -252,9 +253,9 @@
   }
 
   // Not supported in &lt;IE9
-  <strong class="code__highlight">:target {
+  :target {
     position: static;
-  }</strong>
+  }
   </pre>
 
   <p><a href="demos/demo-4/index.html" target="_blank">Demo</a></p>
@@ -266,29 +267,40 @@
   <p>Let's try preventing a redirect.</p>
 
   <pre>
-  var triggers = document.querySelectorAll('.menu-sub-trigger');
+  var triggers = document.querySelectorAll('<strong class="code__highlight">.menu-sub-trigger</strong>');
 
   Array.prototype.forEach.call(triggers, function(trigger) {
-    trigger.addEventListener('click', function(e) {
+    trigger.addEventListener('<strong class="code__highlight">click</strong>', function(e) {
       e.preventDefault();
       
       var subMenu = trigger.nextElementSibling;
 
-      if (subMenu.classList.contains('menu-sub-open')) {
+      <strong class="code__highlight">if (subMenu.classList.contains('menu-sub-open')) {
         return subMenu.classList.remove('menu-sub-open');
       }
 
-      return subMenu.classList.add('menu-sub-open');
+      return subMenu.classList.add('menu-sub-open');</strong>
     });
   });
   </pre>
+</section>
 
+<section>
+  <h3>:( losing position on the page</h3>
+
+  <p>Let's try preventing a redirect.</p>
+
+  <pre>
+  .menu-sub-open {
+    position: static;
+  }
+  </pre>
   <p><a href="demos/demo-5/index.html" target="_blank">Demo</a></p>
 </section>
 
 <section>
   <h3>:( sub-menu doesn't close</h3>
-
+  <p>Let's add a JS hook.</p>
   <pre>
   &lt;ul&gt;
     &lt;li class="menu-item"&gt;
@@ -308,22 +320,21 @@
 </section>
 
 <section>
-  <p>...with:</p>
+  <h3>:( sub-menu doesn't close</h3>
+  <p>And another bit of JS.</p>
 
   <pre>
-  var menuLinks = document.querySelectorAll('.js-menu-link');
+  var menuLinks = document.querySelectorAll('<strong class="code__highlight">.js-menu-link</strong>');
 
   Array.prototype.forEach.call(menuLinks, function(menuLink) {
-    menuLink.addEventListener('focus', function() {
+    menuLink.addEventListener('<strong class="code__highlight">focus</strong>', function() {
       var openSubMenu = document.querySelector('.menu-sub-open');
       
-      if (openSubMenu) {
+      <strong class="code__highlight">if (openSubMenu) {
         return openSubMenu.classList.remove('menu-sub-open');
-      }
+      }</strong>
     });
   });
-
-  ...
   </pre>
 
   <p><a href="demos/demo-6/index.html" target="_blank">Demo</a></p>
@@ -332,22 +343,22 @@
 <section>
   <h3>:( can tab thru the hidden links</h3>
 
-  <p>Instead of hiding, let's try clipping.</p>
+  <p>Instead of clipping, let's go back to hiding.</p>
   <pre>
   .menu-sub {
-    <del>display: none;</del>
-    <strong class="code__highlight">clip: rect(1px, 1px, 1px, 1px);
-    position: absolute;</strong>
+    <del>clip: rect(1px, 1px, 1px, 1px);</del>
+    <del>position: absolute;</del>
+    <strong class="code__highlight code__addition">display: none;</strong>
   }
 
   .menu-item:hover .menu-sub {
-    <del>display: block;</del>
-    <strong class="code__highlight">position: static;</strong>
+    <del>position: static;</del>
+    <strong class="code__highlight code__addition">display: block;</strong>
   }
 
   .menu-sub-open {
-    <del>display: block;</del>
-    <strong class="code__highlight">???position: static;</strong>
+    <del>position: static;</del>
+    <strong class="code__highlight code__addition">display: block;</strong>
   }
   </pre>
 
@@ -376,39 +387,52 @@
 
 <section>
   <h3>:( the <strong>More</strong> link isn't announced</h3>
-  <p>Let's try adjusting clip on focus.</p>
+  <!-- <p>Let's try adjusting clip on focus.</p> -->
   <pre>
   .menu-item {
-    ...
-    position: relative;
+    float: left;
+    list-style-type: none;
+    width: 150px;
+    <strong class="code__highlight code__addition">position: relative;</strong>
   }
 
   .menu-sub-trigger {
     clip: rect(1px, 1px, 1px, 1px);
     position: absolute;
-    right: 10px;
-    top: 0;
+    <strong class="code__highlight code__addition">right: 10px;</strong>
+    <strong class="code__highlight code__addition">top: 0;</strong>
   }
 
   .menu-sub-trigger:focus {
-    clip: auto;
+    <del>position: static;</del>
+    <strong class="code__highlight code__addition">clip: auto;</strong>
   }
   </pre>
   <p><a href="demos/demo-8/index.html" target="_blank">Demo</a></p>
 </section>
 
 <section>
-  <h3>:( what is the <strong>More</strong> link?</h3>
+  <h3>What is the <strong>More</strong> link?</h3>
   <p>Use ARIA to provide some context.</p>
   <pre>
-  &lt;a class="menu-sub-trigger" href="#section-a-sub-menu" <strong class="code__highlight">aria-expanded="false"</strong>&gt;More&lt;/a&gt;
+  &lt;ul&gt;
+    &lt;li class="menu-item"&gt;
+      &lt;a href="/a" class="js-menu-link"&gt;Section A&lt;/a&gt;
+
+      &lt;a class="menu-sub-trigger" href="#section-a-sub-menu" <strong class="code__highlight">aria-expanded="false"</strong>&gt;More&lt;/a&gt;
+      
+      &lt;ul id="section-a-sub-menu" class="menu-sub"&gt;
+        ...
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    ...
+  &lt;/ul&gt;
   </pre>
-  <p><a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-expanded" target="_blank">More about <span class="tag">aria-expanded</span></a></p>
 </section>
 
 <section>
-  <h3>:( what is the <strong>More</strong> link?</h3>
-  <p>...and some JS to toggle the <span class="tag">aria-expanded</span> value.</p>
+  <h3>What is the <strong>More</strong> link?</h3>
+  <p>Modify some earlier JS to toggle the <span class="tag">aria-expanded</span> value.</p>
   <pre>
   Array.prototype.forEach.call(triggers, function(trigger) {
     trigger.addEventListener('click', function(e) {
@@ -418,10 +442,10 @@
 
       if (subMenu.classList.contains('menu-sub-open')) {
         subMenu.classList.remove('menu-sub-open');
-        trigger.setAttribute('aria-expanded', false);
+        <strong class="code__highlight code__addition">trigger.setAttribute('aria-expanded', false);</strong>
       } else {
         subMenu.classList.add('menu-sub-open');
-        trigger.setAttribute('aria-expanded', true);
+        <strong class="code__highlight code__addition">trigger.setAttribute('aria-expanded', true);</strong>
       }
     });
   });
@@ -430,36 +454,68 @@
 </section>
 
 <section>
-  <h3>:( what is the <strong>More</strong> link?</h3>
+  <h3>What is the <strong>More</strong> link?</h3>
+  <p>ARIA spec states that <span class="tag">aria-controls</span> should be used with <span class="tag">aria-expanded</span>.</p>
   <pre>
-  &lt;a class="menu-sub-trigger" href="#section-a-sub-menu" aria-expanded="false" aria-controls="section-a-sub-menu"&gt;More&lt;/a&gt;
+  &lt;ul&gt;
+    &lt;li class="menu-item"&gt;
+      &lt;a href="/a" class="js-menu-link"&gt;Section A&lt;/a&gt;
 
-  &lt;ul id="section-a-sub-menu" class="menu-sub"&gt;
-  ...
+      &lt;a class="menu-sub-trigger" href="#section-a-sub-menu" aria-expanded="false" <strong class="code__highlight">aria-controls="section-a-sub-menu"</strong>&gt;More&lt;/a&gt;
+      
+      &lt;ul id="section-a-sub-menu" class="menu-sub"&gt;
+        ...
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    ...
   &lt;/ul&gt;
   </pre>
-  <p><a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-controls" target="_blank">More about <span class="tag">aria-controls</span></a></p>
   <p><a href="demos/demo-10/index.html" target="_blank">Demo</a></p>
 </section>
 
 <section>
-  <h3>How to distinguish a menu from a list?</h3>
+  <h3>Creating a navigation landmark</h3>
+  <p>Landmarks help screenreader users skip to specific regions of a page.</p>
   <pre>
-  &lt;ul <strong class="code__highlight">role="menu"</strong>&gt;
-    ...
-    &lt;ul <strong class="code__highlight">role="menu"</strong>&gt;
-      ...
-    &lt;/ul&gt;
-    ...
-  &lt;/ul&gt;
+  <strong class="code__highlight">&lt;header&gt;</strong>
+    <strong class="code__highlight">&lt;nav&gt;</strong>
+      &lt;ul&gt;
+        ...
+      &lt;/ul&gt;
+    <strong class="code__highlight">&lt;/nav&gt;</strong>
+  <strong class="code__highlight">&lt;/header&gt;</strong>
+
+  <strong class="code__highlight">&lt;main&gt;</strong>...<strong class="code__highlight">&lt;/main&gt;</strong>
+
+  <strong class="code__highlight">&lt;footer&gt;</strong>...<strong class="code__highlight">&lt;/footer&gt;</strong>
   </pre>
-  <p><a href="demos/demo-10/index.html" target="_blank">Demo</a></p>
+  <p><a href="demos/demo-11/index.html" target="_blank">Demo</a></p>
+</section>
+
+<section>
+  <h3>Creating a navigation landmark</h3>
+  <p>Not all browsers correctly map HTML5 elements to landmarks. We can fix this with ARIA.</p>
+  <pre>
+  &lt;header <strong class="code__highlight">role="banner"</strong>&gt;
+    &lt;nav <strong class="code__highlight">role="navigation"</strong>&gt;
+      &lt;ul&gt;
+        ...
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main <strong class="code__highlight">role="main"</strong>&gt;...&lt;/main&gt;
+
+  &lt;footer <strong class="code__highlight">role="contentinfo"</strong>&gt;...&lt;/footer&gt;
+  </pre>
+  <p><a href="demos/demo-12/index.html" target="_blank">Demo</a></p>
 </section>
 
 <section>
   <h3>Caveats</h3>
   <ul>
     <li>isn't a mobile-friendly solution (yet)</li>
+    <li>only tested with VoiceOver in Chrome</li>
     <li>
       need fallback for JS being disabled
       <ul>
@@ -480,6 +536,8 @@
   <h2>Resources</h2>
 
   <p><a href="https://drafts.csswg.org/selectors-4" target="_blank">CSS Level 4 Selectors</a></p>
+  <p><a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-expanded" target="_blank"><span class="tag">aria-expanded</span></a></p>
+  <p><a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-controls" target="_blank"><span class="tag">aria-controls</span></a></p>
   <p><a href="https://craighospital.org/" target="_blank">Craig Hospital</a>
 </section>
       </div>
