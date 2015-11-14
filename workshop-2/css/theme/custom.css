@@ -166,6 +166,18 @@ body {
   color: #c2185b;
 }
 
+.code__addition {
+  position: relative;
+}
+
+.code__addition:before {
+  content: '+';
+  font-size: .6em;
+  left: -13px;
+  top: 2px;
+  position: absolute;
+}
+
 .attr {
   font-family: monospace!important;
 }
