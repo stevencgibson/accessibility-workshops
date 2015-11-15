@@ -61,26 +61,27 @@
 </section>
 
 <section>
-  <h3>What is ARIA?</h3>
+  <h2>What is ARIA?</h2>
   <p>Accessibly Rich Internet Applications</p>
 </section>
 
 <section>
-  <h3>What does it do?</h3>
+  <h2>What does it do?</h2>
   <blockquote>
     ...ontology of roles, states, and properties that define accessible user interface elements and can be used to improve the accessibility and interoperability of web content and applications. These semantics are designed to allow an author to properly convey user interface behaviors and structural information to assistive technologies in document-level markup.
   </blockquote>
 </section>
 
 <section>
-  <h3>What does that actually mean?</h3>
+  <h2>What does that actually mean?</h2>
 </section>
 
 <section>
   <h3>Let's look at buttons</h3>
+  <span class="comment comment__success">VO/FF "Enquire button"</span>
+  <span class="comment comment__success">VO/Canary "Enquire button"</span>
+  <span class="comment comment__success">VO/Safari "Enquire button"</span>
   <pre>
-  // VO & Canary "Enquire button" - perfect
-
   &lt;button&gt;Enquire&lt;/button&gt;
   </pre>
 </section>
@@ -102,24 +103,36 @@
 
 <section>
   <h3>:( can't tab to the "<span class="tag">button</span>"</h3>
+  <span class="comment comment__fail">VO/FF FAIL</span>
+  <span class="comment comment__fail">VO/Canary FAIL</span>
+  <span class="comment comment__fail">VO/Safari FAIL</span>
   <pre>
-  // VO & Canary "Enquire" - okay
+  &lt;span&gt;Enquire&lt;/span&gt;
+  </pre>
+</section>
 
+<section>
+  <h3>:( can't tab to the "<span class="tag">button</span>"</h3>
+  <span class="comment comment__fail">VO/FF "Enquire group"</span>
+  <span class="comment comment__fail">VO/Canary "Enquire group"</span>
+  <span class="comment comment__fail">VO/Safari "Enquire group"</span>
+  <pre>
   &lt;span <strong class="code__highlight">tabindex="0"</strong>&gt;Enquire&lt;/span&gt;
   </pre>
 </section>
 
 <section>
   <h3>:( what does it do?</h3>
+  <span class="comment comment__success">VO/FF "Enquire button"</span>
+  <span class="comment comment__success">VO/Canary "Enquire button"</span>
+  <span class="comment comment__success">VO/Safari "Enquire button"</span>
   <pre>
-  // VO & Canary "Enquire button" - perfect
-
   &lt;span tabindex="0" <strong class="code__highlight">role="button"</strong>&gt;Enquire&lt;/span&gt;
   </pre>
 </section>
 
 <section>
-  <p>Instead of:</p>
+  <p>Instead of creating a button with:</p>
   <ul>
     <li>a <span class="tag">span</span> element</li>
     <li>the <span class="tag">tabindex</span> attribute</li>
@@ -129,7 +142,7 @@
 </section>
 
 <section>
-  <p>The HTML API allows us to simply do:
+  <p>The HTML API allows us to simply use:
   <ul>
     <li>a <span class="tag">button</span> element</li>
   </ul>
@@ -143,6 +156,66 @@
     <li>whether a panel is collapsed or expanded?</li>
     <li>how to trigger a panel to collapse or expand?</li>
   </ol>
+</section>
+
+<section>
+  <h2>But first, how do screenreaders work?</h2>
+</section>
+
+<section>
+  <h3>1) DOM element</h3>
+  <pre>
+    &lt;label for="fname"&gt;First name&lt;/label&gt;
+    &lt;input type="text" id="fname" name="fname" value="Joe" />
+  </pre>
+</section>
+
+<section>
+  <h3>2) Browser generates an accessibility tree</h3>
+  <h4>Firefox</h4>
+  <img src="images/ff-access-tree.jpg" alt="" />
+</section>
+
+<section>
+  <h3>2) Browser generates an accessibility tree</h3>
+  <h4>Chrome</h4>
+  <img src="images/chrome-access-tree.jpg" alt="" />
+</section>
+
+<section>
+  <h3>3) Browser passes info to the OS accessibility API</h3>
+  <ul>
+    <li>MSAA <small>(Windows - IE, Chrome, FF)</small></li>
+    <li>IA2 <small>(Windows - Chrome, FF)</small></li>
+    <li>UIA <small>(Windows - IE, FF)</small></li>
+    <li>AXaccessibility <small>(Mac)</small></li>
+    <li>AT-SPI <small>(Linux)</small></li>
+<!--     <li>ARIA 1.0</li>
+    <li>UAAG 1.0 <small>(User agents)</small></li> -->
+  </ul>
+</section>
+
+<section>
+  <h3>4) Screenreader queries the accessibility API</h3>
+  <h4>Role</h4>
+  <p>Taken from the type of element. Can be overridden with <span class="tag">role</span>.</p>
+  <h4>Name</h4>
+  <p>Can be taken from a <span class="tag">label</span>, <span class="tag">legend</span>, <span class="tag">alt</span> or <span class="tag">aria-label</span>.</p>
+  <h4>Value</h4>
+  <p>Usually provided by the user.</p>
+  <h4>State</h4>
+  <p>Checked or unchecked.</p>
+</section>
+
+<section>
+  <h3>5) Screenreader announces the element</h3>
+  <span class="comment comment__success">VO/FF "Joe First name text"</span>
+  <span class="comment comment__success">VO/Canary "Joe First name edit text"</span>
+  <span class="comment comment__success">VO/Safari "Joe First name edit text"</span>
+  <pre>
+    &lt;label for="fname"&gt;First name&lt;/label&gt;
+    &lt;input type="text" id="fname" name="fname" value="Joe" />
+  </pre>
 </section>
 
 <section>
@@ -321,6 +394,13 @@
     <li>aria-setsize</li>
     <li>aria-sort</li>
   </ul>
+</section>
+
+<section>
+  <h2>Resources</h2>
+  <p><a href="http://www.smashingmagazine.com/2015/03/web-accessibility-with-accessibility-api/" target="_blank">Accessibility APIs: A Key To Web Accessibility</a></p>
+  <p><a href="http://www.ssbbartgroup.com/blog/how-browsers-interact-with-screen-readers-and-where-aria-fits-in-the-mix/" target="_blank">How Browsers Interact with Screen Readers</a></p>
+  <p><a href="https://addons.mozilla.org/en-GB/firefox/addon/dom-inspector-6622/?src=userprofile" target="_blank">DOM Inspector (Firefox)</a></p>
 </section>
       </div>
 
