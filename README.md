@@ -9,7 +9,8 @@
 
 - what is a11y?
 - a11y and the law
-- testing tools
+- manual testing tools
+- automated testing tools
 
 ## Workshop 3
 
@@ -17,4 +18,11 @@
 
 ## Workshop 4
 
-- Navigation
+- dyslexia
+- building accessible navigation
+
+## Workshop 5
+
+- how screenreaders work
+- ARIA
+- building an accessible accordion
