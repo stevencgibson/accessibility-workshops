@@ -856,27 +856,6 @@
 </section>
 
 <section>
-  <h3>A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h3>
-  <p>Setting <span class="tag">display:none</span> will cause screenreaders to ignore the legend.</p>
-  
-  <pre>
-  <strong class="code__highlight">.sr-readable {
-    clip: rect(1px, 1px, 1px, 1px);
-    position: absolute!important;
-  }</strong>
-
-  &lt;fieldset&gt;
-    &lt;legend <strong class="code__highlight">class="sr-readable"</strong>>Deliver To&lt;/legend&gt;
-
-    &lt;input type="radio" id="home" name="delivery" value="home" /&gt;
-    &lt;label for="home">Home Address&lt;/label&gt;
-  &lt;/fieldset&gt;
-  </pre>
-
-  <p><a href="https://developer.yahoo.com/blogs/ydn/clip-hidden-content-better-accessibility-53456.html" target="_blank">Clip your hidden content for better accessibility</a></p>
-</section>
-
-<section>
   <h2>Content is robust enough to work with current and future technologies</h2>
 </section>
 
