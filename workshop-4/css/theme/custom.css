@@ -186,3 +186,29 @@ body {
   font-family: monospace!important;
   font-weight: 400!important;
 }
+
+.underline {
+  text-decoration: underline!important;
+}
+
+.italic {
+  font-style: italic!important;
+}
+
+.uppercase {
+  text-transform: uppercase!important;
+}
+
+.contrast {
+  background: #000!important;
+  color: yellow!important;
+  padding: 5px 10px!important;
+}
+
+.serif {
+  font-family: serif!important;
+}
+
+.eleven-point {
+  font-size: 11pt!important;
+}
