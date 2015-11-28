@@ -444,7 +444,7 @@
     &lt;/ul&gt;
   &lt;/nav&gt;
 
-  &lt;main <strong class="code__highlight">id="content"</strong>&gt;
+  &lt;main <strong class="code__highlight">id="content" tabindex="-1"</strong>&gt;
   ...
   &lt;/main&gt;
   </pre>
@@ -462,22 +462,22 @@
 <section>
   <h3><span class="spec">2.4.3</span> Focus order</h3>
   <p>Focus order should make sense to keyboard users.</p>
-  <h4>Focusable elements</h4>
+  <h4>Keyboard-focusable elements</h4>
   <pre>
   // The default for focusable elements
   &lt;input type="text" <strong class="code__highlight">tabindex="0"</strong> /&gt;
 
-  // Altering tab order
+  // Altering focus order
   &lt;input type="text" <strong class="code__highlight">tabindex="1"</strong> /&gt;
 
-  // Removing from tab order
+  // Removing from keyboard, but not programmatic, focus order
   &lt;input type="text" <strong class="code__highlight">tabindex="-1"</strong> /&gt;
   </pre>
 </section>
 
 <section>
   <h3><span class="spec">2.4.3</span> Focus order</h3>
-  <h4>Non-focusable elements</h4>
+  <h4>Non-keyboard-focusable elements</h4>
   <pre>
   // The default for non-focusable elements
   &lt;span <strong class="code__highlight">tabindex="-1"</strong>>&lt;/span&gt;
@@ -485,7 +485,7 @@
   // Making the non-focusable focusable
   &lt;span <strong class="code__highlight">tabindex="0"</strong>>&lt;/span&gt;
 
-  // Altering tab order
+  // Altering focus order
   &lt;span <strong class="code__highlight">tabindex="1"</strong>>&lt;/span&gt;
   </pre>
   <p>Try to avoid using <span class="tag">tabindex</span> by coding content in the order in which it will be displayed.</p>
