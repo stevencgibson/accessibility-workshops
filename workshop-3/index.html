@@ -550,6 +550,13 @@
   ...
   &lt;/html&gt;
   </pre>
+</section>
+
+<section>
+  <h3><span class="spec">3.1.1</span> Language</h3>
+
+  <h4>Set the HTTP <span class="tag">content-language</span> header</h4>
+  <p>Aimed at search engines to specify the native language of the intended audience.</p>
 
   <p><a href="http://accessibility.psu.edu/foreignlanguages/langtaghtml/" target="_blank">More about setting language</a></p>
 </section>
@@ -623,6 +630,17 @@
   <span class="comment comment__success">VO/Safari "Date edit text"</span>
   <pre>
   &lt;input name="date" type="text" <strong class="code__highlight">placeholder="Date"</strong> /&gt;
+  </pre>
+</section>
+
+<section>
+  <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
+  <h4><span class="tag">aria-label</span> attribute</h4>
+  <span class="comment comment__fail">VO/FF "text blank"</span>
+  <span class="comment comment__success">VO/Canary "Date edit text"</span>
+  <span class="comment comment__success">VO/Safari "Date edit text"</span>
+  <pre>
+  &lt;input name="date" type="text" <strong class="code__highlight">aria-label="Date"</strong> /&gt;
   </pre>
 </section>
 
