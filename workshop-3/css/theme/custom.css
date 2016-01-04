@@ -187,6 +187,11 @@ body {
   font-weight: 400!important;
 }
 
+ins {
+  font-weight: 600!important;
+  text-decoration: none;
+}
+
 .colour {
   color: #fff;
   padding: 15px 28px!important;
