@@ -734,6 +734,7 @@
     Date
     <strong class="code__highlight">&lt;span&gt;dd/mm/yyyy&lt;/span&gt;</strong>
   &lt;/label&gt;
+
   &lt;input id="thedate" name="date" type="text" /&gt;
   </pre>
 </section>
@@ -749,6 +750,7 @@
     Date
     &lt;span&gt;dd/mm/yyyy&lt;/span&gt;
   &lt;/label&gt;
+
   &lt;input id="thedate" name="date" type="text" <strong class="code__highlight">required</strong> /&gt;
   </pre>
 </section>
@@ -764,6 +766,7 @@
     Date
     &lt;span&gt;dd/mm/yyyy&lt;/span&gt;
   &lt;/label&gt;
+
   &lt;input id="thedate" name="date" type="text" <strong class="code__highlight">aria-required="true"</strong> /&gt;
   </pre>
 </section>
@@ -779,6 +782,7 @@
     Date
     &lt;span&gt;dd/mm/yyyy&lt;/span&gt;
   &lt;/label&gt;
+
   &lt;input id="thedate" name="date" type="text" aria-required="true" <strong class="code__highlight">value="01/01/2015"</strong> /&gt;
   </pre>
 </section>
@@ -794,7 +798,27 @@
     Date
     &lt;span&gt;dd/mm/yyyy&lt;/span&gt;
   &lt;/label&gt;
+  
   &lt;input id="thedate" name="date" type="text" aria-required="true" <strong class="code__highlight">aria-invalid="true"</strong> value="abc" /&gt;
+  </pre>
+</section>
+
+<section>
+  <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
+  <h4>Why is the user-entered value invalid?</h4>
+  <span id="dateInfo"></span>
+  <span class="comment comment__fail">VO/FF "abc Date dd/mm/yyyy required text"</span>
+  <span class="comment comment__success">VO/Canary "abc Date dd/mm/yyyy required invalid data edit text"</span>
+  <span class="comment comment__success">VO/Safari "abc Date dd/mm/yyyy required invalid data edit text"</span>
+  <pre>
+  &lt;label for="thedate"&gt;
+    Date
+    &lt;span&gt;dd/mm/yyyy&lt;/span&gt;
+  &lt;/label&gt;
+
+  &lt;input id="thedate" name="date" type="text" aria-required="true" aria-invalid="true" <strong class="code__highlight">aria-describedby="dateInfo"</strong> value="abc" /&gt;
+  
+  <strong class="code__highlight">&lt;span id="dateInfo"&gt;Enter in UK date format&lt;/span&gt;</strong>
   </pre>
 </section>
 
