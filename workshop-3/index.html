@@ -79,9 +79,14 @@
 <section>
   <h3><span class="spec">1.1.1</span> Non-text content</h3>
   <h4>Images without alt text</h4>
-  <span class="comment comment__fail">VO/FF "image"</span>
-  <span class="comment comment__meh">VO/Canary "car jpg image"</span>
-  <span class="comment comment__meh">VO/Safari "car jpg image"</span>
+  <span class="comment comment__fail">Yosemite/VoiceOver/Firefox 42 "image"</span>
+  <span class="comment comment__fail">Yosemite/VoiceOver/Canary 50 "car.jpg"</span>
+  <span class="comment comment__fail">Yosemite/VoiceOver/Chrome 47 "car.jpg"</span>
+  <span class="comment comment__fail">Yosemite/VoiceOver/Safari 9 "car.jpg"</span>
+  <span class="comment comment__fail">Mavericks/VoiceOver/Firefox 44 "image"</span>
+  <span class="comment comment__fail">Mavericks/VoiceOver/Canary 50 "car.jpg image"</span>
+  <span class="comment comment__fail">Mavericks/VoiceOver/Chrome 48 "car.jpg image"</span>
+  <span class="comment comment__fail">Mavericks/VoiceOver/Safari 9 "car.jpg image"</span>
   <pre>
   &lt;img src="car.jpg" /&gt;
   </pre>
@@ -90,9 +95,14 @@
 <section>
   <h3><span class="spec">1.1.1</span> Non-text content</h3>
   <h4>Decorative images</h4>
-  <span class="comment comment__success">VO/FF skips the image</span>
-  <span class="comment comment__success">VO/Canary skips the image</span>
-  <span class="comment comment__success">VO/Safari skips the image</span>
+  <span class="comment comment__success">Yos/VO/Firefox 42 skips the image</span>
+  <span class="comment comment__success">Yos/VO/Canary 50 skips the image</span>
+  <span class="comment comment__success">Yos/VO/Chrome 47 skips the image</span>
+  <span class="comment comment__success">Yos/VO/Safari 9 skips the image</span>
+  <span class="comment comment__success">Mav/VO/Firefox 44 skips the image</span>
+  <span class="comment comment__success">Mav/VO/Canary 50 skips the image</span>
+  <span class="comment comment__success">Mav/VO/Chrome 48 skips the image</span>
+  <span class="comment comment__success">Mav/VO/Safari 9 skips the image</span>
   <pre>
   &lt;img src="car.jpg" <strong class="code__highlight">alt=""</strong> /&gt;
   </pre>
@@ -101,9 +111,14 @@
 <section>
   <h3><span class="spec">1.1.1</span> Non-text content</h3>
   <h4>Informative images</h4>
-  <span class="comment comment__success">VO/FF "Call us on image 0123 456 7890"</span>
-  <span class="comment comment__success">VO/Canary "Call us on image 0123 456 7890"</span>
-  <span class="comment comment__success">VO/Safari "Call us on image 0123 456 7890"</span>
+  <span class="comment comment__success">Yos/VO/Firefox 42 "Call us on 0123 456 7890"</span>
+  <span class="comment comment__success">Yos/VO/Canary 50 "Call us on 0123 456 7890"</span>
+  <span class="comment comment__success">Yos/VO/Chrome 47 "Call us on 0123 456 7890"</span>
+  <span class="comment comment__success">Yos/VO/Safari 9 "Call us on 0123 456 7890"</span>
+  <span class="comment comment__meh">Mav/VO/Firefox 44 "Call us on image 0123 456 7890"</span>
+  <span class="comment comment__meh">Mav/VO/Canary 50 "Call us on image 0123 456 7890"</span>
+  <span class="comment comment__meh">Mav/VO/Chrome 48 "Call us on image 0123 456 7890"</span>
+  <span class="comment comment__meh">Mav/VO/Safari 9 "Call us on image 0123 456 7890"</span>
   <pre>
   &lt;img src="phone.png" <strong class="code__highlight">alt="Call us on"</strong> /&gt; 0123 456 7890
   </pre>
@@ -112,9 +127,14 @@
 <section>
   <h3><span class="spec">1.1.1</span> Non-text content</h3>
   <h4>Functional images</h4>
-  <span class="comment comment__success">VO/FF "link image Print-friendly version"</span>
-  <span class="comment comment__success">VO/Canary "link image Print-friendly version"</span>
-  <span class="comment comment__success">VO/Safari "link image Print-friendly version"</span>
+  <span class="comment comment__success">Yos/VO/Firefox 42 "Print-friendly version, link"</span>
+  <span class="comment comment__success">Yos/VO/Canary 50 "Print-friendly version, link"</span>
+  <span class="comment comment__success">Yos/VO/Chrome 47 "Print-friendly version, link"</span>
+  <span class="comment comment__success">Yos/VO/Safari 9 "Print-friendly version, link"</span>
+  <span class="comment comment__meh">Mav/VO/FF 43 "link image Print-friendly version"</span>
+  <span class="comment comment__meh">Mav/VO/Canary 50 "link image Print-friendly version"</span>
+  <span class="comment comment__meh">Mav/VO/Chrome 48 "link image Print-friendly version"</span>
+  <span class="comment comment__meh">Mav/VO/Safari 9 "link image Print-friendly version"</span>
   <pre>
   &lt;a href="print.html"&gt;
     &lt;img src="printer-icon.png" <strong class="code__highlight">alt="Print-friendly version"</strong> /&gt;
@@ -125,9 +145,14 @@
 <section>
   <h3><span class="spec">1.1.1</span> Non-text content</h3>
   <h4>Images of text</h4>
-  <span class="comment comment__success">VO/FF "Microsoft image"</span>
-  <span class="comment comment__success">VO/Canary "Microsoft image"</span>
-  <span class="comment comment__success">VO/Safari "Microsoft image"</span>
+  <span class="comment comment__success">Yos/VO/Firefox 42 "Microsoft"</span>
+  <span class="comment comment__success">Yos/VO/Canary 50 "Microsoft"</span>
+  <span class="comment comment__success">Yos/VO/Chrome 47 "Microsoft"</span>
+  <span class="comment comment__success">Yos/VO/Safari 9 "Microsoft"</span>
+  <span class="comment comment__meh">Mav/VO/FF 43 "Microsoft image"</span>
+  <span class="comment comment__meh">Mav/VO/Canary 50 "Microsoft image"</span>
+  <span class="comment comment__meh">Mav/VO/Chrome 48 "Microsoft image"</span>
+  <span class="comment comment__meh">Mav/VO/Safari 9 "Microsoft image"</span>
   <pre>
   &lt;img src="microsoft-logo.png" <strong class="code__highlight">alt="Microsoft"</strong> /&gt;
   </pre>
@@ -136,9 +161,14 @@
 <section>
   <h3><span class="spec">1.1.1</span> Non-text content</h3>
   <h4>Images of graphical data</h4>
-  <span class="comment comment__success">VO/FF "Apple's shares have risen from $36 in 2010 to $123 in 2015. image"</span>
-  <span class="comment comment__success">VO/Canary "Apple's shares have risen from $36 in 2010 to $123 in 2015. image"</span>
-  <span class="comment comment__success">VO/Safari "Apple's shares have risen from $36 in 2010 to $123 in 2015. image"</span>
+  <span class="comment comment__success">Yos/VO/Firefox 42 "Apple's shares have risen..."</span>
+  <span class="comment comment__success">Yos/VO/Canary 50 "Apple's shares have risen..."</span>
+  <span class="comment comment__success">Yos/VO/Chrome 47 "Apple's shares have risen..."</span>
+  <span class="comment comment__success">Yos/VO/Safari 9 "Apple's shares have risen..."</span>
+  <span class="comment comment__meh">Mav/VO/FF 43 "Apple's shares have risen...image"</span>
+  <span class="comment comment__meh">Mav/VO/Canary 50 "Apple's shares have risen...image"</span>
+  <span class="comment comment__meh">Mav/VO/Chrome 48 "Apple's shares have risen...image"</span>
+  <span class="comment comment__meh">Mav/VO/Safari 9 "Apple's shares have risen...image"</span>
   <pre>
   &lt;img src="apple-shares.jpg" <strong class="code__highlight">alt="Apple's shares have risen from $36 in 2010 to $123 in 2015."</strong> /&gt;
   </pre>
@@ -147,9 +177,14 @@
 <section>
   <h3><span class="spec">1.1.1</span> Non-text content</h3>
   <h4>Showing a caption with an image</h4>
-  <span class="comment comment__meh">VO/FF "Apple's shares have risen from $36 in 2010 to $123 in 2015. Apple's shares have risen from $36 in 2010 to $123 in 2015. image. Apple's shares have risen from $36 in 2010 to $123 in 2015."</span>
-  <span class="comment comment__meh">VO/Canary "Apple's shares have risen from $36 in 2010 to $123 in 2015. figure. Apple's shares have risen from $36 in 2010 to $123 in 2015."</span>
-  <span class="comment comment__success">VO/Safari "Apple's shares have risen from $36 in 2010 to $123 in 2015."</span>
+  <span class="comment comment__meh">Yos/VO/Firefox 42 "Apple's shares have risen...group"</span>
+  <span class="comment comment__success">Yos/VO/Canary 50 "Apple's shares have risen..."</span>
+  <span class="comment comment__success">Yos/VO/Chrome 47 "Apple's shares have risen..."</span>
+  <span class="comment comment__success">Yos/VO/Safari 9 "Apple's shares have risen..."</span>
+  <span class="comment comment__fail">Mav/VO/FF 43 "Apple's shares have risen...Apple's shares have risen...Apple's shares have risen...group"</span>
+  <span class="comment comment__success">Mav/VO/Canary 50 "Apple's shares have risen..."</span>
+  <span class="comment comment__meh">Mav/VO/Chrome 48 "Apple's shares have risen...figure"</span>
+  <span class="comment comment__success">Mav/VO/Safari 9 "Apple's shares have risen..."</span>
   <pre>
   &lt;figure&gt;
     &lt;img src="apple-shares.jpg" <strong class="code__highlight">alt=""</strong> /&gt;
@@ -161,9 +196,14 @@
 <section>
   <h3><span class="spec">1.1.1</span> Non-text content</h3>
   <h4>Avoid verbosity</h4>
-  <span class="comment comment__meh">VO/FF "An image of a car image"</span>
-  <span class="comment comment__meh">VO/Canary "An image of a car image"</span>
-  <span class="comment comment__meh">VO/Safari "An image of a car image"</span>
+  <span class="comment comment__success">Yos/VO/Firefox 42 "An image of a car"</span>
+  <span class="comment comment__success">Yos/VO/Canary 50 "An image of a car"</span>
+  <span class="comment comment__success">Yos/VO/Chrome 47 "An image of a car"</span>
+  <span class="comment comment__success">Yos/VO/Safari 9 "An image of a car"</span>
+  <span class="comment comment__meh">Mav/VO/FF 43 "An image of a car image"</span>
+  <span class="comment comment__meh">Mav/VO/Canary 50 "An image of a car image"</span>
+  <span class="comment comment__meh">Mav/VO/Chrome 48 "An image of a car image"</span>
+  <span class="comment comment__meh">Mav/VO/Safari 9 "An image of a car image"</span>
   <pre>
   &lt;img src="car.jpg" <strong class="code__highlight">alt="An image of a car"</strong> /&gt;
   </pre>
@@ -474,7 +514,7 @@
   &lt;/html&gt;
   </pre>
   <br/>
-  <small>*Doesn't seem to make a difference with VO and FF/Canary/Safari.</small>
+  <small>*Doesn't seem to make a difference with VO and FF/Canary 50/Safari 9.</small>
 </section>
 
 <section>
@@ -542,9 +582,14 @@
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
   <p>Critical in giving context to <del>screenreader</del> <ins>pretty much all</ins> users.</p><add
   <h4>Without a <span class="tag">label</span></h4>
-  <span class="comment comment__fail">VO/FF "text blank"</span>
-  <span class="comment comment__fail">VO/Canary "edit text blank"</span>
-  <span class="comment comment__fail">VO/Safari "edit text blank"</span>
+  <span class="comment comment__fail">Yos/VO/Firefox 42 "blank, text"</span>
+  <span class="comment comment__fail">Yos/VO/Canary 50 "blank, edit text"</span>
+  <span class="comment comment__fail">Yos/VO/Chrome 47 "blank, edit text"</span>
+  <span class="comment comment__fail">Yos/VO/Safari 9 "blank, edit text"</span>
+  <span class="comment comment__fail">Mav/VO/FF 43 "text blank"</span>
+  <span class="comment comment__fail">Mav/VO/Canary 50 "edit text blank"</span>
+  <span class="comment comment__fail">Mav/VO/Chrome 48 "edit text blank"</span>
+  <span class="comment comment__fail">Mav/VO/Safari 9 "edit text blank"</span>
   <pre>
   &lt;input name="date" type="text" /&gt;
   </pre>
@@ -553,9 +598,14 @@
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
   <h4><span class="tag">title</span> attribute</h4>
-  <span class="comment comment__fail">VO/FF "text blank"</span>
-  <span class="comment comment__success">VO/Canary "Date edit text"</span>
-  <span class="comment comment__success">VO/Safari "Date edit text"</span>
+  <span class="comment comment__fail">Yos/VO/Firefox 42 "blank, text"</span>
+  <span class="comment comment__success">Yos/VO/Canary 50 "Date"</span>
+  <span class="comment comment__success">Yos/VO/Chrome 47 "Date"</span>
+  <span class="comment comment__success">Yos/VO/Safari 9 "Date"</span>
+  <span class="comment comment__fail">Mav/VO/FF 43 "text blank"</span>
+  <span class="comment comment__success">Mav/VO/Canary 50 "Date edit text"</span>
+  <span class="comment comment__success">Mav/VO/Chrome 48 "Date edit text"</span>
+  <span class="comment comment__success">Mav/VO/Safari 9 "Date edit text"</span>
   <pre>
   &lt;input name="date" type="text" <strong class="code__highlight">title="Date"</strong> /&gt;
   </pre>
@@ -564,9 +614,14 @@
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
   <h4><span class="tag">placeholder</span> attribute</h4>
-  <span class="comment comment__fail">VO/FF "text blank"</span>
-  <span class="comment comment__success">VO/Canary "Date edit text"</span>
-  <span class="comment comment__success">VO/Safari "Date edit text"</span>
+  <span class="comment comment__fail">Yos/VO/Firefox 42 "blank, text"</span>
+  <span class="comment comment__success">Yos/VO/Canary 50 "Date"</span>
+  <span class="comment comment__success">Yos/VO/Chrome 47 "Date"</span>
+  <span class="comment comment__success">Yos/VO/Safari 9 "Date"</span>
+  <span class="comment comment__fail">Mav/VO/FF 43 "text blank"</span>
+  <span class="comment comment__success">Mav/VO/Canary 50 "Date edit text"</span>
+  <span class="comment comment__success">Mav/VO/Chrome 48 "Date edit text"</span>
+  <span class="comment comment__success">Mav/VO/Safari 9 "Date edit text"</span>
   <pre>
   &lt;input name="date" type="text" <strong class="code__highlight">placeholder="Date"</strong> /&gt;
   </pre>
@@ -575,9 +630,14 @@
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
   <h4><span class="tag">aria-label</span> attribute</h4>
-  <span class="comment comment__fail">VO/FF "text blank"</span>
-  <span class="comment comment__success">VO/Canary "Date edit text"</span>
-  <span class="comment comment__success">VO/Safari "Date edit text"</span>
+  <span class="comment comment__fail">Yos/VO/Firefox 42 "blank, text"</span>
+  <span class="comment comment__success">Yos/VO/Canary 50 "Date"</span>
+  <span class="comment comment__success">Yos/VO/Chrome 47 "Date"</span>
+  <span class="comment comment__success">Yos/VO/Safari 9 "Date"</span>
+  <span class="comment comment__fail">Mav/VO/FF 43 "text blank"</span>
+  <span class="comment comment__success">Mav/VO/Canary 50 "Date edit text"</span>
+  <span class="comment comment__success">Mav/VO/Chrome 48 "Date edit text"</span>
+  <span class="comment comment__success">Mav/VO/Safari 9 "Date edit text"</span>
   <pre>
   &lt;input name="date" type="text" <strong class="code__highlight">aria-label="Date"</strong> /&gt;
   </pre>
@@ -586,9 +646,14 @@
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
   <h4>With a <span class="tag">label</span></h4>
-  <span class="comment comment__fail">VO/FF "text blank"</span>
-  <span class="comment comment__fail">VO/Canary "edit text blank"</span>
-  <span class="comment comment__fail">VO/Safari "edit text blank"</span>
+  <span class="comment comment__fail">Yos/VO/Firefox 42 "blank, text"</span>
+  <span class="comment comment__fail">Yos/VO/Canary 50 "blank, edit text"</span>
+  <span class="comment comment__fail">Yos/VO/Chrome 47 "blank, edit text"</span>
+  <span class="comment comment__fail">Yos/VO/Safari 9 "blank, edit text"</span>
+  <span class="comment comment__fail">Mav/VO/FF 43 "space text"</span>
+  <span class="comment comment__fail">Mav/VO/Canary 50 "edit text blank"</span>
+  <span class="comment comment__fail">Mav/VO/Chrome 48 "edit text blank"</span>
+  <span class="comment comment__fail">Mav/VO/Safari 9 "edit text blank"</span>
   <pre>
   <strong class="code__highlight">&lt;label&gt;Date&lt;/label&gt;</strong>
   &lt;input name="date" type="text" /&gt;
@@ -598,9 +663,14 @@
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
   <h4>Implict <span class="tag">label</span></h4>
-  <span class="comment comment__meh">VO/FF "Date Date text"</span>
-  <span class="comment comment__success">VO/Canary "Date edit text"</span>
-  <span class="comment comment__success">VO/Safari "Date edit text"</span>
+  <span class="comment comment__success">Yos/VO/Firefox 42 "Date"</span>
+  <span class="comment comment__success">Yos/VO/Canary 50 "Date"</span>
+  <span class="comment comment__success">Yos/VO/Chrome 47 "Date"</span>
+  <span class="comment comment__success">Yos/VO/Safari 9 "Date"</span>
+  <span class="comment comment__meh">Mav/VO/FF 43 "Date Date text"</span>
+  <span class="comment comment__success">Mav/VO/Canary 50 "Date edit text"</span>
+  <span class="comment comment__success">Mav/VO/Chrome 48 "Date edit text"</span>
+  <span class="comment comment__success">Mav/VO/Safari 9 "Date edit text"</span>
   <pre>
   <strong class="code__highlight">&lt;label&gt;</strong>
     Date
@@ -612,9 +682,14 @@
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
   <h4>Implicit/explicit hybrid <span class="tag">label</span></h4>
-  <span class="comment comment__meh">VO/FF "Date Date text"</span>
-  <span class="comment comment__success">VO/Canary "Date edit text"</span>
-  <span class="comment comment__success">VO/Safari "Date edit text"</span>
+  <span class="comment comment__success">Yos/VO/Firefox 42 "Date"</span>
+  <span class="comment comment__success">Yos/VO/Canary 50 "Date"</span>
+  <span class="comment comment__success">Yos/VO/Chrome 47 "Date"</span>
+  <span class="comment comment__success">Yos/VO/Safari 9 "Date"</span>
+  <span class="comment comment__meh">Mav/VO/FF 43 "Date Date text"</span>
+  <span class="comment comment__success">Mav/VO/Canary 50 "Date edit text"</span>
+  <span class="comment comment__success">Mav/VO/Chrome 48 "Date edit text"</span>
+  <span class="comment comment__success">Mav/VO/Safari 9 "Date edit text"</span>
   <pre>
   &lt;label <strong class="code__highlight">for="thedate"</strong>&gt;
     Date
@@ -626,9 +701,14 @@
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
   <h4>Explicit <span class="tag">label</span></h4>
-  <span class="comment comment__success">VO/FF "Date text"</span>
-  <span class="comment comment__success">VO/Canary "Date edit text"</span>
-  <span class="comment comment__success">VO/Safari "Date edit text"</span>
+  <span class="comment comment__success">Yos/VO/Firefox 42 "Date"</span>
+  <span class="comment comment__success">Yos/VO/Canary 50 "Date"</span>
+  <span class="comment comment__success">Yos/VO/Chrome 47 "Date"</span>
+  <span class="comment comment__success">Yos/VO/Safari 9 "Date"</span>
+  <span class="comment comment__success">Mav/VO/FF 43 "Date text"</span>
+  <span class="comment comment__success">Mav/VO/Canary 50 "Date edit text"</span>
+  <span class="comment comment__success">Mav/VO/Chrome 48 "Date edit text"</span>
+  <span class="comment comment__success">Mav/VO/Safari 9 "Date edit text"</span>
   <pre>
   <strong class="code__highlight">&lt;label for="thedate"&gt;Date&lt;/label&gt;</strong>
   &lt;input id="thedate" name="date" type="text" /&gt;
@@ -638,9 +718,14 @@
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
   <h4>What's the expected date format?</h4>
-  <span class="comment comment__fail">VO/FF "Date text"</span>
-  <span class="comment comment__fail">VO/Canary "Date edit text"</span>
-  <span class="comment comment__fail">VO/Safari "Date edit text"</span>
+  <span class="comment comment__fail">Yos/VO/Firefox 42 "Date"</span>
+  <span class="comment comment__fail">Yos/VO/Canary 50 "Date"</span>
+  <span class="comment comment__fail">Yos/VO/Chrome 47 "Date"</span>
+  <span class="comment comment__fail">Yos/VO/Safari 9 "Date"</span>
+  <span class="comment comment__fail">Mav/VO/FF 43 "Date text"</span>
+  <span class="comment comment__fail">Mav/VO/Canary 50 "Date edit text"</span>
+  <span class="comment comment__fail">Mav/VO/Chrome 48 "Date edit text"</span>
+  <span class="comment comment__fail">Mav/VO/Safari 9 "Date edit text"</span>
   <pre>
   &lt;label for="thedate"&gt;Date&lt;/label&gt;
   <strong class="code__highlight">&lt;span&gt;dd/mm/yyyy&lt;/span&gt;</strong>
@@ -651,9 +736,14 @@
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
   <h4>What's the expected date format?</h4>
-  <span class="comment comment__success">VO/FF "Date dd/mm/yyyy text"</span>
-  <span class="comment comment__fail">VO/Canary "Date edit text"</span>
-  <span class="comment comment__fail">VO/Safari "Date edit text"</span>
+  <span class="comment comment__fail">Yos/VO/Firefox 42 "Date"</span>
+  <span class="comment comment__fail">Yos/VO/Canary 50 "Date"</span>
+  <span class="comment comment__fail">Yos/VO/Chrome 47 "Date"</span>
+  <span class="comment comment__fail">Yos/VO/Safari 9 "Date"</span>
+  <span class="comment comment__fail">Mav/VO/FF 43 "Date text"</span>
+  <span class="comment comment__fail">Mav/VO/Canary 50 "Date edit text"</span>
+  <span class="comment comment__fail">Mav/VO/Chrome 48 "Date edit text"</span>
+  <span class="comment comment__fail">Mav/VO/Safari 9 "Date edit text"</span>
   <pre>
   &lt;label for="thedate"&gt;Date&lt;/label&gt;
   &lt;span <strong class="code__highlight">id="dateInfo"</strong>&gt;dd/mm/yyyy&lt;/span&gt;
@@ -665,9 +755,14 @@
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
   <h4>What's the expected date format?</h4>
-  <span class="comment comment__success">VO/FF "Date dd/mm/yyyy text"</span>
-  <span class="comment comment__success">VO/Canary "Date dd/mm/yyyy edit text"</span>
-  <span class="comment comment__success">VO/Safari "Date dd/mm/yyyy edit text"</span>
+  <span class="comment comment__success">Yos/VO/Firefox 42 "Date dd/mm/yyyy"</span>
+  <span class="comment comment__success">Yos/VO/Canary 50 "Date dd/mm/yyyy"</span>
+  <span class="comment comment__success">Yos/VO/Chrome 47 "Date dd/mm/yyyy"</span>
+  <span class="comment comment__success">Yos/VO/Safari 9 "Date dd/mm/yyyy"</span>
+  <span class="comment comment__success">Mav/VO/FF 43 "Date dd/mm/yyyy text"</span>
+  <span class="comment comment__success">Mav/VO/Canary 50 "Date dd/mm/yyyy edit text"</span>
+  <span class="comment comment__success">Mav/VO/Chrome 48 "Date dd/mm/yyyy edit text"</span>
+  <span class="comment comment__success">Mav/VO/Safari 9 "Date dd/mm/yyyy edit text"</span>
   <pre>
   &lt;label for="thedate"&gt;
     Date
@@ -681,9 +776,14 @@
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
   <h4>Is the field required?</h4>
-  <span class="comment comment__success">VO/FF "Date dd/mm/yyyy required text"</span>
-  <span class="comment comment__meh">VO/Canary "Date dd/mm/yyyy required invalid data edit text"</span>
-  <span class="comment comment__success">VO/Safari "Date dd/mm/yyyy required edit text"</span>
+  <span class="comment comment__success">Yos/VO/Firefox 42 "Date dd/mm/yyyy"</span>
+  <span class="comment comment__success">Yos/VO/Canary 50 "Date dd/mm/yyyy"</span>
+  <span class="comment comment__success">Yos/VO/Chrome 47 "Date dd/mm/yyyy"</span>
+  <span class="comment comment__success">Yos/VO/Safari 9 "Date dd/mm/yyyy"</span>
+  <span class="comment comment__success">Mav/VO/FF 43 "Date dd/mm/yyyy required text"</span>
+  <span class="comment comment__meh">Mav/VO/Canary 50 "Date dd/mm/yyyy required invalid data edit text"</span>
+  <span class="comment comment__meh">Mav/VO/Chrome 48 "Date dd/mm/yyyy required invalid data edit text"</span>
+  <span class="comment comment__success">Mav/VO/Safari 9 "Date dd/mm/yyyy required edit text"</span>
   <pre>
   &lt;label for="thedate"&gt;
     Date
@@ -697,9 +797,14 @@
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
   <h4>Is the field required?</h4>
-  <span class="comment comment__success">VO/FF "Date dd/mm/yyyy required text"</span>
-  <span class="comment comment__success">VO/Canary "Date dd/mm/yyyy required edit text"</span>
-  <span class="comment comment__success">VO/Safari "Date dd/mm/yyyy required edit text"</span>
+  <span class="comment comment__success">Yos/VO/Firefox 42 "Date dd/mm/yyyy"</span>
+  <span class="comment comment__success">Yos/VO/Canary 50 "Date dd/mm/yyyy"</span>
+  <span class="comment comment__success">Yos/VO/Chrome 47 "Date dd/mm/yyyy"</span>
+  <span class="comment comment__success">Yos/VO/Safari 9 "Date dd/mm/yyyy"</span>
+  <span class="comment comment__success">Mav/VO/FF 43 "Date dd/mm/yyyy required text"</span>
+  <span class="comment comment__success">Mav/VO/Canary 50 "Date dd/mm/yyyy required edit text"</span>
+  <span class="comment comment__success">Mav/VO/Chrome 48 "Date dd/mm/yyyy required edit text"</span>
+  <span class="comment comment__success">Mav/VO/Safari 9 "Date dd/mm/yyyy required edit text"</span>
   <pre>
   &lt;label for="thedate"&gt;
     Date
@@ -713,9 +818,14 @@
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
   <h4>What about when the field has been completed?</h4>
-  <span class="comment comment__success">VO/FF "01/01/2015 Date dd/mm/yyyy required text"</span>
-  <span class="comment comment__success">VO/Canary "01/01/2015 Date dd/mm/yyyy required edit text"</span>
-  <span class="comment comment__success">VO/Safari "01/01/2015 Date dd/mm/yyyy required edit text"</span>
+  <span class="comment comment__meh">Yos/VO/Firefox 42 "01/01/2015 contents selected, Date dd/mm/yyyy"</span>
+  <span class="comment comment__meh">Yos/VO/Canary 50 "01/01/2015 contents selected, Date dd/mm/yyyy"</span>
+  <span class="comment comment__meh">Yos/VO/Chrome 47 "01/01/2015 contents selected, Date dd/mm/yyyy"</span>
+  <span class="comment comment__meh">Yos/VO/Safari 9 "01/01/2015 contents selected, Date dd/mm/yyyy"</span>
+  <span class="comment comment__meh">Mav/VO/FF 43 "01/01/2015 contents selected Date dd/mm/yyyy required text"</span>
+  <span class="comment comment__meh">Mav/VO/Canary 50 "01/01/2015 contents selected Date dd/mm/yyyy required edit text"</span>
+  <span class="comment comment__meh">Mav/VO/Chrome 48 "01/01/2015 contents selected Date dd/mm/yyyy required edit text"</span>
+  <span class="comment comment__meh">Mav/VO/Safari 9 "01/01/2015 contents selected Date dd/mm/yyyy required edit text"</span>
   <pre>
   &lt;label for="thedate"&gt;
     Date
@@ -729,9 +839,14 @@
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
   <h4>Is the user-entered value valid?</h4>
-  <span class="comment comment__fail">VO/FF "abc Date dd/mm/yyyy required text"</span>
-  <span class="comment comment__success">VO/Canary "abc Date dd/mm/yyyy required invalid data edit text"</span>
-  <span class="comment comment__success">VO/Safari "abc Date dd/mm/yyyy required invalid data edit text"</span>
+  <span class="comment comment__fail">Yos/VO/Firefox 42 "abc contents selected, Date dd/mm/yyyy"</span>
+  <span class="comment comment__fail">Yos/VO/Canary 50 "abc contents selected, Date dd/mm/yyyy"</span>
+  <span class="comment comment__fail">Yos/VO/Chrome 47 "abc contents selected, Date dd/mm/yyyy"</span>
+  <span class="comment comment__fail">Yos/VO/Safari 9 "abc contents selected, Date dd/mm/yyyy"</span>
+  <span class="comment comment__fail">Mav/VO/FF 43 "abc contents selected Date dd/mm/yyyy required text"</span>
+  <span class="comment comment__fail">Mav/VO/Canary 50 "abc contents selected Date dd/mm/yyyy required invalid data edit text"</span>
+  <span class="comment comment__fail">Mav/VO/Chrome 48 "abc contents selected Date dd/mm/yyyy required invalid data edit text"</span>
+  <span class="comment comment__fail">Mav/VO/Safari 9 "abc contents selected Date dd/mm/yyyy required invalid data edit text"</span>
   <pre>
   &lt;label for="thedate"&gt;
     Date
@@ -745,9 +860,14 @@
 <section>
   <h3><span class="spec">3.3.2</span> Labels or instructions</h3>
   <h4>Why is the user-entered value invalid?</h4>
-  <span class="comment comment__fail">VO/FF "abc Date dd/mm/yyyy required text...Enter in UK date format"</span>
-  <span class="comment comment__success">VO/Canary "abc Date dd/mm/yyyy required invalid data edit text...Enter in UK date format"</span>
-  <span class="comment comment__success">VO/Safari "abc Date dd/mm/yyyy required invalid data edit text...Enter in UK date format"</span>
+  <span class="comment comment__fail">Yos/VO/Firefox 42 "abc contents selected, Date dd/mm/yyyy"</span>
+  <span class="comment comment__fail">Yos/VO/Canary 50 "abc contents selected, Date dd/mm/yyyy"</span>
+  <span class="comment comment__fail">Yos/VO/Chrome 47 "abc contents selected, Date dd/mm/yyyy"</span>
+  <span class="comment comment__fail">Yos/VO/Safari 9 "abc contents selected, Date dd/mm/yyyy"</span>
+  <span class="comment comment__fail">Mav/VO/FF 43 "abc contents selected Date dd/mm/yyyy required text"</span>
+  <span class="comment comment__fail">Mav/VO/Canary 50 "abc contents selected Date dd/mm/yyyy required invalid data edit text"</span>
+  <span class="comment comment__fail">Mav/VO/Chrome 48 "abc contents selected Date dd/mm/yyyy required invalid data edit text"</span>
+  <span class="comment comment__fail">Mav/VO/Safari 9 "abc contents selected Date dd/mm/yyyy required invalid data edit text"</span>
   <pre>
   &lt;label for="thedate"&gt;
     Date
@@ -763,9 +883,14 @@
 <section>
   <h3>A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h3>
   <p>Use them to group related fields.</p>
-  <span class="comment comment__meh">VO/FF "Line 1 Home Address Home Address text"</span>
-  <span class="comment comment__success">VO/Canary "Line 1 Home Address text"</span>
-  <span class="comment comment__fail">VO/Safari "Line 1 edit text"</span>
+  <span class="comment comment__fail">Yos/VO/Firefox 42 "Line 1"</span>
+  <span class="comment comment__fail">Yos/VO/Canary 50 "Line 1"</span>
+  <span class="comment comment__fail">Yos/VO/Chrome 47 "Line 1"</span>
+  <span class="comment comment__fail">Yos/VO/Safari 9 "Line 1"</span>
+  <span class="comment comment__meh">Mav/VO/FF 43 "Line 1 Home Address Home Address text"</span>
+  <span class="comment comment__success">Mav/VO/Canary 50 "Line 1 Home Address edit text"</span>
+  <span class="comment comment__success">Mav/VO/Chrome 48 "Line 1 Home Address edit text"</span>
+  <span class="comment comment__fail">Mav/VO/Safari 9 "Line 1 edit text"</span>
   <pre>
   &lt;fieldset&gt;
     &lt;legend&gt;Home Address&lt;/legend&gt;
@@ -780,9 +905,14 @@
 <section>
   <h3>A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h3>
   <p>Use them for groups of radios or checks.</p>
-  <span class="comment comment__meh">VO/FF "Home Address Deliver To Deliver To radio button"</span>
-  <span class="comment comment__success">VO/Canary "Home Address Deliver To radio button"</span>
-  <span class="comment comment__fail">VO/Safari "Home Address radio button, 1 of 2"</span>
+  <span class="comment comment__fail">Yos/VO/Firefox 42 "Home Address"</span>
+  <span class="comment comment__fail">Yos/VO/Canary 50 "Home Address"</span>
+  <span class="comment comment__fail">Yos/VO/Chrome 47 "Home Address"</span>
+  <span class="comment comment__fail">Yos/VO/Safari 9 "Home Address"</span>
+  <span class="comment comment__meh">Mav/VO/FF 43 "Home Address Deliver To Deliver To radio button"</span>
+  <span class="comment comment__success">Mav/VO/Canary 50 "Home Address Deliver To radio button"</span>
+  <span class="comment comment__success">Mav/VO/Chrome 48 "Home Address Deliver To radio button"</span>
+  <span class="comment comment__fail">Mav/VO/Safari 9 "Home Address radio button, 1 of 2"</span>
   <pre>
   &lt;fieldset&gt;
     &lt;legend&gt;Deliver To&lt;/legend&gt;
@@ -799,9 +929,14 @@
 <section>
   <h3>A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h3>
   <p>Use them for groups of radios or checks.</p>
-  <span class="comment comment__fail">VO/FF "Home Address Deliver To Deliver To Deliver To radio button"</span>
-  <span class="comment comment__fail">VO/Canary "Home Address Home Address Deliver To Deliver To radio button"</span>
-  <span class="comment comment__success">VO/Safari "Home Address Deliver To radio button, 1 of 2"</span>
+  <span class="comment comment__meh">Yos/VO/Firefox 42 "Home Address Deliver To Home Address"</span>
+  <span class="comment comment__success">Yos/VO/Canary 50 "Home Address Deliver To"</span>
+  <span class="comment comment__meh">Yos/VO/Chrome 47 "Home Address, Home Address Deliver To"</span>
+  <span class="comment comment__success">Yos/VO/Safari 9 "Home Address Deliver To"</span>
+  <span class="comment comment__meh">Mav/VO/FF 43 "Home Address Deliver To Deliver To Deliver To radio button"</span>
+  <span class="comment comment__success">Mav/VO/Canary 50 "Home Address Home Address Deliver To Deliver To radio button"</span>
+  <span class="comment comment__success">Mav/VO/Chrome 48 "Home Address Deliver To radio button"</span>
+  <span class="comment comment__meh">Mav/VO/Safari 9 "Home Address Deliver To radio button, 1 of 2"</span>
   <pre>
   &lt;fieldset&gt;
     &lt;legend <strong class="code__highlight">id="delAddress"</strong>&gt;Deliver To&lt;/legend&gt;
@@ -818,9 +953,14 @@
 <section>
   <h3>A note on <span class="tag">fieldset</span> and <span class="tag">legend</span></h3>
   <p>Overkill for single checkboxes.</p>
-  <span class="comment comment__success">VO/FF "Add me to your mailing list unchecked checkbox"</span>
-  <span class="comment comment__success">VO/Canary "Add me to your mailing list unchecked checkbox"</span>
-  <span class="comment comment__success">VO/Safari "Add me to your mailing list unchecked checkbox"</span>
+  <span class="comment comment__success">Yos/VO/Firefox 42 "Add me to your mailing list, unchecked"</span>
+  <span class="comment comment__success">Yos/VO/Canary 50 "Add me to your mailing list, unchecked"</span>
+  <span class="comment comment__success">Yos/VO/Chrome 47 "Add me to your mailing list, unchecked"</span>
+  <span class="comment comment__success">Yos/VO/Safari 9 "Add me to your mailing list, unchecked"</span>
+  <span class="comment comment__success">Mav/VO/FF 43 "Add me to your mailing list unchecked checkbox"</span>
+  <span class="comment comment__success">Mav/VO/Canary 50 "Add me to your mailing list unchecked checkbox"</span>
+  <span class="comment comment__success">Mav/VO/Chrome 48 "Add me to your mailing list unchecked checkbox"</span>
+  <span class="comment comment__success">Mav/VO/Safari 9 "Add me to your mailing list unchecked checkbox"</span>
   <pre>
   &lt;input type="checkbox" id="maillist" name="subscribe" value="y" /&gt;
   &lt;label for="maillist"&gt;Add me to your mailing list&lt;/label&gt;
