@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <style>
-    .accordion-panel {
+    .panel {
       display: none;
     }
 
-    .accordion-panel-open {
+    .panel--open {
       display: block;
     }
   </style>
@@ -15,35 +15,48 @@
 
 <body>
   <div role="tablist">
-    <h2 role="tab">Heading 1</h2>
-    <div role="tabpanel" class="accordion-panel">Panel 1</div>
+    <h2 data-hook="heading" role="tab" tabindex="0">Heading 1</h2>
+    <div class="panel">Panel 1</div>
 
-    <h2 role="tab">Heading 2</h2>
-    <div role="tabpanel" class="accordion-panel">Panel 2</div>
+    <h2 data-hook="heading" role="tab" tabindex="0">Heading 2</h2>
+    <div class="panel">Panel 2</div>
 
-    <h2 role="tab">Heading 3</h2>
-    <div role="tabpanel" class="accordion-panel">Panel 3</div>
+    <h2 data-hook="heading" role="tab" tabindex="0">Heading 3</h2>
+    <div class="panel">Panel 3</div>
   </div>
 
   <script>
-    var tabs = document.querySelectorAll('h2');
-    var tabsLength = tabs.length;
-    var i = 0;
+    var headings = document.querySelectorAll('[data-hook="heading"]');
 
-    for (i; i < tabsLength; i++) {
-      tabs[i].addEventListener('click', function() {
+    Array.prototype.forEach.call(headings, function(heading) {
+      heading.addEventListener('click', function() {
         var thisPanel = this.nextElementSibling;
-        var openPanel = document.querySelector('.accordion-panel-open');
+        var openPanel = heading.parentElement.querySelector('.panel--open');
 
         if (openPanel) {
-          openPanel.classList.remove('accordion-panel-open');
+          openPanel.classList.remove('panel--open');
         }
 
         if (thisPanel !== openPanel) {
-          thisPanel.classList.add('accordion-panel-open');
+          thisPanel.classList.add('panel--open');
         }
       });
-    }
+
+      heading.addEventListener('keyup', function(e) {
+        if (e.keyCode === 13) {
+          var thisPanel = this.nextElementSibling;
+          var openPanel = heading.parentElement.querySelector('.panel--open');
+
+          if (openPanel) {
+            openPanel.classList.remove('panel--open');
+          }
+
+          if (thisPanel !== openPanel) {
+            thisPanel.classList.add('panel--open');
+          }
+        }
+      });
+    });
   </script>
 </body>
 </html>

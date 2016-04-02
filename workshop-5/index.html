@@ -198,13 +198,13 @@
 <section>
   <h3>4) Screenreader queries the accessibility API</h3>
   <h4>Role</h4>
-  <p>Taken from the type of element. Can be overridden with <span class="tag">role</span>.</p>
+  <!-- <p>Taken from the type of element. Can be overridden with <span class="tag">role</span>.</p> -->
   <h4>Name</h4>
-  <p>Can be taken from a <span class="tag">label</span>, <span class="tag">legend</span>, <span class="tag">alt</span> or <span class="tag">aria-label</span>.</p>
+  <!-- <p>Can be taken from a <span class="tag">label</span>, <span class="tag">legend</span>, <span class="tag">alt</span> or <span class="tag">aria-label</span>.</p> -->
   <h4>Value</h4>
-  <p>Usually provided by the user.</p>
+  <!-- <p>Usually provided by the user.</p> -->
   <h4>State</h4>
-  <p>Checked or unchecked.</p>
+  <!-- <p>Checked or unchecked.</p> -->
 </section>
 
 <section>
@@ -219,111 +219,199 @@
 </section>
 
 <section>
-  <h3>the <span class="tag">role</span> attribute</h3>
+  <h3>The <span class="tag">role</span> attribute</h3>
+  http://www.ebaytechblog.com/2015/11/04/how-our-css-framework-helps-enforce-accessibility/
   <p>Overrides native semantics and affects what is reported to a screenreader.</p>
-  <ul class="complex-list">
-    <li>alert</li>
-    <li>alertdialog</li>
-    <li>gridcell</li>
-    <li>log</li>
-    <li>marquee</li>
-    <li>menuitemcheckbox</li>
-    <li>menuitemradio</li>
-    <li>scrollbar</li>
-    <li>status</li>
-    <li>tab</li>
-    <li>tabpanel</li>
-    <li>timer</li>
-    <li>tooltip</li>
-    <li>treeitem</li>
-    <li>grid</li>
-    <li>menu</li>
-    <li>menubar</li>
-    <li>tablist</li>
-    <li>toolbar</li>
-    <li>tree</li>
-    <li>treegrid</li>
-    <li>directory</li>
-    <li>document</li>
-    <li>group</li>
-    <li>note</li>
-    <li>presentation</li>
-    <li>region</li>
-    <li>application</li>
-    <li>search</li>
-  </ul>
+  <table>
+    <tr>
+      <td>alert</td>
+      <td>alertdialog</td>
+      <td>application</td>
+      <td>directory</td>
+      <td>document</td>
+    </tr>
+    <tr>
+      <td>grid</td>
+      <td>gridcell</td>
+      <td>group</td>
+      <td>log</td>
+      <td>marquee</td>
+    </tr>
+    <tr>
+      <td>menu</td>
+      <td>menubar</td>
+      <td>menuitemcheckbox</td>
+      <td>menuitemradio</td>
+      <td>note</td>
+    </tr>
+    <tr>
+      <td>presentation</td>
+      <td>region</td>
+      <td>search</td>
+      <td>scrollbar</td>
+      <td>status</td>
+    </tr>
+    <tr>
+      <td>tab</td>
+      <td>tablist</td>
+      <td>tabpanel</td>
+      <td>timer</td>
+      <td>toolbar</td>
+    </tr>
+    <tr>
+      <td>tooltip</td>
+      <td>tree</td>
+      <td>treegrid</td>
+      <td>treeitem</td>
+      <td></td>
+    </tr>
+  </table>
 </section>
 
 <section>
-  <h3>applying <span class="tag">role</span> to an accordion</h3>
-  <p>Basic markup:</p>
+  <h3>Applying <span class="tag">role</span> to an accordion</h3>
+  <h4>Basic markup</h4>
   <pre>
   &lt;div&gt;
-    &lt;h2&gt;Heading 1&lt;/h2&gt;
-    &lt;div class="accordion-panel"&gt;Panel 1&lt;/div&gt;
+    &lt;h2 data-hook="heading"&gt;Heading 1&lt;/h2&gt;
+    &lt;div class="panel"&gt;Panel 1&lt;/div&gt;
 
-    &lt;h2&gt;Heading 2&lt;/h2&gt;
-    &lt;div class="accordion-panel"&gt;Panel 2&lt;/div&gt;
+    &lt;h2 data-hook="heading"&gt;Heading 2&lt;/h2&gt;
+    &lt;div class="panel"&gt;Panel 2&lt;/div&gt;
 
-    &lt;h2&gt;Heading 3&lt;/h2&gt;
-    &lt;div class="accordion-panel"&gt;Panel 3&lt;/div&gt;
+    &lt;h2 data-hook="heading"&gt;Heading 3&lt;/h2&gt;
+    &lt;div class="panel"&gt;Panel 3&lt;/div&gt;
   &lt;/div&gt;
+  </pre>
+</section>
+
+<section>
+  <h3>Applying <span class="tag">role</span> to an accordion</h3>
+  <h4>Basic CSS</h4>
+  <pre>
+  .panel {
+    display: none;
+  }
+
+  .panel--open {
+    display: block;
+  }
+  </pre>
+</section>
+
+<section>
+  <h3>Applying <span class="tag">role</span> to an accordion</h3>
+  <h4>Basic JS</h4>
+  <pre>
+  var headings = document.querySelectorAll('<strong class="code__highlight">[data-hook="heading"]</strong>');
+
+  Array.prototype.forEach.call(headings, function(heading) {
+    heading.addEventListener('<strong class="code__highlight">click</strong>', function() {
+      var thisPanel = heading.nextElementSibling;
+      var openPanel = heading.parentElement.querySelector('.panel--open');
+
+      if (openPanel) { <strong class="code__highlight">openPanel.classList.remove('panel--open');</strong> }
+
+      if (thisPanel !== openPanel) {
+        <strong class="code__highlight">thisPanel.classList.add('panel--open');</strong>
+      }
+    });
+  });
   </pre>
   <p><a href="demos/demo-1/index.html" target="_blank">Demo</a></p>
 </section>
 
 <section>
-  <h3>applying <span class="tag">role</span> to an accordion</h3>
-  <p>Defining an accordion:</p>
+  <h3>Applying <span class="tag">role</span> to an accordion</h3>
+  <h4>Defining an accordion</h4>
   <pre>
   &lt;div <strong class="code__highlight">role="tablist"</strong>&gt;
-    &lt;h2&gt;Heading 1&lt;/h2&gt;
-    &lt;div class="accordion-panel"&gt;Panel 1&lt;/div&gt;
+    &lt;h2 data-hook="heading"&gt;Heading 1&lt;/h2&gt;
+    &lt;div class="panel"&gt;Panel 1&lt;/div&gt;
 
-    &lt;h2&gt;Heading 2&lt;/h2&gt;
-    &lt;div class="accordion-panel"&gt;Panel 2&lt;/div&gt;
+    &lt;h2 data-hook="heading"&gt;Heading 2&lt;/h2&gt;
+    &lt;div class="panel"&gt;Panel 2&lt;/div&gt;
 
-    &lt;h2&gt;Heading 3&lt;/h2&gt;
-    &lt;div class="accordion-panel"&gt;Panel 3&lt;/div&gt;
+    &lt;h2 data-hook="heading"&gt;Heading 3&lt;/h2&gt;
+    &lt;div class="panel"&gt;Panel 3&lt;/div&gt;
   &lt;/div&gt;
   </pre>
   <p><a href="demos/demo-2/index.html" target="_blank">Demo</a></p>
 </section>
 
 <section>
-  <h3>applying <span class="tag">role</span> to an accordion</h3>
-  <p>Defining a panel:</p>
+  <h3>Applying <span class="tag">role</span> to an accordion</h3>
+  <h4>Defining a panel</h4>
   <pre>
   &lt;div role="tablist"&gt;
-    &lt;h2 <strong class="code__highlight">role="tab"</strong>&gt;Heading 1&lt;/h2&gt;
-    &lt;div class="accordion-panel"&gt;Panel 1&lt;/div&gt;
+    &lt;h2 data-hook="heading" <strong class="code__highlight">role="tab"</strong>&gt;Heading 1&lt;/h2&gt;
+    &lt;div class="panel"&gt;Panel 1&lt;/div&gt;
 
-    &lt;h2 <strong class="code__highlight">role="tab"</strong>&gt;Heading 2&lt;/h2&gt;
-    &lt;div class="accordion-panel"&gt;Panel 2&lt;/div&gt;
+    &lt;h2 data-hook="heading" <strong class="code__highlight">role="tab"</strong>&gt;Heading 2&lt;/h2&gt;
+    &lt;div class="panel"&gt;Panel 2&lt;/div&gt;
 
-    &lt;h2 <strong class="code__highlight">role="tab"</strong>&gt;Heading 3&lt;/h2&gt;
-    &lt;div class="accordion-panel"&gt;Panel 3&lt;/div&gt;
+    &lt;h2 data-hook="heading" <strong class="code__highlight">role="tab"</strong>&gt;Heading 3&lt;/h2&gt;
+    &lt;div class="panel"&gt;Panel 3&lt;/div&gt;
   &lt;/div&gt;
   </pre>
   <p><a href="demos/demo-3/index.html" target="_blank">Demo</a></p>
 </section>
 
 <section>
-  <h3>applying <span class="tag">role</span> to an accordion</h3>
-  <p>Defining the content:</p>
+  <h3>Applying <span class="tag">role</span> to an accordion</h3>
+  <h4>Making the headings focusable</h4>
   <pre>
   &lt;div role="tablist"&gt;
-    &lt;h2 role="tab"&gt;Heading 1&lt;/h2&gt;
-    &lt;div <strong class="code__highlight">role="tabpanel"</strong> class="accordion-panel"&gt;Panel 1&lt;/div&gt;
+    &lt;h2 data-hook="heading" role="tab" <strong class="code__highlight">tabindex="0"</strong>&gt;Heading 1&lt;/h2&gt;
+    &lt;div class="panel"&gt;Panel 1&lt;/div&gt;
 
-    &lt;h2 role="tab"&gt;Heading 2&lt;/h2&gt;
-    &lt;div <strong class="code__highlight">role="tabpanel"</strong> class="accordion-panel"&gt;Panel 2&lt;/div&gt;
+    &lt;h2 data-hook="heading" role="tab" <strong class="code__highlight">tabindex="0"</strong>&gt;Heading 2&lt;/h2&gt;
+    &lt;div class="panel"&gt;Panel 2&lt;/div&gt;
 
-    &lt;h2 role="tab"&gt;Heading 3&lt;/h2&gt;
-    &lt;div <strong class="code__highlight">role="tabpanel"</strong> class="accordion-panel"&gt;Panel 3&lt;/div&gt;
+    &lt;h2 data-hook="heading" role="tab" <strong class="code__highlight">tabindex="0"</strong>&gt;Heading 3&lt;/h2&gt;
+    &lt;div class="panel"&gt;Panel 3&lt;/div&gt;
   &lt;/div&gt;
   </pre>
+</section>
+
+<section>
+  <h3>Applying <span class="tag">role</span> to an accordion</h3>
+  <h4>Making the headings keyboard-controllable</h4>
+  <pre>
+  heading.addEventListener('<strong class="code__highlight">keyup</strong>', function(e) {
+    if (e.keyCode === 13) {
+      var thisPanel = this.nextElementSibling;
+      var openPanel = heading.parentElement.querySelector('.panel--open');
+
+      if (openPanel) {
+        openPanel.classList.remove('panel--open');
+      }
+
+      if (thisPanel !== openPanel) {
+        thisPanel.classList.add('panel--open');
+      }
+    }
+  });
+  </pre>
   <p><a href="demos/demo-4/index.html" target="_blank">Demo</a></p>
+</section>
+
+<section>
+  <h3>Applying <span class="tag">role</span> to an accordion</h3>
+  <h4>Defining the content???</h4>
+  <pre>
+  &lt;div role="tablist"&gt;
+    &lt;h2 data-hook="heading" role="tab"&gt;Heading 1&lt;/h2&gt;
+    &lt;div <strong class="code__highlight">role="tabpanel"</strong> class="panel"&gt;Panel 1&lt;/div&gt;
+
+    &lt;h2 data-hook="heading" role="tab"&gt;Heading 2&lt;/h2&gt;
+    &lt;div <strong class="code__highlight">role="tabpanel"</strong> class="panel"&gt;Panel 2&lt;/div&gt;
+
+    &lt;h2 data-hook="heading" role="tab"&gt;Heading 3&lt;/h2&gt;
+    &lt;div <strong class="code__highlight">role="tabpanel"</strong> class="panel"&gt;Panel 3&lt;/div&gt;
+  &lt;/div&gt;
+  </pre>
+  <p><a href="demos/demo-5/index.html" target="_blank">Demo</a></p>
 </section>
 
 <section>
@@ -338,62 +426,84 @@
 </section>
 
 <section>
-  <h3>applying state to an accordion</h3>
-  <p>Announcing the expanded status:</p>
+  <h3>Applying state to an accordion</h3>
+  <h4>Announcing the expanded status</h4>
   <pre>
   &lt;div role="tablist"&gt;
-    &lt;h2 role="tab" <strong class="code__highlight">aria-expanded="false"</strong>&gt;Heading 1&lt;/h2&gt;
-    &lt;div role="tabpanel" class="accordion-panel"&gt;Panel 1&lt;/div&gt;
+    &lt;h2 data-hook="heading" role="tab" <strong class="code__highlight">aria-expanded="false"</strong>&gt;Heading 1&lt;/h2&gt;
+    &lt;div role="tabpanel" class="panel"&gt;Panel 1&lt;/div&gt;
 
-    &lt;h2 role="tab" <strong class="code__highlight">aria-expanded="false"</strong>&gt;Heading 2&lt;/h2&gt;
-    &lt;div role="tabpanel" class="accordion-panel"&gt;Panel 2&lt;/div&gt;
+    &lt;h2 data-hook="heading" role="tab" <strong class="code__highlight">aria-expanded="false"</strong>&gt;Heading 2&lt;/h2&gt;
+    &lt;div role="tabpanel" class="panel"&gt;Panel 2&lt;/div&gt;
 
-    &lt;h2 role="tab" <strong class="code__highlight">aria-expanded="false"</strong>&gt;Heading 3&lt;/h2&gt;
-    &lt;div role="tabpanel" class="accordion-panel"&gt;Panel 3&lt;/div&gt;
+    &lt;h2 data-hook="heading" role="tab" <strong class="code__highlight">aria-expanded="false"</strong>&gt;Heading 3&lt;/h2&gt;
+    &lt;div role="tabpanel" class="panel"&gt;Panel 3&lt;/div&gt;
   &lt;/div&gt;
   </pre>
-  <p><a href="demos/demo-5/index.html" target="_blank">Demo</a></p>
 </section>
 
 <section>
-  <h3>applying state to an accordion</h3>
-  <p>Giving focus to the triggers:</p>
+  <h3>Applying state to an accordion</h3>
+  <h4>Changing the expanded status</h4>
   <pre>
-  &lt;div role="tablist"&gt;
-    &lt;h2 role="tab" aria-expanded="false" <strong class="code__highlight">tabindex="0"</strong>&gt;Heading 1&lt;/h2&gt;
-    &lt;div role="tabpanel" class="accordion-panel"&gt;Panel 1&lt;/div&gt;
+  ...
+  
+  if (openPanel) {
+    <strong class="code__highlight">openPanel.previousElementSibling.setAttribute('aria-expanded', false);</strong>
+    openPanel.classList.remove('panel--open');
+  }
 
-    &lt;h2 role="tab" aria-expanded="false" <strong class="code__highlight">tabindex="0"</strong>&gt;Heading 2&lt;/h2&gt;
-    &lt;div role="tabpanel" class="accordion-panel"&gt;Panel 2&lt;/div&gt;
-
-    &lt;h2 role="tab" aria-expanded="false" <strong class="code__highlight">tabindex="0"</strong>&gt;Heading 3&lt;/h2&gt;
-    &lt;div role="tabpanel" class="accordion-panel"&gt;Panel 3&lt;/div&gt;
-  &lt;/div&gt;
+  if (thisPanel !== openPanel) {
+    <strong class="code__highlight">this.setAttribute('aria-expanded', true);</strong>
+    thisPanel.classList.add('panel--open');
+  }
+  
+  ...
   </pre>
   <p><a href="demos/demo-6/index.html" target="_blank">Demo</a></p>
 </section>
 
 <section>
+  <h3>Applying state to an accordion</h3>
+  <h4>Accessing the content</h4>
+  <pre>
+  </pre>
+  <p><a href="demos/demo-7/index.html" target="_blank">Demo</a></p>
+</section>
+
+<section>
   <h3>Properties</h3>
-  <ul class="complex-list">
-    <li>aria-activedescendant</li>
-    <li>aria-atomic</li>
-    <li>aria-controls</li>
-    <li>aria-describedby</li>
-    <li>aria-dropeffect</li>
-    <li>aria-flowto</li>
-    <li>aria-haspopup</li>
-    <li>aria-label</li>
-    <li>aria-labelledby</li>
-    <li>aria-level</li>
-    <li>aria-live</li>
-    <li>aria-orientation</li>
-    <li>aria-owns</li>
-    <li>aria-posinset</li>
-    <li>aria-relevant</li>
-    <li>aria-setsize</li>
-    <li>aria-sort</li>
-  </ul>
+  <table>
+    <tr>
+      <td>aria-activedescendant</td>
+      <td>aria-atomic</td>
+      <td>aria-controls</td>
+    </tr>
+    <tr>
+      <td>aria-describedby</td>
+      <td>aria-dropeffect</td>
+      <td>aria-flowto</td>
+    </tr>
+    <tr>
+      <td>aria-labelledby</td>
+      <td>aria-haspopup</td>
+      <td>aria-label</td>
+    </tr>
+    <tr>
+      <td>aria-level</td>
+      <td>aria-live</td>
+      <td>aria-orientation</td>
+    </tr>
+    <tr>
+      <td>aria-owns</td>
+      <td>aria-posinset</td>
+      <td>aria-relevant</td>
+    </tr>
+    <tr>
+      <td>aria-setsize</td>
+      <td>aria-sort</td>
+    </tr>
+  </table>
 </section>
 
 <section>
